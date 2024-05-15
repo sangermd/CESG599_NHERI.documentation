@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transfer Function example &mdash; CESG-599 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Settlement example" href="settl_example.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            CESG-599
+              <img src="_static/CESG-599.gif" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="settl_example.html">Settlement example</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Transfer Function example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#background">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#objective">Objective</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#things-to-do">Things to Do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#observation">Observation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#on-your-own">On Your Own</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CESG-599</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Transfer Function example</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tf_example.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>__SC Github page: <a class="reference external" href="https://github.com/NHERI-SimCenterl">https://github.com/NHERI-SimCenterl</a>
+.. <a href="#id1"><span class="problematic" id="id2">|tool version|</span></a> replace:: 1.0.0</p>
+<section id="transfer-function-example">
+<h1>Transfer Function example<a class="headerlink" href="#transfer-function-example" title="Permalink to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+</section>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading"></a></h2>
+<p>A transfer function is somewhat like a filter that is applied to an incoming wave to produce an output signal. It determines how each frequency in the input motion is amplified or suppressed, by the medium of wave travel. Considering a spring-mass system with an excitation motion at input from the foundation connected to the spring and the corresponding response motion of the connected mass in the inertial system. The response motion of the mass will be a composite factor of the elastic and the viscous damping forces which are inherently embedded in the transfer function that determines the output motion we will obtain. In our wave propagation study we also employ transfer functions as a tool to explain the factors that make our input wave motion different from our output wave obtained. Evaluating the transfer function mathematically involves converting our known input motion to a Fourier series. Each term of the Fourier series is multiplied by the transfer function to obtain the Fourier series of the output response. Resonance is a physical phenomenon that occurs when the natural frequency of vibration of particles in a body (in our case the layers) matches the frequency of the forcing function (our input motion). It is experienced as an infinite amplification of the model.</p>
+</section>
+<section id="objective">
+<h2>Objective<a class="headerlink" href="#objective" title="Permalink to this heading"></a></h2>
+<p>After this exercise you should be able to understand and obtain different transfer functions using Dr. Layer.</p>
+</section>
+<section id="things-to-do">
+<h2>Things to Do<a class="headerlink" href="#things-to-do" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Open the Dr. Layer program. By default we get twelve layers. The top six layers are hardwired into the system with a velocity of specified as very fast. The bottom six layers are hardwired with a velocity of very slow.</p></li>
+<li><p>Select all the layers to all have very slow values using the select all option.</p></li>
+<li><p>On the top left hand corner of the menu box choose the plot box tool and apply a plot box at the top of the layers. Do the same at four arbitrary points along the soil layers. Note the height (<span class="math notranslate nohighlight">\(H\)</span>) you place the plots.</p>
+<blockquote>
+<div><p>&lt;insert image&gt;</p>
+</div></blockquote>
+</li>
+<li><p>Push the time increment button for about 1 minute.</p></li>
+<li><p>Obtain the angular frequency <span class="math notranslate nohighlight">\((2p/T)\)</span>, where <span class="math notranslate nohighlight">\(T\)</span> is the period i.e. time it takes to complete one revolution.</p></li>
+<li><p>Obtain the maximum displacements from the plots by clicking on the crest of the curves with your cursor.</p></li>
+<li><p>Close all the plot boxes leaving only the one on the top layer.</p></li>
+<li><p>For each combination you try calculate the amplification factor as shown in the calculation aid section below.</p></li>
+<li><p>Increase the frequency of input motion by adjusting the slider on the top of your screen. Obtain the angular frequency as calculated above.</p></li>
+<li><p>For each combination you try calculate the amplification factor as shown in the calculation aid section below.</p></li>
+<li><p>Repeat the process above for different combinations changing layer parameters noting the first peak displacements in each case.</p></li>
+</ol>
+<p>The relationship below for the transfer function is applicable to only standing waves, which are produced by the constructive interference of two waves travelling in opposite directions. The transfer function between two points on the top and bottom of a soil layer is given by</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}TF = \frac{1}{\cos(\frac{wH}{v_s})}\\AF = \frac{1}{|\cos(\frac{wH}{v_s})|}\end{aligned}\end{align} \]</div>
+<p>Where</p>
+<p><span class="math notranslate nohighlight">\(w`\)</span> = Angular frequency (2pf)</p>
+<p><span class="math notranslate nohighlight">\(H\)</span> = distance between any two points in the layers under consideration.</p>
+<p><span class="math notranslate nohighlight">\(V\)</span> = Velocity of wave travel within the soil layer.</p>
+<p><span class="math notranslate nohighlight">\(TF\)</span> = Transfer function</p>
+<p><span class="math notranslate nohighlight">\(AF\)</span> = Amplification function</p>
+<blockquote>
+<div><p>&lt;insert image&gt;</p>
+</div></blockquote>
+</section>
+<section id="observation">
+<h2>Observation<a class="headerlink" href="#observation" title="Permalink to this heading"></a></h2>
+<p>The transfer function is different for each combination of parameters employed and is seen to show a general trend consistent with the damping and stiffness characteristics of the medium of travel.</p>
+</section>
+<section id="on-your-own">
+<h2>On Your Own<a class="headerlink" href="#on-your-own" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>How can you explain what occurs around <span class="math notranslate nohighlight">\(kH\)</span> = 50 units in Fig 1.2 above?</p></li>
+<li><p>Make a plot of the Amplification factor against the product of the wave number <span class="math notranslate nohighlight">\(k\)</span> <span class="math notranslate nohighlight">\((w/v)\)</span> and height <span class="math notranslate nohighlight">\(H\)</span> in the first exercise and against the angular frequency <span class="math notranslate nohighlight">\((2p/t)\)</span> in the second exercise.</p></li>
+<li><p>Further reading is suggested which shows how the transfer function is derived from the damping and elastic characteristics of a member.</p></li>
+<li><p>What physical phenomenon occurs for an undamped system when the denominator of equation 1.2 approaches 0?</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="settl_example.html" class="btn btn-neutral float-left" title="Settlement example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UW Computational Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
