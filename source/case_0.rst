@@ -4,6 +4,9 @@
 Introduction
 ============
 
+This page describes basic concepts of one-dimensional ground response analysis and the usage of transfer functions. For more details, the user is encounged to read :cite:`Kramer1996`.
+
+
 Author: Pedro arduino
 ---------------------
 
@@ -68,6 +71,20 @@ SimCenter Tool Used
 
 blablabla
 
+.. list-table:: Title
+   :widths: 25 25 50
+   :header-rows: 1
+
+   * - Heading row 1, column 1
+     - Heading row 1, column 2
+     - Heading row 1, column 3
+   * - Row 1, column 1
+     -
+     - Row 1, column 3
+   * - Row 2, column 1
+     - Row 2, column 2
+     - Row 2, column 3
+
 Time can be controlled using either the keyboard or the time control buttons:
 
 * To run time **forward**: Press and hold the 'g' key or click and hold the time forward button: <insert icon>.
@@ -126,3 +143,5 @@ Remarks
 .. warning:: 
     Plotting FFT's will slow down the animation speed significantly, especially as the length of the time histories increase.
 
+
+.. bibliography:: references.bib
