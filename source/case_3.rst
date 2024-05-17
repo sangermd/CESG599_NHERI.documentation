@@ -1,6 +1,6 @@
 .. _case_3:
 
-S3hrk - Site Response 1
+S3hark - Site Response 1
 ================================
 
 Author: Jose Barreto
