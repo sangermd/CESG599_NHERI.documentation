@@ -13,7 +13,8 @@ jobs:
       - uses: actions/setup-python@v3
       - name: Install dependencies
         run: |
-          pip install sphinx sphinx_rtd_theme pkg_resources sphinxcontrib.bibtex myst_parser
+          python -m pip install --upgrade pip setuptools
+          pip install -r requirements.txt
       - name: Sphinx build
         run: |
           sphinx-build doc _build
