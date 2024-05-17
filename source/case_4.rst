@@ -1,6 +1,6 @@
 .. _case_4:
 
-S3hrk - Site Response 2
+S3hark - Site Response 2
 =======================
 
 Author: Chungen Tai
