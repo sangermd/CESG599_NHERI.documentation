@@ -1,1 +1,1 @@
-# CESG599-NHERI.documentation2
+# CESG599-NHERI.documentation
