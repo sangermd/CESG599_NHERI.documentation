@@ -55,21 +55,17 @@ Where
 
 
 .. figure:: ./images/manifestationcurve.png
-    :scale: 100 %
+    :scale: 30 %
     :align: center
     :figclass: align-center
-
-
 
 .. figure:: ./images/zhu2017.png
-    :scale: 100 %
+    :scale: 30 %
     :align: center
     :figclass: align-center
 
-
-
 .. figure:: ./images/sanger2024.png
-    :scale: 100 %
+    :scale: 30 %
     :align: center
     :figclass: align-center
 
