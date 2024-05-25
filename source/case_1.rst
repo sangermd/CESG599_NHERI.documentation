@@ -9,19 +9,36 @@ Author: Kendra Mutch
 Introduction
 ------------
 
-This page describes basic concepts of one-dimensional ground response analysis and the usage of transfer functions. For more details, the user is encounged to read :cite:`Kramer1996`.
+This page describes basic concepts of forward propagation and Bayesian calibration using QuoFEM. For more details, the user is encounged to read :cite:`Kramer1996`.
 
-
-Problem Description
+Project Description
 -------------------
 
-A transfer function is somewhat like a filter that is applied to an incoming wave to produce an output signal. It determines how each frequency in the input motion is amplified or suppressed, by the medium of wave travel. Considering a spring-mass system with an excitation motion at input from the foundation connected to the spring and the corresponding response motion of the connected mass in the inertial system. The response motion of the mass will be a composite factor of the elastic and the viscous damping forces which are inherently embedded in the transfer function that determines the output motion we will obtain. In our wave propagation study we also employ transfer functions as a tool to explain the factors that make our input wave motion different from our output wave obtained. Evaluating the transfer function mathematically involves converting our known input motion to a Fourier series. Each term of the Fourier series is multiplied by the transfer function to obtain the Fourier series of the output response. Resonance is a physical phenomenon that occurs when the natural frequency of vibration of particles in a body (in our case the layers) matches the frequency of the forcing function (our input motion). It is experienced as an infinite amplification of the model.
+QuoFEM allows you to incorporate uncertainty and parameter callibration with finite element and hazard analysis. This project includes two examples, demonstrating how QuoFEM may be utilizied for settlement calculations. The first example makes use of the Forward Propagation feature of QuoFEM, which allows one to apply uncertainty to input parameters (such as preconsolidation pressure, compresison and recommpression index, void ratio, unit weight, etc.) to determine which paramter(s) impact the ultimate settlement most. In the second example, Bayesian Callibration is used to optimize the value of an input parameter to yield a desired settlement. Both examples will use a python input script paired with the Dakota uncertainty quantification tool in QuoFEM.
 
+The soil profile and problem scenario is shown below.
 
-Solution Strategy
------------------
+.. figure:: ./images/Problem Scenario P1.png
+.. figure:: ./images/Problem Scenario P2.png
 
-#. Open the Dr. Layer program. By default we get twelve layers. The top six layers are hardwired into the system with a velocity of specified as very fast. The bottom six layers are hardwired with a velocity of very slow.
+Program Overview
+----------------
+There are five different tabs in QuoFEM; four input tabs and one results tab. The four input tabs are outlined below:
+
+	UQ tab - The UQ tab allows one to select the analysis method (Forward Propagation, Bayesian Callibration, etc.). Additionally, one can     specify a statistics model and the number of samples to run.
+	FEM tab - The FEM is where a python script is inputed, and a finite element method (such as Openseas) may be selected. 
+	RV tab - The RV tab allows you define random variables and apply desired uncertainty and statistical models (normal distribution,           uniform distribution etc.) to each variable.
+    EDP tab - The EDP tab allows one to define quantities of interest. In these examples, the quantity of interest is the settlement being     calculated.
+
+Example One Solution Strategy - Forward Propagation
+---------------------------------------------------
+
+#. Open the QuoFEM. By default, the UQ method is Forward Propagation and the UQ Engine is Dakota. In this example, we will use these defaults. Specify a sample and seed number as shown below.
+
+.. figure:: ./images/Forward Propagation UQ Tab.png
+
+end of my edits to date
+
 
 #. Select all the layers to all have very slow values using the select all option.
 
@@ -60,6 +77,11 @@ Dr. Layer's operation is controlled via menu commands (with associated keyboard 
     :scale: 30 %
     :align: center
     :figclass: align-center
+
+Example Two Solution Strategy - Bayesian Callibration
+-----------------------------------------------------
+
+#. Open the QuoFEM. Change the UQ method to Bayesain Callibration and keep the default UQ Engine as Dakota.
 
 
 SimCenter Tool Used
