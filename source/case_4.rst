@@ -4,18 +4,24 @@ S3hark - Site Response 2
 =======================
 
 Author: Chungen Tai
+(Updated : 05/24/24)
 -------------------
 
 Introduction
 ------------
 
-This page describes basic concepts of one-dimensional ground response analysis and the usage of transfer functions. For more details, the user is encounged to read :cite:`Kramer1996`.
+This page shows basic concepts of one-dimensional nonlinear site response analysis by using various soil material models (ex: ElasticIsotropic, PM4Sand.).Site response analysis is commonly performed to analyze the propagation of seismic waves through soil. As shown in the below figure, one-dimensional response analyses, as a simplified method, assume that all boundaries are horizontal and that the response of a soil deposit is predominately caused by SH-waves propagating vertically from the underlying bedrock. Ground surface response is usually the major output from these analyses, together with profile plots such as peak horizontal acceleration along the soil profile. When liquefiable soils are presenting, maximum shear strain and excess pore pressure ratio plots are also important.
 
+.. figure:: ./images/siteResponse2.png
+    :scale: 60 %
+    :align: center
+    :figclass: align-center
 
 Problem Description
 -------------------
 
-A transfer function is somewhat like a filter that is applied to an incoming wave to produce an output signal. It determines how each frequency in the input motion is amplified or suppressed, by the medium of wave travel. Considering a spring-mass system with an excitation motion at input from the foundation connected to the spring and the corresponding response motion of the connected mass in the inertial system. The response motion of the mass will be a composite factor of the elastic and the viscous damping forces which are inherently embedded in the transfer function that determines the output motion we will obtain. In our wave propagation study we also employ transfer functions as a tool to explain the factors that make our input wave motion different from our output wave obtained. Evaluating the transfer function mathematically involves converting our known input motion to a Fourier series. Each term of the Fourier series is multiplied by the transfer function to obtain the Fourier series of the output response. Resonance is a physical phenomenon that occurs when the natural frequency of vibration of particles in a body (in our case the layers) matches the frequency of the forcing function (our input motion). It is experienced as an infinite amplification of the model.
+Treasure Island, situated atop sand fill strata overlaying Bay Mud within the San Francisco Bay, was subjected to seismic activity during the 1989 Loma Prieta Earthquake. Adjacent to Treasure Island lies Yerba Buena Island, characterized by its natural rock outcrop. Utilizing the site's soil profile and seismic data recorded on Yerba Buena Island, we endeavor to analyze the site response of Treasure Island. This entails computing parameters such as peak horizontal acceleration and shear strain distribution along the soil profile. Furthermore, we aim to investigate the influence of varying slope configurations on the site's response characteristics. 
+
 
 
 Solution Strategy
