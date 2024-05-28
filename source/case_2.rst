@@ -17,12 +17,18 @@ Problem Description
 
 A transfer function acts as a filter that can amplify or de-amplify an incoming wave from a medium to produce the output signal in another medium. To simplify the idea of a transfer function, a spring-mass system can be used. As a motion is applied on the mass connected to the spring, a responsive outgoing wave will be propagated through the mass and the spring. This outgoing motion will be a composite factor of the stiffness and elastic damping forces found within the spring-mass system. In earth systems, this relationship between incoming and outgoing wave can be evaluated through mathematically converting an input motion, typically an acceleration-time history, to a Fourier series. In the Fourier space, the motion is then multiplied by the transfer function, resulting in the outgoing Fourier motion. This can then be converted back into various plots, such as acceleration-time history and spectral acceleration vs. period, that allow for analysis of the outgoing motion. An analysis of this ground motion can provide frequencies of interest where ground accelerations would be highest/lowest, which can aid in site response analysis and planning.
 	
-	<insert image 1>
+.. figure:: ./images/CESG599_TF_image2.png
+    :scale: 30 %
+    :align: center
+    :figclass: align-center
 
 
 For our purposes, an earthquake motion will be applied to a rock, located at the bottom of a one-dimensional soil profile. In this example, we will analyze the amplification/deamplification effects of the ground motion caused by its propagation through the soil layer. The 10 meter soil layer has a shear wave velocity (Vs) of 500 m/s and a damping ratio of 3%. Because of the presence of uncertainty in the soil properties, the transfer function will include uncertainty in its effects. This uncertainty will be quantified through multiple runs in EE-UQ and expressed as ratios of mean velocity and acceleration, along with standard deviation and skewness. 
 	
-	<insert image 2>
+.. figure:: ./images/CESG599_TF_image1.png
+    :scale: 70 %
+    :align: center
+    :figclass: align-center
 
 
 Solution Strategy
