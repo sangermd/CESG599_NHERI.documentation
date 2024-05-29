@@ -1,14 +1,54 @@
 
 .. _case_0:
 
-Introduction
-============
+.. figure:: ./images/case0.png
+    :scale: 90 %
+    :align: center
+    :figclass: align-center
 
-This page describes basic concepts of one-dimensional ground response analysis and the usage of transfer functions. For more details, the user is encounged to read :cite:`Kramer1996`.
 
+CESG599 - NHERI - An introduction to NHERI Simcenter tools and DesignSafe Resources
+====================================================================================
 
 Author: Pedro arduino
 ---------------------
+
+
+Course Description
+------------------
+In this course, we explore the fundamentals of SimCenter tools and the DesignSafe infrastructure.
+The course adopts a self-directed approach, where students follow a well-established framework tailored 
+for this format. Over the course of 10 weeks, we investigate the core concepts of SimCenter and DesignSafe, 
+and examine four to five SimCenter tools, covering one every two weeks. Students are tasked with mastering 
+the essentials of each tool and delivering presentations to the class. Additionally, they work through one 
+or more practical examples for each tool, presenting their findings to their peers. Constructive feedback for 
+each tool presentation is an integral part of the learning experience. DesignSafe and SimCenter personnel are 
+invited to give Zoom presentations based on availability. At the end of the course, a small final project, 
+with a topic of choice for each student or group of students, is required, providing an opportunity for 
+deeper exploration and application of the learned concepts.
+
+ 
+SimCenter provides next-generation computational modeling and simulation software tools, user support, 
+and educational materials to the natural hazards engineering research community with the goal of advancing 
+the user’s capability to simulate the impact of natural hazards on structures, lifelines, and communities.
+
+DesignSafe is a comprehensive cyberinfrastructure that provides cloud-based tools to manage, analyze, understand, 
+and publish critical data for research to understand the impacts of natural hazards. The capabilities within 
+the DesignSafe infrastructure are available at no-cost to all researchers working in natural hazards.
+
+ 
+Learning Objectives
+-------------------
+
+#. Develop a familiarity with Simcenter tools and DesignSafe cyberinfrastructure
+#. Develop a familiarity with the breath of SimCenter tools.
+#. Develop a suitable background for using HPC resources.
+#. Introduce/revise concepts related to structural and geotechnical engineering including UQ concepts, FEM, PB, etc.
+#. Provide a working knowledge for selecting, using, and interpreting tools for Structural and geotechnical design and analysis.
+
+
+
+
 
 Introduction
 ------------
