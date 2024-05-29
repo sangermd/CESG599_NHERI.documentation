@@ -3,57 +3,67 @@
 R2D - Landslides
 ================
 
-Author: Luis Guerrero
+Author: Luis Angel Guerrero Hoyos
 ---------------------
 
 Introduction
 ------------
 
-This page describes basic concepts of one-dimensional ground response analysis and the usage of transfer functions. For more details, the user is encounged to read :cite:`Kramer1996`.
+This page describes a preliminarly approach for landslide risk assesment using SimCenter tools (R2D).
 
 
 Problem Description
 -------------------
 
-A transfer function is somewhat like a filter that is applied to an incoming wave to produce an output signal. It determines how each frequency in the input motion is amplified or suppressed, by the medium of wave travel. Considering a spring-mass system with an excitation motion at input from the foundation connected to the spring and the corresponding response motion of the connected mass in the inertial system. The response motion of the mass will be a composite factor of the elastic and the viscous damping forces which are inherently embedded in the transfer function that determines the output motion we will obtain. In our wave propagation study we also employ transfer functions as a tool to explain the factors that make our input wave motion different from our output wave obtained. Evaluating the transfer function mathematically involves converting our known input motion to a Fourier series. Each term of the Fourier series is multiplied by the transfer function to obtain the Fourier series of the output response. Resonance is a physical phenomenon that occurs when the natural frequency of vibration of particles in a body (in our case the layers) matches the frequency of the forcing function (our input motion). It is experienced as an infinite amplification of the model.
+Studying landslide assessment using Newmark analysis and ground motions is a multidisciplinary effort that integrates engineering, geology, and environmental science. It provides a comprehensive approach to understanding and mitigating the risks associated with landslides, ultimately leading to safer communities and more resilient infrastructure. Here we would like to analyze in a regional scale, what would be the response across a study area located in Seattle, WA, US. The idea is to estimate the predicted displacement in the study area if an earthquake with certain intensity measure (Arias Intensity :math:`I_a`) were to occur. This study integrates the infinite slope approach to estimate the static factor of safety so then the Critical Acceleration :math:`a_c` can be estimated. Finally with these parameters a Newmark displacement could be estimated using Randall W. Jibson correlation :cite:`Jibson1993`.
 
 
 Solution Strategy
 -----------------
 
-#. Open the Dr. Layer program. By default we get twelve layers. The top six layers are hardwired into the system with a velocity of specified as very fast. The bottom six layers are hardwired with a velocity of very slow.
-
-#. Select all the layers to all have very slow values using the select all option.
-
-#. On the top left hand corner of the menu box choose the plot box tool and apply a plot box at the top of the layers. Do the same at four arbitrary points along the soil layers. Note the height (:math:`H`) you place the plots.
-
-    <insert image>
-
-#. Push the time increment button for about 1 minute.
-
-#. Obtain the angular frequency :math:`(2p/T)`, where :math:`T` is the period i.e. time it takes to complete one revolution.
-
-#. Obtain the maximum displacements from the plots by clicking on the crest of the curves with your cursor.
+Jibson proposed model is used to calculate the Newmark displacement as follows:
 
 .. math::
-    TF = \frac{1}{\cos(\frac{wH}{v_s})}
+    log(Dn) = 1.460\:log(I_a)-6.642\:a_c+1.546\:\:\:\:\:\:\:\:\:\:\:\:\:(1)
 
-    AF = \frac{1}{|\cos(\frac{wH}{v_s})|}
+Where:
 
+:math:`Dn` = Newmark Displacement [cm].
 
-Where
+:math:`I_a` = Areas Intensity [m/s].
 
-:math:`w` = Angular frequency (2pf)
+:math:`a_c` = Critical Acceleration [g].
 
-:math:`H` = distance between any two points in the layers under consideration.
+Also, 
 
-:math:`V` = Velocity of wave travel within the soil layer.
+.. math::
+    a_c = (FS_{static}-1)\:sin(\beta)\:\:\:\:\:\:\:\:\:\:\:\:\:(2)
 
-:math:`TF` = Transfer function
+Where:
 
-:math:`AF` = Amplification function
+.. math::
+    FS_{static} = \frac{2c}{\gamma\:z\:sin(\beta)} + cot(\beta)\:tan(\phi)\:\:\:\:\:\:\:\:\:\:\:\:\:(3)
 
+:math:`\beta` = Slope Angle [°].
 
+:math:`FS_{static}` = Static Factor of Safety [-].
+
+:math:`c` = Cohesion [kPa].
+
+:math:`\gamma` = Unit Weight [kN/m³].
+
+:math:`\phi` = Friction Angle [°].
+
+:math:`I_a` = Intensity measure time-history motion specific. 
+
+In order to estimate the imput parameters of equation 1 the following steps could be done:
+
+#. Create a slope raster for a selected area: this can be created using a DTM model for the area of interest which can be downloaded from the `USGS portal. <https://apps.nationalmap.gov/lidar-explorer/#/>`_ 
+
+#. Use QGIS built-in functions to perform the slope calculations. See QGIS `slope documentation. <https://docs.qgis.org/3.34/en/docs/training_manual/rasters/terrain_analysis.html#follow-along-calculating-the-slope>`_ 
+
+To be continued...
+-------------------
 Dr. Layer's operation is controlled via menu commands (with associated keyboard accelerators), manipulation tools, scaling buttons, the load tool bar, and time control buttons. The program displays the results of its calculations visually in the form of animated displacements, and also in the form of dynamically generated time history plots. There are also mechanisms for getting numerical values.
 
 .. figure:: ./images/case1.png

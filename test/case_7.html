@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>R2D - Damage and Losses &mdash; CESG-599 1.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=8d563738"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -49,8 +45,9 @@
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="case_0.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="case_0.html#cesg599-nheri-an-introduction-to-nheri-simcenter-tools-and-designsafe-resources">CESG599 - NHERI - An introduction to NHERI Simcenter tools and DesignSafe Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="case_1.html">quoFEM - Settlements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="case_2.html">EEUQ - Transfer Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="case_2.html">EEUQ - Transfer Function and Uncertainty</a></li>
 <li class="toctree-l1"><a class="reference internal" href="case_3.html">S3hark - Site Response 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="case_4.html">S3hark - Site Response 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="case_5.html">R2D - Liquefaction</a></li>
@@ -92,20 +89,20 @@
            <div itemprop="articleBody">
              
   <section id="r2d-damage-and-losses">
-<span id="case-7"></span><h1>R2D - Damage and Losses<a class="headerlink" href="#r2d-damage-and-losses" title="Link to this heading"></a></h1>
+<span id="case-7"></span><h1>R2D - Damage and Losses<a class="headerlink" href="#r2d-damage-and-losses" title="Permalink to this heading"></a></h1>
 <section id="author-daniel-acosta">
-<h2>Author: Daniel Acosta<a class="headerlink" href="#author-daniel-acosta" title="Link to this heading"></a></h2>
+<h2>Author: Daniel Acosta<a class="headerlink" href="#author-daniel-acosta" title="Permalink to this heading"></a></h2>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
 <p>This page describes basic concepts of one-dimensional ground response analysis and the usage of transfer functions. For more details, the user is encounged to read <span id="id1">[<a class="reference internal" href="#id3" title="S. L. Kramer. Geotechnical Earthquake Engineering. Pearson, 1996. ISBN 9783642196294.">Kra96</a>]</span>.</p>
 </section>
 <section id="problem-description">
-<h2>Problem Description<a class="headerlink" href="#problem-description" title="Link to this heading"></a></h2>
+<h2>Problem Description<a class="headerlink" href="#problem-description" title="Permalink to this heading"></a></h2>
 <p>A transfer function is somewhat like a filter that is applied to an incoming wave to produce an output signal. It determines how each frequency in the input motion is amplified or suppressed, by the medium of wave travel. Considering a spring-mass system with an excitation motion at input from the foundation connected to the spring and the corresponding response motion of the connected mass in the inertial system. The response motion of the mass will be a composite factor of the elastic and the viscous damping forces which are inherently embedded in the transfer function that determines the output motion we will obtain. In our wave propagation study we also employ transfer functions as a tool to explain the factors that make our input wave motion different from our output wave obtained. Evaluating the transfer function mathematically involves converting our known input motion to a Fourier series. Each term of the Fourier series is multiplied by the transfer function to obtain the Fourier series of the output response. Resonance is a physical phenomenon that occurs when the natural frequency of vibration of particles in a body (in our case the layers) matches the frequency of the forcing function (our input motion). It is experienced as an infinite amplification of the model.</p>
 </section>
 <section id="solution-strategy">
-<h2>Solution Strategy<a class="headerlink" href="#solution-strategy" title="Link to this heading"></a></h2>
+<h2>Solution Strategy<a class="headerlink" href="#solution-strategy" title="Permalink to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Open the Dr. Layer program. By default we get twelve layers. The top six layers are hardwired into the system with a velocity of specified as very fast. The bottom six layers are hardwired with a velocity of very slow.</p></li>
 <li><p>Select all the layers to all have very slow values using the select all option.</p></li>
@@ -132,14 +129,14 @@
 </figure>
 </section>
 <section id="simcenter-tool-used">
-<h2>SimCenter Tool Used<a class="headerlink" href="#simcenter-tool-used" title="Link to this heading"></a></h2>
+<h2>SimCenter Tool Used<a class="headerlink" href="#simcenter-tool-used" title="Permalink to this heading"></a></h2>
 <p>blablabla</p>
-<table class="docutils align-default" id="id5">
-<caption><span class="caption-text">Title</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text">Title</span><a class="headerlink" href="#id7" title="Permalink to this table"></a></caption>
 <colgroup>
-<col style="width: 25.0%" />
-<col style="width: 25.0%" />
-<col style="width: 50.0%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Heading row 1, column 1</p></th>
@@ -168,7 +165,7 @@
 </ul>
 </section>
 <section id="example-application">
-<h2>Example Application<a class="headerlink" href="#example-application" title="Link to this heading"></a></h2>
+<h2>Example Application<a class="headerlink" href="#example-application" title="Permalink to this heading"></a></h2>
 <p>Dr. Layer’s tool palette is illustrated below (Windows version: the Mac version is similar but grouped a bit differently):</p>
 <p>&lt;insert tool palette image&gt;</p>
 <ul>
@@ -193,7 +190,7 @@
 </div>
 </section>
 <section id="remarks">
-<h2>Remarks<a class="headerlink" href="#remarks" title="Link to this heading"></a></h2>
+<h2>Remarks<a class="headerlink" href="#remarks" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>To adjust the <strong>plotting scales</strong>, use the small expansion/contraction triangular buttons on the plot for the horizontal scale, and the plot scale buttons on the <a class="reference external" href="#scaling-buttons">Scale Button Toolbar</a> for the vertical scale.</p></li>
 </ul>
@@ -216,10 +213,21 @@
 <p>Plotting FFT’s will slow down the animation speed significantly, especially as the length of the time histories increase.</p>
 </div>
 <div class="docutils container" id="id2">
-<div role="list" class="citation-list">
 <div class="citation" id="id3" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">Kra96</a><span class="fn-bracket">]</span></span>
 <p>S. L. Kramer. <em>Geotechnical Earthquake Engineering</em>. Pearson, 1996. ISBN 9783642196294.</p>
+</div>
+<div class="citation" id="id6" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>RB20<span class="fn-bracket">]</span></span>
+<p>V. Rashidian and L. G. Baise. Regional efficacy of a global geospatial liquefaction model. <em>Engineering geology</em>, 272:105644, 2020.</p>
+</div>
+<div class="citation" id="id5" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SGM24<span class="fn-bracket">]</span></span>
+<p>M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. <em>Manuscript in preparation</em>, 2024.</p>
+</div>
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ZBT17<span class="fn-bracket">]</span></span>
+<p>J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. <em>Bulletin of the Seismological Society of America</em>, 107(3):1365–1385, 2017.</p>
 </div>
 </div>
 </div>

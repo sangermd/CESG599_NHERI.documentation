@@ -9,134 +9,138 @@ Author: Kendra Mutch
 Introduction
 ------------
 
-This page describes basic concepts of one-dimensional ground response analysis and the usage of transfer functions. For more details, the user is encounged to read :cite:`Kramer1996`.
+This page describes basic concepts of computing settlement computations in QuoFEM. The calculation methods discussed include forward propagation, deterministic and Bayesian calibration, and sensitivity analysis. For more details, the user is encounged to read :cite:`Holtz and Kovacs 2011'
 
-
-Problem Description
+Project Description
 -------------------
 
-A transfer function is somewhat like a filter that is applied to an incoming wave to produce an output signal. It determines how each frequency in the input motion is amplified or suppressed, by the medium of wave travel. Considering a spring-mass system with an excitation motion at input from the foundation connected to the spring and the corresponding response motion of the connected mass in the inertial system. The response motion of the mass will be a composite factor of the elastic and the viscous damping forces which are inherently embedded in the transfer function that determines the output motion we will obtain. In our wave propagation study we also employ transfer functions as a tool to explain the factors that make our input wave motion different from our output wave obtained. Evaluating the transfer function mathematically involves converting our known input motion to a Fourier series. Each term of the Fourier series is multiplied by the transfer function to obtain the Fourier series of the output response. Resonance is a physical phenomenon that occurs when the natural frequency of vibration of particles in a body (in our case the layers) matches the frequency of the forcing function (our input motion). It is experienced as an infinite amplification of the model.
+The goal of this project is to quantify settlement, parameters impacting settlement, and observe how uncertainty in various input parameters impact the ultimate settlement of a cohesive soil. These copmutations make use of the program QuoFEM. The following report discusses the features of the program, theory regarding the settlement and uncertainty concepts discussed above, as well as three example problems applying different features of QuoFEM.
 
+The first example makes use of the Forward Propagation feature of QuoFEM, which allows one to apply uncertainty to input parameters (such as preconsolidation pressure, compression and recommpression index, void ratio, unit weight, etc.) to determine which paramter(s) impact the ultimate settlement most. In-situ testing, lab testing, and various models used to determine soil paramters may all contain uncertainty. Thus, it is important to consider uncertainty in geotechnical calculations, such as settlement, and not accept a single predicted value without accounting for uncertainty as completely true to reality. The forward propagation analysis will help us translate uncertainty in soil parameters to uncertainty in ultimate settlement, reducing chances of highly underpredicting or overpredicting settlement.
 
-Solution Strategy
------------------
+In the second example, Bayesian and Deterministic Calibration are used to optimize the value of an input parameter to yield a desired settlement. In other words, given a specific value of ultimate settlement, we can calculate the value of an unknown input paramter.
 
-#. Open the Dr. Layer program. By default we get twelve layers. The top six layers are hardwired into the system with a velocity of specified as very fast. The bottom six layers are hardwired with a velocity of very slow.
+The final example applies the Sensitivity Analysis feature of QuoFEM to determine which input parameters impact the resulting ultimate settlement most. As the discussion of results will reveal, settlement shows a strong correlation with some soil parameters, and a weaker correlation with other paramters. By knowing which parameters settlement is most dependent on, one can allocate funds in site investigation or lab testing to use the most accurate methods for predicting such parameters. Or, one may simply be cautious that potential uncertainty in such parameters, especially compounded uncertainty of multiple parameters, could lead to high uncertainty in the predicted settlement, and perhaps a more conservative design should be implemented. 
 
-#. Select all the layers to all have very slow values using the select all option.
+All examples will use a python input script, paired with the Dakota uncertainty quantification tool in QuoFEM. These aspects of the project are discussed in further detail throughout the report.
 
-#. On the top left hand corner of the menu box choose the plot box tool and apply a plot box at the top of the layers. Do the same at four arbitrary points along the soil layers. Note the height (:math:`H`) you place the plots.
+The soil profile and problem scenario are the same for all three examples and are depicted in the image and table below.
 
-    <insert image>
+.. figure:: ./images/ProblemScenarioP1.png
 
-#. Push the time increment button for about 1 minute.
-
-#. Obtain the angular frequency :math:`(2p/T)`, where :math:`T` is the period i.e. time it takes to complete one revolution.
-
-#. Obtain the maximum displacements from the plots by clicking on the crest of the curves with your cursor.
-
-.. math::
-    TF = \frac{1}{\cos(\frac{wH}{v_s})}
-
-    AF = \frac{1}{|\cos(\frac{wH}{v_s})|}
-
-
-Where
-
-:math:`w` = Angular frequency (2pf)
-
-:math:`H` = distance between any two points in the layers under consideration.
-
-:math:`V` = Velocity of wave travel within the soil layer.
-
-:math:`TF` = Transfer function
-
-:math:`AF` = Amplification function
-
-
-Dr. Layer's operation is controlled via menu commands (with associated keyboard accelerators), manipulation tools, scaling buttons, the load tool bar, and time control buttons. The program displays the results of its calculations visually in the form of animated displacements, and also in the form of dynamically generated time history plots. There are also mechanisms for getting numerical values.
-
-.. figure:: ./images/case1.png
-    :scale: 30 %
-    :align: center
-    :figclass: align-center
-
-
-SimCenter Tool Used
--------------------
-
-blablabla
-
-.. list-table:: Title
+.. list-table:: Soil Profile Parameters
    :widths: 25 25 50
    :header-rows: 1
 
-   * - Heading row 1, column 1
-     - Heading row 1, column 2
-     - Heading row 1, column 3
-   * - Row 1, column 1
-     -
-     - Row 1, column 3
-   * - Row 2, column 1
-     - Row 2, column 2
-     - Row 2, column 3
+   * - Parameter
+     - Mean Value
+     - Coefficient of Variation (%)
+   * - h1
+     - 3 ft
+     - 5
+   * - h2
+     - 25 ft
+     - 5
+   * - Cc
+     - 0.75
+     - 20
+   * - eo
+     - 1.54
+     - 7
+   * - Cr
+     - 0.05
+     - 20
+   * - change in pressure
+     - 200 psf
+     - 50
+   * - k
+     - 10E-6 (cm/sec)
+     - 200
+   * - unit weight of fill
+     - 130 pcf
+     - 7
+   * - height of fill
+     - 5 ft
+     - 2
+     
 
-Time can be controlled using either the keyboard or the time control buttons:
+Example One Solution Strategy - Forward Propagation
+---------------------------------------------------
 
-* To run time **forward**: Press and hold the 'g' key or click and hold the time forward button: <insert icon>.
+#. Open the QuoFEM. By default, the UQ method is Forward Propagation and the UQ Engine is Dakota. In this example, we will use these defaults. Specify a sample number of 200 and a seed number of 949. Ensure the **Parellel Execution** and the **Save Working dirs** boxes are checked.
 
-* To reset time to **zero**: Type the '0' key or click on the time reset button: <insert icon>.
+#. Select the FEM tab. From the drop down menu, select Python. Navigate to the location of the **Input Script** and the **Parameters Script**.
 
-* The current analysis time is **displayed** in the feedback pane at the bottom of the screen.
+#. Select the RV tab. Enter the random variables (listed in the table in the problem description). Selelct a normal distribution for each random variable, and enter the mean and standard deviation. Remember, the standard deviation must be calculated for each variable from the given coefficient of variation. The below formula may be used to convert coefficient of variation to the standard deviation.
+   
+#. In the EDP tab, specify the variable of interest as **Settlement** and assign it a **Length** of **1**.
 
-* The analysis time step size can be controlled via the Time Step menu (there are combinations of material properties and time steps that intentionally lead to unstable results, so beware).
+#. Run the example either on your machine or in the cloud. For running in the cloud, see the **SimCenter Tool Used** section for additional details.
 
-* The display time step can be controlled via the Animation Speed menu. Internally, this command controls how many analysis time steps are computed between screen updates.
+
+Example Two Solution Strategy - Bayesian and Deterministic Calibration
+----------------------------------------------------------------------
+
+#. Open QuoFEM. Change the UQ method to Bayesain Callibration and keep the default UQ Engine as Dakota.
+
+
+Example Three Solution Strategy - Sensitivity Analysis
+------------------------------------------------------
+#. In the UQ tab, select **Sensitivity Analysis** as the UQ Method. From the UQ Engine drop down, select **SimCenterUQ**. In the Method drop down, select **Monte Carlo**. For the # of samples, enter 500, and for the seed number, enter 106.
+
+#. Select the FEM tab. From the FEM drop down, select **Python**. Locate the file path for the Input Script and the Paramters Script.
+
+#. In the RDV tab, enter the same random variables as the Forward Propagation example.
+
+#. In the EDP tab, use the same inputs as the Forward Propagation example.
+
+#. Choose to run the example either on your machine in the cloud. For running in the cloud, see the **SimCenter Tool Used** section for additional details.
+
+SimCenter Tool Used
+-------------------
+QouFEM allows the integration of finite element and hazard compuatations with uncertainty quantification tools. There are five different tabs in QuoFEM; four input tabs and one results tab. The four input tabs are outlined below:
+
+    * **UQ tab** - The UQ tab allows one to select the analysis method (Forward Propagation, Bayesian 
+      Callibration, Sensitivity Analysis, etc.). Additionally, one can specify a statistics model and the number 
+      of samples to run.
+
+    * **FEM tab** - The FEM is where a python script is input, and a finite element method (such as Openseas) may 
+      be selected. 
+
+    * **RV tab** - The RV tab allows you define random variables and apply desired uncertainty and statistical 
+      models (normal distribution, uniform distribution etc.) to each variable.
+      
+    * **EDP tab** - The EDP tab allows one to define quantities of interest. For example, the ultimate settlement.
+
+After entering the inputs for your project, you may choose run the project on your machine by simply clicking **Run** or you may run the project in the cloud by selecting **Run at Design Safe**. If you choose to run your project in the cloud, you must login to you Design Safe account and specify a maximum run time. To ensure that your project does not expire while waiting in the que,, select a run time of at least 10 hours.
+
+The results tab contains both a "Summary" page and a "Data Values" page. The "Summary" page contains a brief 
+outline of the values computed. The "Data Values" page contains a more comprehensive set of results and figures.
 
 
 Example Application
 -------------------
-
-Dr. Layer's tool palette is illustrated below (Windows version: the Mac version is similar but grouped a bit differently):
-
-<insert tool palette image>
-
-* The **Arrow Tool** is used to select and manipulate objects.
-
-* The **Panner** and **Camera Orbit Tools** are used to change the viewing point and camera orientation via clicking and dragging.
-
-* The **Plot Box Tool** is used to create one of the various types of plot boxes: 
-
-    * **Displacement Time History plots** are created by clicking on the relevant layer. The top node in the layer is used as the plotting target.
-
-    * **Fast Fourier Transform (FFT) plots** of a displacement history can be created by clicking on the time history plot.
-
-    * **Stress-strain plots** can be created by control-clicking (i.e., holding down the control key while clicking) on the desired layer.
-
-
- These controls are self-explanatory in regards to their functions. Note the following, however:
-
-.. note::
-    The scaling buttons will continue to scale as long as they are held down. It is not necessary to click multiple times to get this effect.
+There are various features within the "Data Values" page of the Results tab which may aid in analysis. Below is information about navigating the "Data Values" page to extract desired information:
+    
+    * **To View a Scatterplot of a Parameter vs. Run Number** - left click once on any column.
+    
+   * **To View a Cumulative Frequency Distribution for a Variable** - First left click once on the column for the 
+     variable that you want to view a cumulative frequency distribution for. Then right click once on the same 
+     column.
+     
+   * **To View a Histogram for a Variable** - After following the steps to display a cumulative frequency 
+     distribution, left click on the same column once more to display the histogram.
+     
+   * **To View a Scatterplot of One Variable vs. another Variable** - Right click once on one of the variables. 
+     This defines which variable will be on the x-axis. Then, left click once on the variable which you want 
+     plotted on the y-axis.
+   
+   * **To Export the Data Table** - Select the Save Table icon above the data, and choose a location for saving 
+     the table as a .csv file.
 
 
 Remarks
 -------
 
-* To adjust the **plotting scales**, use the small expansion/contraction triangular buttons on the plot for the horizontal scale, and the plot scale buttons on the `Scale Button Toolbar <#scaling-buttons>`_ for the vertical scale. 
-
-.. note::
-    You will notice that all plots scale together. This is so that plots of a given type can be compared visually without any misleading differences in scale factors.
-
-* To adjust the **horizontal offset** of a plot, click in the plot and drag horizontally to scroll back and forth.
-
-.. note::
-    In general, plots will automatically scroll as necessary as time is running. Once you have manually scrolled a plot, though, the automatic scrolling will cease until time is reset to zero.
-
-* Plot boxes can be added or removed at any time, but they only accumulate data beginning from the time they are installed, with the exception of FFT plots, which always plot the according to the data accumulated in the target time history. FFT plots can use up to the first 1024 points in a time history.
-
-
-.. warning:: 
-    Plotting FFT's will slow down the animation speed significantly, especially as the length of the time histories increase.
 
 .. bibliography:: references.bib

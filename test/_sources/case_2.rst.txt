@@ -1,6 +1,6 @@
 .. _case_2:
 
-EEUQ - Transfer Function
+EEUQ - Transfer Function and Uncertainty
 ================================
 
 Author: Erick Martinez
@@ -9,132 +9,63 @@ Author: Erick Martinez
 Introduction
 ------------
 
-This page describes basic concepts of one-dimensional ground response analysis and the usage of transfer functions. For more details, the user is encounged to read :cite:`Kramer1996`.
+This page describes the basic concept of transfer functions and their use in a site response analysis. Along with this, the uncertainty in this process will be explained. For more details, the user is encouraged to read :cite:`Kramer1996`. 
 
 
 Problem Description
 -------------------
 
-A transfer function is somewhat like a filter that is applied to an incoming wave to produce an output signal. It determines how each frequency in the input motion is amplified or suppressed, by the medium of wave travel. Considering a spring-mass system with an excitation motion at input from the foundation connected to the spring and the corresponding response motion of the connected mass in the inertial system. The response motion of the mass will be a composite factor of the elastic and the viscous damping forces which are inherently embedded in the transfer function that determines the output motion we will obtain. In our wave propagation study we also employ transfer functions as a tool to explain the factors that make our input wave motion different from our output wave obtained. Evaluating the transfer function mathematically involves converting our known input motion to a Fourier series. Each term of the Fourier series is multiplied by the transfer function to obtain the Fourier series of the output response. Resonance is a physical phenomenon that occurs when the natural frequency of vibration of particles in a body (in our case the layers) matches the frequency of the forcing function (our input motion). It is experienced as an infinite amplification of the model.
+A transfer function acts as a filter that can amplify or de-amplify an incoming wave from a medium to produce the output signal in another medium. To simplify the idea of a transfer function, a spring-mass system can be used. As a motion is applied on the mass connected to a spring; a responsive outgoing wave will then be propagated through the mass and the spring. This outgoing motion will be a composite factor of the stiffness and elastic damping forces found within the spring-mass system. 
+
+This can be applied to earth systems in the form of ground motions. An example of this is an earthquake motion acting on a rock layer at a certain depth. This motion is then transferred through the soil profile and is reflected as a different motion at the surface. In order to determine the influence of a soil profile on the motion, three major components are required: thickness of layer (H), shear wave velocity (Vs), and damping ratio. As with any engineering properties, there will always be the presence of uncertainty. A layer might have differential thicknesses in certain regions, causing the height to be non-uniform. Shear wave velocity can change very quickly depending on depth and composition of the materials within the layer. Damping can also be affected by changes in stratigraphy and composition. To account for this, uncertainty must be incorporated into a transfer function analysis. This inclusion will aid in the accuracy and reliability of site response analyses. 
 
 
 Solution Strategy
 -----------------
 
-#. Open the Dr. Layer program. By default we get twelve layers. The top six layers are hardwired into the system with a velocity of specified as very fast. The bottom six layers are hardwired with a velocity of very slow.
-
-#. Select all the layers to all have very slow values using the select all option.
-
-#. On the top left hand corner of the menu box choose the plot box tool and apply a plot box at the top of the layers. Do the same at four arbitrary points along the soil layers. Note the height (:math:`H`) you place the plots.
-
-    <insert image>
-
-#. Push the time increment button for about 1 minute.
-
-#. Obtain the angular frequency :math:`(2p/T)`, where :math:`T` is the period i.e. time it takes to complete one revolution.
-
-#. Obtain the maximum displacements from the plots by clicking on the crest of the curves with your cursor.
-
-.. math::
-    TF = \frac{1}{\cos(\frac{wH}{v_s})}
-
-    AF = \frac{1}{|\cos(\frac{wH}{v_s})|}
+In earth systems, this relationship between incoming and outgoing wave can be evaluated through mathematically converting an input motion, typically an acceleration-time history, to a Fourier series. In the Fourier space, the motion is then multiplied by the transfer function, resulting in the outgoing Fourier motion. This can then be converted back into various plots, such as acceleration-time history and spectral acceleration vs. period, that allow for analysis of the outgoing motion. An analysis of this ground motion can provide frequencies of interest where ground accelerations would be highest/lowest, which can aid in site response analysis and planning. 
 
 
-Where
-
-:math:`w` = Angular frequency (2pf)
-
-:math:`H` = distance between any two points in the layers under consideration.
-
-:math:`V` = Velocity of wave travel within the soil layer.
-
-:math:`TF` = Transfer function
-
-:math:`AF` = Amplification function
-
-
-Dr. Layer's operation is controlled via menu commands (with associated keyboard accelerators), manipulation tools, scaling buttons, the load tool bar, and time control buttons. The program displays the results of its calculations visually in the form of animated displacements, and also in the form of dynamically generated time history plots. There are also mechanisms for getting numerical values.
-
-.. figure:: ./images/case1.png
+	
+.. figure:: ./images/TF_Rock_to_Soil1.png
     :scale: 30 %
     :align: center
     :figclass: align-center
 
 
+NEEDS FINISHING
+
+
 SimCenter Tool Used
 -------------------
 
-blablabla
 
-.. list-table:: Title
-   :widths: 25 25 50
-   :header-rows: 1
+To understand transfer functions, there are many tools available. One of these tools is the SimCenter Transfer Function Tool (TFT). This tool introduces users to transfer functions by providing the output motion at a site given the motion, thickness of layers, shear wave velocities, and damping ratio. TFT allows for easy analysis of amplification/de-amplification of ground motions based on specific sites.
 
-   * - Heading row 1, column 1
-     - Heading row 1, column 2
-     - Heading row 1, column 3
-   * - Row 1, column 1
-     -
-     - Row 1, column 3
-   * - Row 2, column 1
-     - Row 2, column 2
-     - Row 2, column 3
-
-
-Time can be controlled using either the keyboard or the time control buttons:
-
-* To run time **forward**: Press and hold the 'g' key or click and hold the time forward button: <insert icon>.
-
-* To reset time to **zero**: Type the '0' key or click on the time reset button: <insert icon>.
-
-* The current analysis time is **displayed** in the feedback pane at the bottom of the screen.
-
-* The analysis time step size can be controlled via the Time Step menu (there are combinations of material properties and time steps that intentionally lead to unstable results, so beware).
-
-* The display time step can be controlled via the Animation Speed menu. Internally, this command controls how many analysis time steps are computed between screen updates.
+The Earthquake Engineering with Uncertainty Quantification Application (EE-UQ) is a SimCenter research application that also allows for site response predictions due to earthquake loading. In addition to basic transfer function quantification, it allows for the analysis of uncertainty in the predictions based on the uncertainty found within the input model, motion, etc. This workflow application allows the user to run analyses in the background and provides a simple user interface that facilitates its use.
 
 
 Example Application
 -------------------
 
-Dr. Layer's tool palette is illustrated below (Windows version: the Mac version is similar but grouped a bit differently):
+For our purposes, an earthquake motion will be applied to a rock, located at the bottom of a one-dimensional soil profile. In this example, we will analyze the amplification/deamplification effects of the ground motion caused by its propagation through the soil layer. The 10 meter soil layer has a shear wave velocity (Vs) of 500 m/s and a damping ratio of 3%.
 
-<insert tool palette image>
-
-* The **Arrow Tool** is used to select and manipulate objects.
-
-* The **Panner** and **Camera Orbit Tools** are used to change the viewing point and camera orientation via clicking and dragging.
-
-* The **Plot Box Tool** is used to create one of the various types of plot boxes: 
-
-    * **Displacement Time History plots** are created by clicking on the relevant layer. The top node in the layer is used as the plotting target.
-
-    * **Fast Fourier Transform (FFT) plots** of a displacement history can be created by clicking on the time history plot.
-
-    * **Stress-strain plots** can be created by control-clicking (i.e., holding down the control key while clicking) on the desired layer.
+	
+.. figure:: ./images/CESG599_TF_image1.png
+    :scale: 50 %
+    :align: center
+    :figclass: align-center
 
 
- These controls are self-explanatory in regards to their functions. Note the following, however:
+Because of the presence of uncertainty in the soil properties, the transfer function will include uncertainty in its effects. Normal distribution values for each variable (H, Vs, damping) will be provided.This uncertainty will be quantified through multiple runs in EE-UQ and expressed as ratios of mean velocity and acceleration, along with standard deviation and skewness. 
 
-.. note::
-    The scaling buttons will continue to scale as long as they are held down. It is not necessary to click multiple times to get this effect.
+NEEDS FINISHING
 
 
 Remarks
 -------
 
-* To adjust the **plotting scales**, use the small expansion/contraction triangular buttons on the plot for the horizontal scale, and the plot scale buttons on the `Scale Button Toolbar <#scaling-buttons>`_ for the vertical scale. 
-
-.. note::
-    You will notice that all plots scale together. This is so that plots of a given type can be compared visually without any misleading differences in scale factors.
-
-* To adjust the **horizontal offset** of a plot, click in the plot and drag horizontally to scroll back and forth.
-
-.. note::
-    In general, plots will automatically scroll as necessary as time is running. Once you have manually scrolled a plot, though, the automatic scrolling will cease until time is reset to zero.
-
-* Plot boxes can be added or removed at any time, but they only accumulate data beginning from the time they are installed, with the exception of FFT plots, which always plot the according to the data accumulated in the target time history. FFT plots can use up to the first 1024 points in a time history.
+NEEDS FINISHING
 
 
 .. warning:: 

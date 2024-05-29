@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Introduction &mdash; CESG-599 1.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
-
-  
+  <title>Course Introduction &mdash; CESG-599 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=8d563738"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -49,18 +45,25 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#author-pedro-arduino">Author: Pedro arduino</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Course Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cesg599-nheri-an-introduction-to-nheri-simcenter-tools-and-designsafe-resources">CESG599 - NHERI - An introduction to NHERI Simcenter tools and DesignSafe Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authors">Authors:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#course-description">Course Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#problem-description">Problem Description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#solution-strategy">Solution Strategy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#simcenter-tool-used">SimCenter Tool Used</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#example-application">Example Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-of-application">Example of Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#remarks">Remarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examplels-of-lists-figures-table-reference-etc">EXAMPLELS of LISTS, FIGURES, TABLE, REFERENCE, etc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">SimCenter Tool Used</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-application">Example Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Remarks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="case_1.html">quoFEM - Settlements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="case_2.html">EEUQ - Transfer Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="case_2.html">EEUQ - Transfer Function and Uncertainty</a></li>
 <li class="toctree-l1"><a class="reference internal" href="case_3.html">S3hark - Site Response 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="case_4.html">S3hark - Site Response 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="case_5.html">R2D - Liquefaction</a></li>
@@ -82,7 +85,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Introduction</li>
+      <li class="breadcrumb-item active">Course Introduction</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/case_0.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -92,22 +95,73 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="introduction">
-<span id="case-0"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
-<p>This page describes basic concepts of one-dimensional ground response analysis and the usage of transfer functions. For more details, the user is encounged to read <span id="id1">[<a class="reference internal" href="case_7.html#id3" title="S. L. Kramer. Geotechnical Earthquake Engineering. Pearson, 1996. ISBN 9783642196294.">Kra96</a>]</span>.</p>
-<section id="author-pedro-arduino">
-<h2>Author: Pedro arduino<a class="headerlink" href="#author-pedro-arduino" title="Link to this heading"></a></h2>
+  <figure class="align-center" id="case-0">
+<a class="reference internal image-reference" href="_images/case0-1.png"><img alt="_images/case0-1.png" src="_images/case0-1.png" style="width: 889.0px; height: 100.0px;" /></a>
+</figure>
+<section id="course-introduction">
+<h1>Course Introduction<a class="headerlink" href="#course-introduction" title="Permalink to this heading"></a></h1>
+<section id="cesg599-nheri-an-introduction-to-nheri-simcenter-tools-and-designsafe-resources">
+<h2>CESG599 - NHERI - An introduction to NHERI Simcenter tools and DesignSafe Resources<a class="headerlink" href="#cesg599-nheri-an-introduction-to-nheri-simcenter-tools-and-designsafe-resources" title="Permalink to this heading"></a></h2>
 </section>
-<section id="id2">
-<h2>Introduction<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
-<p>A transfer function is …  This is just a trial to see if GitHub pages works.</p>
+<section id="authors">
+<h2>Authors:<a class="headerlink" href="#authors" title="Permalink to this heading"></a></h2>
+<p><strong>Kendra Mutch, Erick Martinez, Jose Barreto, Chungen Tai, Morgan Sanger, Luis Guerrero, Daniel Acosta, and Pedro Arduino</strong></p>
+</section>
+<section id="course-description">
+<h2>Course Description<a class="headerlink" href="#course-description" title="Permalink to this heading"></a></h2>
+<p>In this course, we explore the fundamentals of SimCenter tools and the DesignSafe infrastructure.
+The course adopts a self-directed approach, where students follow a well-established framework tailored
+for this format. Over the course of 10 weeks, we investigate the core concepts of SimCenter and DesignSafe,
+and examine four to five SimCenter tools, covering one every two weeks. Students are tasked with mastering
+the essentials of each tool and delivering presentations to the class. Additionally, they work through one
+or more practical examples for each tool, presenting their findings to their peers. Constructive feedback for
+each tool presentation is an integral part of the learning experience. DesignSafe and SimCenter personnel are
+invited to give Zoom presentations based on availability. At the end of the course, a small final project,
+with a topic of choice for each student or group of students, is required, providing an opportunity for
+deeper exploration and application of the learned concepts.</p>
+<p>SimCenter provides next-generation computational modeling and simulation software tools, user support,
+and educational materials to the natural hazards engineering research community with the goal of advancing
+the user’s capability to simulate the impact of natural hazards on structures, lifelines, and communities.</p>
+<p>DesignSafe is a comprehensive cyberinfrastructure that provides cloud-based tools to manage, analyze, understand,
+and publish critical data for research to understand the impacts of natural hazards. The capabilities within
+the DesignSafe infrastructure are available at no-cost to all researchers working in natural hazards.</p>
+</section>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Develop a familiarity with Simcenter tools and DesignSafe cyberinfrastructure</p></li>
+<li><p>Develop a familiarity with the breath of SimCenter tools.</p></li>
+<li><p>Develop a suitable background for using HPC resources.</p></li>
+<li><p>Introduce/revise concepts related to structural and geotechnical engineering including UQ concepts, FEM, PB, etc.</p></li>
+<li><p>Provide a working knowledge for selecting, using, and interpreting tools for Structural and geotechnical design and analysis.</p></li>
+</ol>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<p>This section should provide a brief executive summary, giving an overview of the project. It should be written last to ensure it accurately reflects the content of the entire report. Aim for a short paragraph that highlights the key points, objectives, and outcomes of the project.</p>
 </section>
 <section id="problem-description">
-<h2>Problem Description<a class="headerlink" href="#problem-description" title="Link to this heading"></a></h2>
-<p>A transfer function is somewhat like a filter that is applied to an incoming wave to produce an output signal. It determines how each frequency in the input motion is amplified or suppressed, by the medium of wave travel. Considering a spring-mass system with an excitation motion at input from the foundation connected to the spring and the corresponding response motion of the connected mass in the inertial system. The response motion of the mass will be a composite factor of the elastic and the viscous damping forces which are inherently embedded in the transfer function that determines the output motion we will obtain. In our wave propagation study we also employ transfer functions as a tool to explain the factors that make our input wave motion different from our output wave obtained. Evaluating the transfer function mathematically involves converting our known input motion to a Fourier series. Each term of the Fourier series is multiplied by the transfer function to obtain the Fourier series of the output response. Resonance is a physical phenomenon that occurs when the natural frequency of vibration of particles in a body (in our case the layers) matches the frequency of the forcing function (our input motion). It is experienced as an infinite amplification of the model.</p>
+<h2>Problem Description<a class="headerlink" href="#problem-description" title="Permalink to this heading"></a></h2>
+<p>Clearly describe the problem being addressed. Use text and images to illustrate the issue, ensuring that even readers unfamiliar with the topic can understand the context and significance. This section should detail the background, relevance, and any previous attempts to solve the problem.</p>
 </section>
 <section id="solution-strategy">
-<h2>Solution Strategy<a class="headerlink" href="#solution-strategy" title="Link to this heading"></a></h2>
+<h2>Solution Strategy<a class="headerlink" href="#solution-strategy" title="Permalink to this heading"></a></h2>
+<p>Outline the strategy used to solve the problem. This should include a detailed explanation of the methods, processes, and any equations or theoretical frameworks involved. Be sure to make this section as comprehensive as necessary to fully explain the approach taken.</p>
+</section>
+<section id="simcenter-tool-used">
+<h2>SimCenter Tool Used<a class="headerlink" href="#simcenter-tool-used" title="Permalink to this heading"></a></h2>
+<p>Provide a brief description of the SimCenter tool(s) used in the project. Explain its relevance and how it was applied. This section should be informative yet concise, offering enough detail to understand the tool’s role and capabilities without overwhelming the reader.</p>
+</section>
+<section id="example-of-application">
+<h2>Example of Application<a class="headerlink" href="#example-of-application" title="Permalink to this heading"></a></h2>
+<p>Give a concrete example of how the solution strategy was applied, using text and images. This helps to illustrate the practical application of the theoretical concepts and methods discussed earlier. Ensure the example is detailed enough to show the effectiveness of the solution.</p>
+</section>
+<section id="remarks">
+<h2>Remarks<a class="headerlink" href="#remarks" title="Permalink to this heading"></a></h2>
+<p>Use this section for any additional comments or observations that do not fit into the other sections. This could include limitations, unexpected findings, future directions, or any acknowledgments.</p>
+</section>
+<section id="examplels-of-lists-figures-table-reference-etc">
+<h2>EXAMPLELS of LISTS, FIGURES, TABLE, REFERENCE, etc<a class="headerlink" href="#examplels-of-lists-figures-table-reference-etc" title="Permalink to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Open the Dr. Layer program. By default we get twelve layers. The top six layers are hardwired into the system with a velocity of specified as very fast. The bottom six layers are hardwired with a velocity of very slow.</p></li>
 <li><p>Select all the layers to all have very slow values using the select all option.</p></li>
@@ -133,15 +187,15 @@
 <a class="reference internal image-reference" href="_images/case1.png"><img alt="_images/case1.png" src="_images/case1.png" style="width: 472.79999999999995px; height: 357.3px;" /></a>
 </figure>
 </section>
-<section id="simcenter-tool-used">
-<h2>SimCenter Tool Used<a class="headerlink" href="#simcenter-tool-used" title="Link to this heading"></a></h2>
+<section id="id1">
+<h2>SimCenter Tool Used<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>blablabla</p>
-<table class="docutils align-default" id="id6">
-<caption><span class="caption-text">Title</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text">Title</span><a class="headerlink" href="#id8" title="Permalink to this table"></a></caption>
 <colgroup>
-<col style="width: 25.0%" />
-<col style="width: 25.0%" />
-<col style="width: 50.0%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Heading row 1, column 1</p></th>
@@ -170,7 +224,7 @@
 </ul>
 </section>
 <section id="example-application">
-<h2>Example Application<a class="headerlink" href="#example-application" title="Link to this heading"></a></h2>
+<h2>Example Application<a class="headerlink" href="#example-application" title="Permalink to this heading"></a></h2>
 <p>Dr. Layer’s tool palette is illustrated below (Windows version: the Mac version is similar but grouped a bit differently):</p>
 <p>&lt;insert tool palette image&gt;</p>
 <ul>
@@ -194,8 +248,8 @@
 <p>The scaling buttons will continue to scale as long as they are held down. It is not necessary to click multiple times to get this effect.</p>
 </div>
 </section>
-<section id="remarks">
-<h2>Remarks<a class="headerlink" href="#remarks" title="Link to this heading"></a></h2>
+<section id="id2">
+<h2>Remarks<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>To adjust the <strong>plotting scales</strong>, use the small expansion/contraction triangular buttons on the plot for the horizontal scale, and the plot scale buttons on the <a class="reference external" href="#scaling-buttons">Scale Button Toolbar</a> for the vertical scale.</p></li>
 </ul>
@@ -218,10 +272,21 @@
 <p>Plotting FFT’s will slow down the animation speed significantly, especially as the length of the time histories increase.</p>
 </div>
 <div class="docutils container" id="id3">
-<div role="list" class="citation-list">
 <div class="citation" id="id4" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">Kra96</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>Kra96<span class="fn-bracket">]</span></span>
 <p>S. L. Kramer. <em>Geotechnical Earthquake Engineering</em>. Pearson, 1996. ISBN 9783642196294.</p>
+</div>
+<div class="citation" id="id7" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>RB20<span class="fn-bracket">]</span></span>
+<p>V. Rashidian and L. G. Baise. Regional efficacy of a global geospatial liquefaction model. <em>Engineering geology</em>, 272:105644, 2020.</p>
+</div>
+<div class="citation" id="id6" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SGM24<span class="fn-bracket">]</span></span>
+<p>M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. <em>Manuscript in preparation</em>, 2024.</p>
+</div>
+<div class="citation" id="id5" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ZBT17<span class="fn-bracket">]</span></span>
+<p>J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. <em>Bulletin of the Seismological Society of America</em>, 107(3):1365–1385, 2017.</p>
 </div>
 </div>
 </div>

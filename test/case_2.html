@@ -1,25 +1,20 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EEUQ - Transfer Function &mdash; CESG-599 1.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
-
-  
+  <title>EEUQ - Transfer Function and Uncertainty &mdash; CESG-599 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=8d563738"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -50,8 +45,9 @@
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="case_0.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="case_0.html#cesg599-nheri-an-introduction-to-nheri-simcenter-tools-and-designsafe-resources">CESG599 - NHERI - An introduction to NHERI Simcenter tools and DesignSafe Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="case_1.html">quoFEM - Settlements</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">EEUQ - Transfer Function</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">EEUQ - Transfer Function and Uncertainty</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#author-erick-martinez">Author: Erick Martinez</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#problem-description">Problem Description</a></li>
@@ -82,7 +78,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">EEUQ - Transfer Function</li>
+      <li class="breadcrumb-item active">EEUQ - Transfer Function and Uncertainty</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/case_2.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -92,135 +88,65 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="eeuq-transfer-function">
-<span id="case-2"></span><h1>EEUQ - Transfer Function<a class="headerlink" href="#eeuq-transfer-function" title="Link to this heading"></a></h1>
+  <section id="eeuq-transfer-function-and-uncertainty">
+<span id="case-2"></span><h1>EEUQ - Transfer Function and Uncertainty<a class="headerlink" href="#eeuq-transfer-function-and-uncertainty" title="Permalink to this heading"></a></h1>
 <section id="author-erick-martinez">
-<h2>Author: Erick Martinez<a class="headerlink" href="#author-erick-martinez" title="Link to this heading"></a></h2>
+<h2>Author: Erick Martinez<a class="headerlink" href="#author-erick-martinez" title="Permalink to this heading"></a></h2>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
-<p>This page describes basic concepts of one-dimensional ground response analysis and the usage of transfer functions. For more details, the user is encounged to read <span id="id1">[<a class="reference internal" href="case_7.html#id3" title="S. L. Kramer. Geotechnical Earthquake Engineering. Pearson, 1996. ISBN 9783642196294.">Kra96</a>]</span>.</p>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<p>This page describes the basic concept of transfer functions and their use in a site response analysis. Along with this, the uncertainty in this process will be explained. For more details, the user is encouraged to read <span id="id1">[<a class="reference internal" href="case_7.html#id3" title="S. L. Kramer. Geotechnical Earthquake Engineering. Pearson, 1996. ISBN 9783642196294.">Kra96</a>]</span>.</p>
 </section>
 <section id="problem-description">
-<h2>Problem Description<a class="headerlink" href="#problem-description" title="Link to this heading"></a></h2>
-<p>A transfer function is somewhat like a filter that is applied to an incoming wave to produce an output signal. It determines how each frequency in the input motion is amplified or suppressed, by the medium of wave travel. Considering a spring-mass system with an excitation motion at input from the foundation connected to the spring and the corresponding response motion of the connected mass in the inertial system. The response motion of the mass will be a composite factor of the elastic and the viscous damping forces which are inherently embedded in the transfer function that determines the output motion we will obtain. In our wave propagation study we also employ transfer functions as a tool to explain the factors that make our input wave motion different from our output wave obtained. Evaluating the transfer function mathematically involves converting our known input motion to a Fourier series. Each term of the Fourier series is multiplied by the transfer function to obtain the Fourier series of the output response. Resonance is a physical phenomenon that occurs when the natural frequency of vibration of particles in a body (in our case the layers) matches the frequency of the forcing function (our input motion). It is experienced as an infinite amplification of the model.</p>
+<h2>Problem Description<a class="headerlink" href="#problem-description" title="Permalink to this heading"></a></h2>
+<p>A transfer function acts as a filter that can amplify or de-amplify an incoming wave from a medium to produce the output signal in another medium. To simplify the idea of a transfer function, a spring-mass system can be used. As a motion is applied on the mass connected to a spring; a responsive outgoing wave will then be propagated through the mass and the spring. This outgoing motion will be a composite factor of the stiffness and elastic damping forces found within the spring-mass system.</p>
+<p>This can be applied to earth systems in the form of ground motions. An example of this is an earthquake motion acting on a rock layer at a certain depth. This motion is then transferred through the soil profile and is reflected as a different motion at the surface. In order to determine the influence of a soil profile on the motion, three major components are required: thickness of layer (H), shear wave velocity (Vs), and damping ratio. As with any engineering properties, there will always be the presence of uncertainty. A layer might have differential thicknesses in certain regions, causing the height to be non-uniform. Shear wave velocity can change very quickly depending on depth and composition of the materials within the layer. Damping can also be affected by changes in stratigraphy and composition. To account for this, uncertainty must be incorporated into a transfer function analysis. This inclusion will aid in the accuracy and reliability of site response analyses.</p>
 </section>
 <section id="solution-strategy">
-<h2>Solution Strategy<a class="headerlink" href="#solution-strategy" title="Link to this heading"></a></h2>
-<ol class="arabic">
-<li><p>Open the Dr. Layer program. By default we get twelve layers. The top six layers are hardwired into the system with a velocity of specified as very fast. The bottom six layers are hardwired with a velocity of very slow.</p></li>
-<li><p>Select all the layers to all have very slow values using the select all option.</p></li>
-<li><p>On the top left hand corner of the menu box choose the plot box tool and apply a plot box at the top of the layers. Do the same at four arbitrary points along the soil layers. Note the height (<span class="math notranslate nohighlight">\(H\)</span>) you place the plots.</p>
-<blockquote>
-<div><p>&lt;insert image&gt;</p>
-</div></blockquote>
-</li>
-<li><p>Push the time increment button for about 1 minute.</p></li>
-<li><p>Obtain the angular frequency <span class="math notranslate nohighlight">\((2p/T)\)</span>, where <span class="math notranslate nohighlight">\(T\)</span> is the period i.e. time it takes to complete one revolution.</p></li>
-<li><p>Obtain the maximum displacements from the plots by clicking on the crest of the curves with your cursor.</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}TF = \frac{1}{\cos(\frac{wH}{v_s})}\\AF = \frac{1}{|\cos(\frac{wH}{v_s})|}\end{aligned}\end{align} \]</div>
-<p>Where</p>
-<p><span class="math notranslate nohighlight">\(w\)</span> = Angular frequency (2pf)</p>
-<p><span class="math notranslate nohighlight">\(H\)</span> = distance between any two points in the layers under consideration.</p>
-<p><span class="math notranslate nohighlight">\(V\)</span> = Velocity of wave travel within the soil layer.</p>
-<p><span class="math notranslate nohighlight">\(TF\)</span> = Transfer function</p>
-<p><span class="math notranslate nohighlight">\(AF\)</span> = Amplification function</p>
-<p>Dr. Layer’s operation is controlled via menu commands (with associated keyboard accelerators), manipulation tools, scaling buttons, the load tool bar, and time control buttons. The program displays the results of its calculations visually in the form of animated displacements, and also in the form of dynamically generated time history plots. There are also mechanisms for getting numerical values.</p>
+<h2>Solution Strategy<a class="headerlink" href="#solution-strategy" title="Permalink to this heading"></a></h2>
+<p>In earth systems, this relationship between incoming and outgoing wave can be evaluated through mathematically converting an input motion, typically an acceleration-time history, to a Fourier series. In the Fourier space, the motion is then multiplied by the transfer function, resulting in the outgoing Fourier motion. This can then be converted back into various plots, such as acceleration-time history and spectral acceleration vs. period, that allow for analysis of the outgoing motion. An analysis of this ground motion can provide frequencies of interest where ground accelerations would be highest/lowest, which can aid in site response analysis and planning.</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="_images/case1.png"><img alt="_images/case1.png" src="_images/case1.png" style="width: 472.79999999999995px; height: 357.3px;" /></a>
+<a class="reference internal image-reference" href="_images/TF_Rock_to_Soil1.png"><img alt="_images/TF_Rock_to_Soil1.png" src="_images/TF_Rock_to_Soil1.png" style="width: 332.4px; height: 355.2px;" /></a>
 </figure>
+<p>NEEDS FINISHING</p>
 </section>
 <section id="simcenter-tool-used">
-<h2>SimCenter Tool Used<a class="headerlink" href="#simcenter-tool-used" title="Link to this heading"></a></h2>
-<p>blablabla</p>
-<table class="docutils align-default" id="id5">
-<caption><span class="caption-text">Title</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
-<colgroup>
-<col style="width: 25.0%" />
-<col style="width: 25.0%" />
-<col style="width: 50.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Heading row 1, column 1</p></th>
-<th class="head"><p>Heading row 1, column 2</p></th>
-<th class="head"><p>Heading row 1, column 3</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Row 1, column 1</p></td>
-<td></td>
-<td><p>Row 1, column 3</p></td>
-</tr>
-<tr class="row-odd"><td><p>Row 2, column 1</p></td>
-<td><p>Row 2, column 2</p></td>
-<td><p>Row 2, column 3</p></td>
-</tr>
-</tbody>
-</table>
-<p>Time can be controlled using either the keyboard or the time control buttons:</p>
-<ul class="simple">
-<li><p>To run time <strong>forward</strong>: Press and hold the ‘g’ key or click and hold the time forward button: &lt;insert icon&gt;.</p></li>
-<li><p>To reset time to <strong>zero</strong>: Type the ‘0’ key or click on the time reset button: &lt;insert icon&gt;.</p></li>
-<li><p>The current analysis time is <strong>displayed</strong> in the feedback pane at the bottom of the screen.</p></li>
-<li><p>The analysis time step size can be controlled via the Time Step menu (there are combinations of material properties and time steps that intentionally lead to unstable results, so beware).</p></li>
-<li><p>The display time step can be controlled via the Animation Speed menu. Internally, this command controls how many analysis time steps are computed between screen updates.</p></li>
-</ul>
+<h2>SimCenter Tool Used<a class="headerlink" href="#simcenter-tool-used" title="Permalink to this heading"></a></h2>
+<p>To understand transfer functions, there are many tools available. One of these tools is the SimCenter Transfer Function Tool (TFT). This tool introduces users to transfer functions by providing the output motion at a site given the motion, thickness of layers, shear wave velocities, and damping ratio. TFT allows for easy analysis of amplification/de-amplification of ground motions based on specific sites.</p>
+<p>The Earthquake Engineering with Uncertainty Quantification Application (EE-UQ) is a SimCenter research application that also allows for site response predictions due to earthquake loading. In addition to basic transfer function quantification, it allows for the analysis of uncertainty in the predictions based on the uncertainty found within the input model, motion, etc. This workflow application allows the user to run analyses in the background and provides a simple user interface that facilitates its use.</p>
 </section>
 <section id="example-application">
-<h2>Example Application<a class="headerlink" href="#example-application" title="Link to this heading"></a></h2>
-<p>Dr. Layer’s tool palette is illustrated below (Windows version: the Mac version is similar but grouped a bit differently):</p>
-<p>&lt;insert tool palette image&gt;</p>
-<ul>
-<li><p>The <strong>Arrow Tool</strong> is used to select and manipulate objects.</p></li>
-<li><p>The <strong>Panner</strong> and <strong>Camera Orbit Tools</strong> are used to change the viewing point and camera orientation via clicking and dragging.</p></li>
-<li><p>The <strong>Plot Box Tool</strong> is used to create one of the various types of plot boxes:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Displacement Time History plots</strong> are created by clicking on the relevant layer. The top node in the layer is used as the plotting target.</p></li>
-<li><p><strong>Fast Fourier Transform (FFT) plots</strong> of a displacement history can be created by clicking on the time history plot.</p></li>
-<li><p><strong>Stress-strain plots</strong> can be created by control-clicking (i.e., holding down the control key while clicking) on the desired layer.</p></li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
-<blockquote>
-<div><p>These controls are self-explanatory in regards to their functions. Note the following, however:</p>
-</div></blockquote>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The scaling buttons will continue to scale as long as they are held down. It is not necessary to click multiple times to get this effect.</p>
-</div>
+<h2>Example Application<a class="headerlink" href="#example-application" title="Permalink to this heading"></a></h2>
+<p>For our purposes, an earthquake motion will be applied to a rock, located at the bottom of a one-dimensional soil profile. In this example, we will analyze the amplification/deamplification effects of the ground motion caused by its propagation through the soil layer. The 10 meter soil layer has a shear wave velocity (Vs) of 500 m/s and a damping ratio of 3%.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/CESG599_TF_image1.png"><img alt="_images/CESG599_TF_image1.png" src="_images/CESG599_TF_image1.png" style="width: 501.0px; height: 268.0px;" /></a>
+</figure>
+<p>Because of the presence of uncertainty in the soil properties, the transfer function will include uncertainty in its effects. Normal distribution values for each variable (H, Vs, damping) will be provided.This uncertainty will be quantified through multiple runs in EE-UQ and expressed as ratios of mean velocity and acceleration, along with standard deviation and skewness.</p>
+<p>NEEDS FINISHING</p>
 </section>
 <section id="remarks">
-<h2>Remarks<a class="headerlink" href="#remarks" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>To adjust the <strong>plotting scales</strong>, use the small expansion/contraction triangular buttons on the plot for the horizontal scale, and the plot scale buttons on the <a class="reference external" href="#scaling-buttons">Scale Button Toolbar</a> for the vertical scale.</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You will notice that all plots scale together. This is so that plots of a given type can be compared visually without any misleading differences in scale factors.</p>
-</div>
-<ul class="simple">
-<li><p>To adjust the <strong>horizontal offset</strong> of a plot, click in the plot and drag horizontally to scroll back and forth.</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In general, plots will automatically scroll as necessary as time is running. Once you have manually scrolled a plot, though, the automatic scrolling will cease until time is reset to zero.</p>
-</div>
-<ul class="simple">
-<li><p>Plot boxes can be added or removed at any time, but they only accumulate data beginning from the time they are installed, with the exception of FFT plots, which always plot the according to the data accumulated in the target time history. FFT plots can use up to the first 1024 points in a time history.</p></li>
-</ul>
+<h2>Remarks<a class="headerlink" href="#remarks" title="Permalink to this heading"></a></h2>
+<p>NEEDS FINISHING</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Plotting FFT’s will slow down the animation speed significantly, especially as the length of the time histories increase.</p>
 </div>
 <div class="docutils container" id="id2">
-<div role="list" class="citation-list">
 <div class="citation" id="id3" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">Kra96</a><span class="fn-bracket">]</span></span>
 <p>S. L. Kramer. <em>Geotechnical Earthquake Engineering</em>. Pearson, 1996. ISBN 9783642196294.</p>
+</div>
+<div class="citation" id="id6" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>RB20<span class="fn-bracket">]</span></span>
+<p>V. Rashidian and L. G. Baise. Regional efficacy of a global geospatial liquefaction model. <em>Engineering geology</em>, 272:105644, 2020.</p>
+</div>
+<div class="citation" id="id5" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SGM24<span class="fn-bracket">]</span></span>
+<p>M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. <em>Manuscript in preparation</em>, 2024.</p>
+</div>
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ZBT17<span class="fn-bracket">]</span></span>
+<p>J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. <em>Bulletin of the Seismological Society of America</em>, 107(3):1365–1385, 2017.</p>
 </div>
 </div>
 </div>
