@@ -2,7 +2,7 @@
 .. _case_0:
 
 .. figure:: ./images/case0.png
-    :scale: 90 %
+    :scale: 50 %
     :align: center
     :figclass: align-center
 
