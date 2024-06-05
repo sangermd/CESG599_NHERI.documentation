@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EEUQ - Transfer Function and Uncertainty &mdash; CESG-599 1.0.0 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -44,8 +48,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="case_0.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="case_0.html#cesg599-nheri-an-introduction-to-nheri-simcenter-tools-and-designsafe-resources">CESG599 - NHERI - An introduction to NHERI Simcenter tools and DesignSafe Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="case_0.html">Course Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="case_1.html">quoFEM - Settlements</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">EEUQ - Transfer Function and Uncertainty</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#author-erick-martinez">Author: Erick Martinez</a></li>
@@ -61,7 +64,7 @@
 <li class="toctree-l1"><a class="reference internal" href="case_4.html">S3hark - Site Response 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="case_5.html">R2D - Liquefaction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="case_6.html">R2D - Landslides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="case_7.html">R2D - Damage and Losses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="case_7.html">R2D - Hurricane Maria Damage and Losses</a></li>
 </ul>
 
         </div>
@@ -89,21 +92,21 @@
            <div itemprop="articleBody">
              
   <section id="eeuq-transfer-function-and-uncertainty">
-<span id="case-2"></span><h1>EEUQ - Transfer Function and Uncertainty<a class="headerlink" href="#eeuq-transfer-function-and-uncertainty" title="Permalink to this heading"></a></h1>
+<span id="case-2"></span><h1>EEUQ - Transfer Function and Uncertainty<a class="headerlink" href="#eeuq-transfer-function-and-uncertainty" title="Link to this heading"></a></h1>
 <section id="author-erick-martinez">
-<h2>Author: Erick Martinez<a class="headerlink" href="#author-erick-martinez" title="Permalink to this heading"></a></h2>
+<h2>Author: Erick Martinez<a class="headerlink" href="#author-erick-martinez" title="Link to this heading"></a></h2>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
-<p>This page describes the basic concept of transfer functions and their use in a site response analysis. Along with this, the uncertainty in this process will be explained. For more details, the user is encouraged to read <span id="id1">[<a class="reference internal" href="case_7.html#id3" title="S. L. Kramer. Geotechnical Earthquake Engineering. Pearson, 1996. ISBN 9783642196294.">Kra96</a>]</span>.</p>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>This page describes the basic concept of transfer functions and their use in a site response analysis. Along with this, the uncertainty in this process will be explained. For more details, the user is encouraged to read <span id="id1">[]</span>.</p>
 </section>
 <section id="problem-description">
-<h2>Problem Description<a class="headerlink" href="#problem-description" title="Permalink to this heading"></a></h2>
+<h2>Problem Description<a class="headerlink" href="#problem-description" title="Link to this heading"></a></h2>
 <p>A transfer function acts as a filter that can amplify or de-amplify an incoming wave from a medium to produce the output signal in another medium. To simplify the idea of a transfer function, a spring-mass system can be used. As a motion is applied on the mass connected to a spring; a responsive outgoing wave will then be propagated through the mass and the spring. This outgoing motion will be a composite factor of the stiffness and elastic damping forces found within the spring-mass system.</p>
 <p>This can be applied to earth systems in the form of ground motions. An example of this is an earthquake motion acting on a rock layer at a certain depth. This motion is then transferred through the soil profile and is reflected as a different motion at the surface. In order to determine the influence of a soil profile on the motion, three major components are required: thickness of layer (H), shear wave velocity (Vs), and damping ratio. As with any engineering properties, there will always be the presence of uncertainty. A layer might have differential thicknesses in certain regions, causing the height to be non-uniform. Shear wave velocity can change very quickly depending on depth and composition of the materials within the layer. Damping can also be affected by changes in stratigraphy and composition. To account for this, uncertainty must be incorporated into a transfer function analysis. This inclusion will aid in the accuracy and reliability of site response analyses.</p>
 </section>
 <section id="solution-strategy">
-<h2>Solution Strategy<a class="headerlink" href="#solution-strategy" title="Permalink to this heading"></a></h2>
+<h2>Solution Strategy<a class="headerlink" href="#solution-strategy" title="Link to this heading"></a></h2>
 <p>In earth systems, this relationship between incoming and outgoing wave can be evaluated through mathematically converting an input motion, typically an acceleration-time history, to a Fourier series. In the Fourier space, the motion is then multiplied by the transfer function, resulting in the outgoing Fourier motion. This can then be converted back into various plots, such as acceleration-time history and spectral acceleration vs. period, that allow for analysis of the outgoing motion. An analysis of this ground motion can provide frequencies of interest where ground accelerations would be highest/lowest, which can aid in site response analysis and planning.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="_images/TF_Rock_to_Soil1.png"><img alt="_images/TF_Rock_to_Soil1.png" src="_images/TF_Rock_to_Soil1.png" style="width: 332.4px; height: 355.2px;" /></a>
@@ -111,12 +114,12 @@
 <p>NEEDS FINISHING</p>
 </section>
 <section id="simcenter-tool-used">
-<h2>SimCenter Tool Used<a class="headerlink" href="#simcenter-tool-used" title="Permalink to this heading"></a></h2>
+<h2>SimCenter Tool Used<a class="headerlink" href="#simcenter-tool-used" title="Link to this heading"></a></h2>
 <p>To understand transfer functions, there are many tools available. One of these tools is the SimCenter Transfer Function Tool (TFT). This tool introduces users to transfer functions by providing the output motion at a site given the motion, thickness of layers, shear wave velocities, and damping ratio. TFT allows for easy analysis of amplification/de-amplification of ground motions based on specific sites.</p>
 <p>The Earthquake Engineering with Uncertainty Quantification Application (EE-UQ) is a SimCenter research application that also allows for site response predictions due to earthquake loading. In addition to basic transfer function quantification, it allows for the analysis of uncertainty in the predictions based on the uncertainty found within the input model, motion, etc. This workflow application allows the user to run analyses in the background and provides a simple user interface that facilitates its use.</p>
 </section>
 <section id="example-application">
-<h2>Example Application<a class="headerlink" href="#example-application" title="Permalink to this heading"></a></h2>
+<h2>Example Application<a class="headerlink" href="#example-application" title="Link to this heading"></a></h2>
 <p>For our purposes, an earthquake motion will be applied to a rock, located at the bottom of a one-dimensional soil profile. In this example, we will analyze the amplification/deamplification effects of the ground motion caused by its propagation through the soil layer. The 10 meter soil layer has a shear wave velocity (Vs) of 500 m/s and a damping ratio of 3%.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="_images/CESG599_TF_image1.png"><img alt="_images/CESG599_TF_image1.png" src="_images/CESG599_TF_image1.png" style="width: 501.0px; height: 268.0px;" /></a>
@@ -125,26 +128,27 @@
 <p>NEEDS FINISHING</p>
 </section>
 <section id="remarks">
-<h2>Remarks<a class="headerlink" href="#remarks" title="Permalink to this heading"></a></h2>
+<h2>Remarks<a class="headerlink" href="#remarks" title="Link to this heading"></a></h2>
 <p>NEEDS FINISHING</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Plotting FFT’s will slow down the animation speed significantly, especially as the length of the time histories increase.</p>
 </div>
 <div class="docutils container" id="id2">
+<div role="list" class="citation-list">
 <div class="citation" id="id3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">Kra96</a><span class="fn-bracket">]</span></span>
-<p>S. L. Kramer. <em>Geotechnical Earthquake Engineering</em>. Pearson, 1996. ISBN 9783642196294.</p>
+<span class="label"><span class="fn-bracket">[</span>GV22<span class="fn-bracket">]</span></span>
+<p>G. R. Guerra Velázquez. Hurricane maría and public health in puerto rico: lessons learned to increase resiliency and prepare for future disasters. <em>Annals of Global Health</em>, 2022.</p>
 </div>
-<div class="citation" id="id6" role="doc-biblioentry">
+<div class="citation" id="id7" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>RB20<span class="fn-bracket">]</span></span>
 <p>V. Rashidian and L. G. Baise. Regional efficacy of a global geospatial liquefaction model. <em>Engineering geology</em>, 272:105644, 2020.</p>
 </div>
-<div class="citation" id="id5" role="doc-biblioentry">
+<div class="citation" id="id6" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>SGM24<span class="fn-bracket">]</span></span>
 <p>M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. <em>Manuscript in preparation</em>, 2024.</p>
 </div>
-<div class="citation" id="id4" role="doc-biblioentry">
+<div class="citation" id="id5" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>ZBT17<span class="fn-bracket">]</span></span>
 <p>J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. <em>Bulletin of the Seismological Society of America</em>, 107(3):1365–1385, 2017.</p>
 </div>
