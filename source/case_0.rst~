@@ -51,23 +51,35 @@ Learning Objectives
 #. Provide a working knowledge for selecting, using, and interpreting tools for Structural and geotechnical design and analysis.
 
 
-
-
-
 Introduction
 ------------
-
-A transfer function is ...  This is just a trial to see if GitHub pages works.
+This section should provide a brief executive summary, giving an overview of the project. It should be written last to ensure it accurately reflects the content of the entire report. Aim for a short paragraph that highlights the key points, objectives, and outcomes of the project.
 
 
 Problem Description
 -------------------
-
-A transfer function is somewhat like a filter that is applied to an incoming wave to produce an output signal. It determines how each frequency in the input motion is amplified or suppressed, by the medium of wave travel. Considering a spring-mass system with an excitation motion at input from the foundation connected to the spring and the corresponding response motion of the connected mass in the inertial system. The response motion of the mass will be a composite factor of the elastic and the viscous damping forces which are inherently embedded in the transfer function that determines the output motion we will obtain. In our wave propagation study we also employ transfer functions as a tool to explain the factors that make our input wave motion different from our output wave obtained. Evaluating the transfer function mathematically involves converting our known input motion to a Fourier series. Each term of the Fourier series is multiplied by the transfer function to obtain the Fourier series of the output response. Resonance is a physical phenomenon that occurs when the natural frequency of vibration of particles in a body (in our case the layers) matches the frequency of the forcing function (our input motion). It is experienced as an infinite amplification of the model.
+Clearly describe the problem being addressed. Use text and images to illustrate the issue, ensuring that even readers unfamiliar with the topic can understand the context and significance. This section should detail the background, relevance, and any previous attempts to solve the problem.
 
 
 Solution Strategy
 -----------------
+Outline the strategy used to solve the problem. This should include a detailed explanation of the methods, processes, and any equations or theoretical frameworks involved. Be sure to make this section as comprehensive as necessary to fully explain the approach taken.
+
+SimCenter Tool Used
+-------------------
+Provide a brief description of the SimCenter tool(s) used in the project. Explain its relevance and how it was applied. This section should be informative yet concise, offering enough detail to understand the tool's role and capabilities without overwhelming the reader.
+
+Example of Application
+----------------------
+Give a concrete example of how the solution strategy was applied, using text and images. This helps to illustrate the practical application of the theoretical concepts and methods discussed earlier. Ensure the example is detailed enough to show the effectiveness of the solution.
+
+Remarks
+-------
+Use this section for any additional comments or observations that do not fit into the other sections. This could include limitations, unexpected findings, future directions, or any acknowledgments.
+
+
+EXAMPLELS of LISTS, FIGURES, TABLE, REFERENCE, etc
+--------------------------------------------------
 
 #. Open the Dr. Layer program. By default we get twelve layers. The top six layers are hardwired into the system with a velocity of specified as very fast. The bottom six layers are hardwired with a velocity of very slow.
 
