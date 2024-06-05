@@ -10,7 +10,7 @@ Introduction
 ------------
 
 Hurricane Maria, a Category 5 storm, struck Puerto Rico on September 20, 2017, claiming over 3000 lives. 
-This example assesses wind-induced damage for Vieques Island, Puerto Rico, using National Institute of Standards and Technogology (NIST) peak gust wind speed data. Inventory data for about 900 wood residential buildings was created using a Python Notebook and BRAILS, mapping the inventory to a HAZUS-type damage assessment in R2D. The final R2D results include damage and loss estimations and building information models based on the rulesets.
+This example assesses wind-induced damage for Vieques Island, Puerto Rico, using peak gust wind speed data from the National Institute of Standards and Technogology (NIST) and inventory of about 900 wood residential buildings. The inventory was created using a Python Notebook with BRAILS and formatted to a HAZUS-type damage assessment in R2D. The final R2D results include damage state and loss estimations.
 
 
 Problem Description
@@ -29,12 +29,12 @@ A recent study by Guerra-Velasquez :cite:`Guerra2022` highlithed that infrastruc
 
 Solution Strategy
 -----------------
-A HAZUS-type damage and lossess analysis requires a baseline hazard, building inventory, and rulestes. The proposed solution gathers input data for the damage assessment in R2D.
+The proposed solution gathers input data for a HAZUS-type damage and lossess analysis implemented in R2D. The dataset includes a baseline hazard, building inventory, and rulesets.
 
-#. **Baseline Hazard:** The hazard definition for this analysis is a raster file containing `Hurricane Maria Wind-Field Model for Puerto Rico <https://catalog.data.gov/dataset/hurricane-maria-wind-field-model-for-puerto-rico>`_ in miles per hour (kph).
+#. **Baseline Hazard:** The hazard definition for this analysis is a raster file containing `Hurricane Maria Wind-Field Model for Puerto Rico <https://catalog.data.gov/dataset/hurricane-maria-wind-field-model-for-puerto-rico>`_ in miles per hour (mph).
     
     .. figure:: ./images/case7_DA2_raster.png
-        :width: 500
+        :width: 600
         :align: center
         :figclass: align-center
 
@@ -42,7 +42,7 @@ A HAZUS-type damage and lossess analysis requires a baseline hazard, building in
 
 #. **Building Inventory:** The building inventory for Puerto Rico is limited. However, using NHERI-SimCenter Building and Infrastructure Recognition using AI at Large-Scale `(BRAILS) <https://github.com/NHERI-SimCenter/BRAILS>`_ capabilities, it is possible to obtain building footprints and their associated attributes for a given location. Brails was implemented in a Jupyter Notebook to:
 
-    * Obtain building footprints from open repositories (e.g., NIS)
+    * Obtain building footprints from open repositories (e.g., NSI)
     * Fetch Google Street Views using Google API
     * Import essential BRAILS modules such as NumberOfFloors, YearBuilt, and OccupancyClassifier 
     * Merge and create a Building Inventory Model (BIM) with required attributes for rulesets.
@@ -58,6 +58,7 @@ A HAZUS-type damage and lossess analysis requires a baseline hazard, building in
         # Define query location:
         name_key = 'Vieques_2'
         location = Lajas, Puerto Rico
+        # location = (lonmin, latmin, lonmax, latmax) # supports exten/bounding box format
 
         # Define footprint source:
         # fpSource included in BRAILS are i) OpenStreetMaps,
@@ -92,7 +93,7 @@ A HAZUS-type damage and lossess analysis requires a baseline hazard, building in
 
 
     .. figure:: ./images/case7_DA3_footprints.png
-        :width: 500
+        :width: 600
         :align: center
         :figclass: align-center
 
@@ -104,7 +105,7 @@ A HAZUS-type damage and lossess analysis requires a baseline hazard, building in
 
 SimCenter Tool Used
 -------------------
-This example use the Regional Resilience Determination Tool **R2D** wind damage and loss estimations for a residential area in Vieques, Puerto Rico, to assess the impact of wind forces and improve infrastructure resilience for future events.
+This example uses the *Regional Resilience Determination Tool* (**R2D**) for wind damage and loss estimations in a residential area in Vieques, Puerto Rico, in order to assess the impact of wind forces and improve infrastructure resilience for future events.
 
 Example Application
 -------------------
@@ -125,14 +126,14 @@ Download example **E17 - Hurricane Maria PR** files and open R2D. In the **File*
     You will notice that all the inputs are autopopulated. Make sure to follow the next steps to verify they are in the correct units and using the right file references.
 
 
-#. In the **GI** panel, set the **Analysis Name**, **Units**, **Asset Layers**, and **Output Settings.
+#. In the **GI** panel, set the **Analysis Name**, **Units**, **Asset Layers**, and **Output Settings**.
 
     .. figure:: ./images/case7_DA5_E2.png
         :width: 400
         :align: center
         :figclass: align-center
 
-        **Fig. 5.** R2D **GI** input and output settings.
+        **Fig. 5.** R2D **GI** Input and Output Settings.
 
 #. For the **HAZ** Hazard Selection, select "Raster Defined Hazard" for an **Event Type**: "Hurricane". The **Intensity Measures of Raster** is "Peak Gust Wind Speed - PWS" in mph. 
 
@@ -141,7 +142,7 @@ Download example **E17 - Hurricane Maria PR** files and open R2D. In the **File*
         :align: center
         :figclass: align-center
 
-        **Fig. 6.** R2D **HAZ** hazard definition.
+        **Fig. 6.** R2D **HAZ** Hazard Definition.
 
 #. In the **ASD** panel, make sure the **Regional Building Inventory** is set to "GIS File to AIM". Select the **Assets to Analyze** as intervals (e.g., 1-100) or go back to panel **VIZ** to manually select your assets by i) 'click' on the inventory layer; ii) push "Select" button (then drag selection in the map); iii) push "Add Assets" button.
 
@@ -150,14 +151,14 @@ Download example **E17 - Hurricane Maria PR** files and open R2D. In the **File*
         :align: center
         :figclass: align-center
 
-        **Fig. 7 (a).** R2D **ASD** Assets Selection by intervals.
+        **Fig. 7 (a).** R2D **ASD** Assets Selection by Intervals.
 
     .. figure:: ./images/case7_DA8_E5.png
         :width: 400
         :align: center
         :figclass: align-center
 
-        **Fig. 7 (b).** R2D **VIZ** Assets Selection in the map.
+        **Fig. 7 (b).** R2D **VIZ** Assets Selection in the Map.
 
 #. The **HTA** panel requires a "Site Specified" calculation
 
@@ -186,7 +187,7 @@ Download example **E17 - Hurricane Maria PR** files and open R2D. In the **File*
 
         **Fig. 10.** R2D **ANA** Building Analysis Method.
 
-#. **Damage & Loss Apllication** is found in the **DL** panel. Here you select "Pelicun3" with **Damage and Losss Method** "HAZUS MH MU". The Auto-population script referring to the specified ruleset is "auto_HU_LA.py" file.
+#. **Damage & Loss Apllication** is found in the **DL** panel. Here you select "Pelicun3" with **Damage and Losss Method** "HAZUS MH MU". The Auto-population script referring to the specified ruleset is "auto_HU_PR.py" file.
 
     .. figure:: ./images/case7_DA12_E9.png
         :width: 400
@@ -206,7 +207,7 @@ Download example **E17 - Hurricane Maria PR** files and open R2D. In the **File*
 Results
 -------
 
-will be obtained from the **RUN** panel and manipulated in the visualization **VIZ** panel for mapping options.
+Results will be retrieved from the **RUN** panel and manipulated in the visualization **VIZ** panel for mapping options.
 
     .. figure:: ./images/case7_DA13_E10.png
         :width: 400
@@ -215,7 +216,7 @@ will be obtained from the **RUN** panel and manipulated in the visualization **V
 
         **Fig. 12.** R2D **RES** Regional Results Summary.
         
-The analysis gives two types of results:
+The assessment gives two types of results:
 
 a) **MostLikelyCriticalDamageState**: The Damage State uses a scale from 0 to 4 that correspons to a qualitative damage description.
 
@@ -250,7 +251,7 @@ The results suggest that -of the 100 buildings assessed- most would suffer `Seve
 
 .. note::
     **Results Visualization**: R2D offers QGIS capabilities to visualize regional trends and produce mapping products. *Fig. 13* shows an example of a map product using the QGIS module to create *HeatMaps* of the **MostLikelyCriticalDamageState** variable and the spatial distribution of the **mean_RepairCost_loss_ratio** for different intervals. Then, using the "New Layout" option you can create maps with legends, title, and other elements.
-    See `QGIS Documentation <https://docs.qgis.org/3.34/en/docs/user_manual/>`_ to learn more.
+    See `QGIS Documentation <https://docs.qgis.org/3.34/en/docs/user_manual/>`_ for more.
 
 .. figure:: ./images/case7_DA14_Results.png
     :width: 700
@@ -264,7 +265,7 @@ Remarks
 
 * Hurricanes are increasingly happening with more intensity and force due to climate change.
 * In locations such as Vieques, Puerto Rico, a comprehensive building inventory to assess huricane impact to infrastructure assets is limited. Assessing hazard exposure and consequences are key to increase resilience.
-* R2D possess vast capabilities to adress this challenge, allowing researches to input hazard data and construct building inventories with BRAILS tool. T
+* R2D possess vast capabilities to adress this challenge, allowing researches to input hazard data and construct building inventories with BRAILS tools.
 * This example provides strategies for creating building inventories in locations where data is scarce and implementing them in a format that could be used in R2D for regional analysis.
 
 References
