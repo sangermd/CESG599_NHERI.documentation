@@ -80,7 +80,7 @@ Example
 A typical transfer function would look similar to the one provided below. In the figure below, there are various peaks of natural resonance for the transfer function, which is where the motion will have the greatest amplification/de-amplification.
 
 .. figure:: ./images/case2_TF_Nat_Freqs.png
-   :scale: 40%
+   :scale: 60%
    :align: center
 
    Fig. 3. Transfer Function from Rock to Soil.

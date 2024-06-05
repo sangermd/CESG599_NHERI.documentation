@@ -558,7 +558,7 @@ The procedure for performing a transfer function analysis is shown below.
 A forward propagation problem will be performed. The UQ engine to be used is Dakota with parallel execution and saved working directories. The Latin Hypercube Sampling (LHS) method will be used with 10 samples and a seed of 913. The UQ tab should look similar to the one below.
 
 
-.. figure:: ./images/UQTab_Workflow_TF.png
+.. figure:: ./images/case2_UQTab_Workflow_TF.png
     :scale: 30 %
     :align: center
 
@@ -691,7 +691,7 @@ By extrapolating the values from EE-UQ, the shape of the transfer function can b
 With the transfer function plotted, the input motion can be transformed using the transfer function to reflect the motion at the surface. The figure below reflects the large amplification that occurred. The value of the highest acceleration increased from ~0.4g in the rock to ~1.25g in the soil. This amplification is also reflected in other frequencies.  
 
 
-.. figure:: ./images/Full_Results_TF.png
+.. figure:: ./images/case2_Full_Results_TF.png
     :scale: 40 %
     :align: center
 
