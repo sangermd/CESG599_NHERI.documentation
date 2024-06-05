@@ -31,7 +31,7 @@ This can be applied to earth systems in the form of ground motions. An example o
 It is important to ensure that this difference in motion is accounted for. When a structure is constructed, it has a specific resonance. Understanding this resonance is important because if an earthquake motion has similar peaks in frequency, causing amplification of the motion, the structure could have a significant and potentially disastrous behavior. While the incoming motion at the rock might have a different natural resonance, the motion at the surface might match that of the structure. The design of earthquake resistant structures relies on the accurate determination of transfer functions in sites. An example of this is shown below - where a motion was amplified from 0.03g to 0.15g due to the presence of soft clay.
 
 
-.. figure:: ./images/case2_Resonance_Building_Example_TF.png
+.. figure:: ./images/Resonance_Building_Example_TF.png
    :scale: 40%
    :align: center
 
@@ -49,7 +49,7 @@ Fourier Transform
 
 In earth systems, this relationship between incoming and outgoing wave can be evaluated through mathematically converting an input motion, typically an acceleration-time history, to a Fourier series using the Fast Fourier Transform (FFT). In the Fourier space, the motion is then multiplied by the transfer function, resulting in the outgoing Fourier motion. This can then be converted back into various plots, such as acceleration-time history and spectral acceleration vs. period, that allow for analysis of the outgoing motion. An analysis of this ground motion can provide frequencies of interest where ground accelerations would be highest/lowest, which can aid in site response analysis and planning. 
 	
-.. figure:: ./images/case2_TF_Rock_to_Soil1.png
+.. figure:: ./images/TF_Rock_to_Soil1.png
    :scale: 40%
    :align: center
 
@@ -64,7 +64,7 @@ Transfer Function Equation
 To calculate a transfer function, the equation below can be used. In a single layer soil profile, it is assumed that the impedance contrast between layers is zero. Using a tool like EE-UQ can help provide the ratio between the input and output motion and provides the uncertainty in those motions and variables.
 
     
-.. figure:: ./images/case2_TF_Equation.png
+.. figure:: ./images/TF_Equation.png
    :scale: 40%
    :align: center
 
@@ -79,7 +79,7 @@ Example
 
 A typical transfer function would look similar to the one provided below. In the figure below, there are various peaks of natural resonance for the transfer function, which is where the motion will have the greatest amplification/de-amplification.
 
-.. figure:: ./images/case2_TF_Nat_Freqs.png
+.. figure:: ./images/TF_Nat_Freqs.png
    :scale: 40%
    :align: center
 
@@ -105,7 +105,7 @@ Soil Profile
 In this example, we will analyze the amplification/deamplification effects of a ground motion caused by its propagation through the soil layer. The 10 meter soil layer has a shear wave velocity (Vs) of 500 m/s and a damping ratio of 3%.
 
 	
-.. figure:: ./images/case2_CESG599_TF_image1.png
+.. figure:: ./images/CESG599_TF_image1.png
     :scale: 50 %
     :align: center
     
@@ -120,7 +120,7 @@ The following normal distribution figures represent the uncertainty within each 
 
 
 
-.. figure:: ./images/case2_Combined_RV_1.png
+.. figure:: ./images/Combined_RV_1.png
     :scale: 50 %
     :align: center
 
@@ -132,7 +132,7 @@ Motion
 An earthquake motion will be applied to a rock, located at the bottom of a one-dimensional soil profile. The motion is shown below as an acceleration time history as well as a Fourier amplitude spectra (FAS).
 
 
-.. figure:: ./images/case2_Input_Motion_TF.png
+.. figure:: ./images/Input_Motion_TF.png
     :scale: 40 %
     :align: center
 
@@ -569,7 +569,7 @@ The General Information (GI) tab will not be utilized in this example since no s
 For the simulation (SIM tab), the input script will be loaded using a CustomPy Model. Along with this, the number of response nodes will be 1 with a spatial dimension of 2. Each node will have 3 degrees of freedom (DOF) and the profile will have damping ratio of 2%. The centroid node value will be 1.
 
 
-.. figure:: ./images/case2_SimTab_TF.png
+.. figure:: ./images/SimTab_TF.png
     :scale: 30 %
     :align: center
 
@@ -582,7 +582,7 @@ In the Finite Element Modeling (FEM) tab, select a CustomPy-Simulation.
 In the Engineering Demand Parameter (EDP) tab, select a user defined generator. The response parameters will be the ratio of acceleration spectra and velocity spectra from the propagation from rock to the soil.
 
 
-.. figure:: ./images/case2_EDPTab_Workflow_TF.png
+.. figure:: ./images/EDPTab_Workflow_TF.png
     :scale: 30 %
     :align: center
 
@@ -592,7 +592,7 @@ In the Engineering Demand Parameter (EDP) tab, select a user defined generator. 
 The Random Variables (RV) tab is where the values of H, Vs, and damping are implemented in the analysis. The values seen above are to be input here. A normal distribution will be used for all of these variables.
 
 
-.. figure:: ./images/case2_RVTab_Workflow_TF.png
+.. figure:: ./images/RVTab_Workflow_TF.png
     :scale: 30 %
     :align: center
 
@@ -607,7 +607,7 @@ Results
 When the run is completed, the mean values of ratioA and ratioV, as well as uncertainty values,should be provided. These values show the ratio of average amplification/de-amplification in acceleration in velocity of the ground motion at the rock and the motion at the surface. The positive value of the ratio shows amplification occurred due to the propagation of the motion through the soil layer. 
 
 
-.. figure:: ./images/case2_Results_Workflow_TF.png
+.. figure:: ./images/Results_Workflow_TF.png
     :scale: 30 %
     :align: center
 
@@ -617,13 +617,13 @@ When the run is completed, the mean values of ratioA and ratioV, as well as unce
 Because the input variables (H, Vs, damping, motions) each have uncertainty, that uncertainty is carried on to the transfer function analysis. EE-UQ allows for uncertainty quantification which allows for an analysis of which variables might be most important or what the "worst-case scenario" could be when designing. The normalized normal distribution for the acceleration and velocity amplification ratios are shown below.
 
 
-.. figure:: ./images/case2_Normalized_RatioA_histogram.png
+.. figure:: ./images/Normalized_RatioA_histogram.png
     :scale: 90 %
     :align: center
 
     Fig. 12. Normalized Acceleration Amplification Factor Histogram
 
-.. figure:: ./images/case2_Normalized_RatioV_histogram.png
+.. figure:: ./images/Normalized_RatioV_histogram.png
     :scale: 90 %
     :align: center
 
@@ -633,14 +633,14 @@ Because the input variables (H, Vs, damping, motions) each have uncertainty, tha
 Due to the infinite possibilities of variability the three main variables (H, Vs, Damping) can have, we see that the normal distribution is not well suited for this analysis, specifically. EE-UQ allows for other methods of uncertainty quantification. Below is a Gaussian Mixture Model. This method is effective in measuring the probability of certain subpopulations within a larger population.
 
 
-.. figure:: ./images/icase2_Gaussian_Mixture_RatioA_histogram.png
+.. figure:: ./images/Gaussian_Mixture_RatioA_histogram.png
     :scale: 89 %
     :align: center
 
     Fig. 14. Gaussian Mixture Model - Acceleration Amplification Ratio.
 
 
-.. figure:: ./images/case2_Gaussian_Mixture_RatioV_histogram.png
+.. figure:: ./images/Gaussian_Mixture_RatioV_histogram.png
     :scale: 60 %
     :align: center
 
@@ -654,7 +654,7 @@ Due to the infinite possibilities of variability the three main variables (H, Vs
 By extrapolating the values from EE-UQ, the shape of the transfer function can be determined. The natural frequencies of the first 4 peaks in the transfer function are also shown below. 
 
 
-.. figure:: ./images/case2_TF_Nat_Freqs.png
+.. figure:: ./images/TF_Nat_Freqs.png
     :scale: 70 %
     :align: center
 
@@ -700,7 +700,7 @@ With the transfer function plotted, the input motion can be transformed using th
 The spectral acceleration spectra can be also determined for each of the motions. These spectra can be used to determine if a structure will be affected by the amplification. A single story structure (~0.1 second period) might be at risk due to this amplification. Any periods with a large amplification ratios should be further analyzed to ensure the safety of the structure and site.
 
 
-.. figure:: ./images/case2_SpectralAcc_Results_TF.png
+.. figure:: ./images/SpectralAcc_Results_TF.png
     :scale: 50 %
     :align: center
 
