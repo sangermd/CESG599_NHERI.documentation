@@ -1,142 +1,272 @@
 .. _case_7:
 
-R2D - Damage and Losses
-=======================
+R2D - Hurricane Maria Damage and Losses
+=======================================
 
-Author: Daniel Acosta
----------------------
+Author: Daniel Acosta Reyes
+---------------------------
 
 Introduction
 ------------
 
-This page describes basic concepts of one-dimensional ground response analysis and the usage of transfer functions. For more details, the user is encounged to read :cite:`Kramer1996`.
+Hurricane Maria, a Category 5 storm, struck Puerto Rico on September 20, 2017, claiming over 3000 lives. 
+This example assesses wind-induced damage for Vieques Island, Puerto Rico, using National Institute of Standards and Technogology (NIST) peak gust wind speed data. Inventory data for about 900 wood residential buildings was created using a Python Notebook and BRAILS, mapping the inventory to a HAZUS-type damage assessment in R2D. The final R2D results include damage and loss estimations and building information models based on the rulesets.
 
 
 Problem Description
 -------------------
 
-A transfer function is somewhat like a filter that is applied to an incoming wave to produce an output signal. It determines how each frequency in the input motion is amplified or suppressed, by the medium of wave travel. Considering a spring-mass system with an excitation motion at input from the foundation connected to the spring and the corresponding response motion of the connected mass in the inertial system. The response motion of the mass will be a composite factor of the elastic and the viscous damping forces which are inherently embedded in the transfer function that determines the output motion we will obtain. In our wave propagation study we also employ transfer functions as a tool to explain the factors that make our input wave motion different from our output wave obtained. Evaluating the transfer function mathematically involves converting our known input motion to a Fourier series. Each term of the Fourier series is multiplied by the transfer function to obtain the Fourier series of the output response. Resonance is a physical phenomenon that occurs when the natural frequency of vibration of particles in a body (in our case the layers) matches the frequency of the forcing function (our input motion). It is experienced as an infinite amplification of the model.
+Hurricanes are powerful tropical storms producing strong winds and heavy rains. The Saffir-Simpson Wind Scale, which categorizes hurricanes from 1 to 5 based on sustained wind speeds, helps estimate potential property damage :cite:`Saffir1973`. Hurricanes in categories 3 and above are deemed major due to their significant destructive potential.
 
+.. figure:: ./images/case7_DA1_saffirScale.png
+   :width: 500
+   :align: center
+   :figclass: align-center
+
+   **Fig. 1.** Saffir-Simpson Hurricane Scale. Soruce: TIGHE PA.
+Hurricane Maria (Category 5) destroyed several homes and health facilities in Puerto Rico, including `the only healthcare center on Vieques Island <https://www.menendez.senate.gov/newsroom/press/sens-menendez-wicker-reintroduce-vieques-recovery-and-redevelopment-act>`_, exacerbating the island's health crisis after decades-long military use.
+A recent study by Guerra-Velasquez :cite:`Guerra2022` highlithed that infrastructure weaknesses made recovery more challenging and emphasize the need for increased resiliency and preparedness for future disasters.
 
 Solution Strategy
 -----------------
+A HAZUS-type damage and lossess analysis requires a baseline hazard, building inventory, and rulestes. The proposed solution gathers input data for the damage assessment in R2D.
 
-#. Open the Dr. Layer program. By default we get twelve layers. The top six layers are hardwired into the system with a velocity of specified as very fast. The bottom six layers are hardwired with a velocity of very slow.
+#. **Baseline Hazard:** The hazard definition for this analysis is a raster file containing `Hurricane Maria Wind-Field Model for Puerto Rico <https://catalog.data.gov/dataset/hurricane-maria-wind-field-model-for-puerto-rico>`_ in miles per hour (kph).
+    
+    .. figure:: ./images/case7_DA2_raster.png
+        :width: 500
+        :align: center
+        :figclass: align-center
 
-#. Select all the layers to all have very slow values using the select all option.
+        **Fig. 2.** Raster visualization of Hurricane Maria Wind-Field Model.
 
-#. On the top left hand corner of the menu box choose the plot box tool and apply a plot box at the top of the layers. Do the same at four arbitrary points along the soil layers. Note the height (:math:`H`) you place the plots.
+#. **Building Inventory:** The building inventory for Puerto Rico is limited. However, using NHERI-SimCenter Building and Infrastructure Recognition using AI at Large-Scale `(BRAILS) <https://github.com/NHERI-SimCenter/BRAILS>`_ capabilities, it is possible to obtain building footprints and their associated attributes for a given location. Brails was implemented in a Jupyter Notebook to:
 
-    <insert image>
+    * Obtain building footprints from open repositories (e.g., NIS)
+    * Fetch Google Street Views using Google API
+    * Import essential BRAILS modules such as NumberOfFloors, YearBuilt, and OccupancyClassifier 
+    * Merge and create a Building Inventory Model (BIM) with required attributes for rulesets.
 
-#. Push the time increment button for about 1 minute.
+    A sample code to obtain bulding inventories is provided below. Make sure to ``!pip install brails`` before running.::
 
-#. Obtain the angular frequency :math:`(2p/T)`, where :math:`T` is the period i.e. time it takes to complete one revolution.
+        ''' Import modules '''
+        from brails.workflow.FootprintHandler import FootprintHandler
+        from brails.workflow.NSIParser import NSIParser
+        from brails.workflow.ImHandler import ImageHandler
+        
+        ''' Building parameters '''
+        # Define query location:
+        name_key = 'Vieques_2'
+        location = Lajas, Puerto Rico
 
-#. Obtain the maximum displacements from the plots by clicking on the crest of the curves with your cursor.
+        # Define footprint source:
+        # fpSource included in BRAILS are i) OpenStreetMaps,
+        # ii) Microsoft Global Building Footprints dataset, and iii) FEMA USA Structures.
+        # The keywords for these sources are osm, ms, and usastr, respectively.
+        footprint_source = 'osm'
 
-.. math::
-    TF = \frac{1}{\cos(\frac{wH}{v_s})}
+        # Length units for the attributes (used when relevant):
+        lengthunit = 'm' # Options are 'm' or 'ft'
 
-    AF = \frac{1}{|\cos(\frac{wH}{v_s})|}
+        # File where the building inventory will be stored:
+        outputfile = 'BuildingInventory.geojson'.format(name_key)
+
+        ''' Initialize and Run BRAILS modules '''
+        # Initialize FootprintHandler:
+        fpHandler = FootprintHandler()
+
+        # Run FootprintHandler to get the footprints for the entered location:
+        fpHandler.fetch_footprint_data(location, fpSource=footprint_source,
+                                    outputFile='{0}_Footprints.geojson'.format(name_key),
+                                    lengthUnit=lengthunit)
+        footprints = fpHandler.footprints.copy()
+
+        # Initialize NSIParser:
+        nsiParser = NSIParser()
+
+        # Run NSIParser to merge the footprint data with NSI points:
+        nsiParser.GetNSIData(footprints, outfile=outputfile, lengthUnit=lengthunit)
+
+    .. note::
+        Complete Jupyter notebook can be accessed in DesignSafe - Data Depot at ``PRJ-4604/Losses_Damage_R2D`` under the name `InventoryBRAILS-notebook.ipynb`.
 
 
-Where
+    .. figure:: ./images/case7_DA3_footprints.png
+        :width: 500
+        :align: center
+        :figclass: align-center
 
-:math:`w` = Angular frequency (2pf)
-
-:math:`H` = distance between any two points in the layers under consideration.
-
-:math:`V` = Velocity of wave travel within the soil layer.
-
-:math:`TF` = Transfer function
-
-:math:`AF` = Amplification function
+        **Fig. 3.** Sample of 932 Building Footprints in Vieques, Puerto Rico, and BRAILS NumberOfFloors module generator.
 
 
-Dr. Layer's operation is controlled via menu commands (with associated keyboard accelerators), manipulation tools, scaling buttons, the load tool bar, and time control buttons. The program displays the results of its calculations visually in the form of animated displacements, and also in the form of dynamically generated time history plots. There are also mechanisms for getting numerical values.
-
-.. figure:: ./images/case1.png
-    :scale: 30 %
-    :align: center
-    :figclass: align-center
+#. **HAZUS Rulesets:** `HAZUS <https://www.fema.gov/flood-maps/products-tools/hazus>`_ is a tool for risk modeling methodology that is implemented in R2D. To conduct damage and loss assessments, the software uses rulesets that parses building attributes such as occupancy, year built, roof height, and others. For this example, the HAZUS rulesets were obtained and modified from `E8 - Hurricane Wind Example <https://nheri-simcenter.github.io/R2D-Documentation/common/user_manual/examples/desktop/E8HurricaneWind/README.html>`_ in R2D documentation.
 
 
 SimCenter Tool Used
 -------------------
-
-blablabla
-
-.. list-table:: Title
-   :widths: 25 25 50
-   :header-rows: 1
-
-   * - Heading row 1, column 1
-     - Heading row 1, column 2
-     - Heading row 1, column 3
-   * - Row 1, column 1
-     -
-     - Row 1, column 3
-   * - Row 2, column 1
-     - Row 2, column 2
-     - Row 2, column 3
-
-Time can be controlled using either the keyboard or the time control buttons:
-
-* To run time **forward**: Press and hold the 'g' key or click and hold the time forward button: <insert icon>.
-
-* To reset time to **zero**: Type the '0' key or click on the time reset button: <insert icon>.
-
-* The current analysis time is **displayed** in the feedback pane at the bottom of the screen.
-
-* The analysis time step size can be controlled via the Time Step menu (there are combinations of material properties and time steps that intentionally lead to unstable results, so beware).
-
-* The display time step can be controlled via the Animation Speed menu. Internally, this command controls how many analysis time steps are computed between screen updates.
-
+This example use the Regional Resilience Determination Tool **R2D** wind damage and loss estimations for a residential area in Vieques, Puerto Rico, to assess the impact of wind forces and improve infrastructure resilience for future events.
 
 Example Application
 -------------------
++-----------------+------------------------------------------------------------------------------------------+
+| Download files  | `Download <https://github.com/dacost2/E17HurricaneMariaPR/archive/refs/heads/main.zip>`_ |
++-----------------+------------------------------------------------------------------------------------------+
 
-Dr. Layer's tool palette is illustrated below (Windows version: the Mac version is similar but grouped a bit differently):
+Download example **E17 - Hurricane Maria PR** files and open R2D. In the **File** tab, **Open** the "input.json" file within the example.
 
-<insert tool palette image>
+    .. figure:: ./images/case7_DA4_E1.png
+        :width: 400
+        :align: center
+        :figclass: align-center
 
-* The **Arrow Tool** is used to select and manipulate objects.
-
-* The **Panner** and **Camera Orbit Tools** are used to change the viewing point and camera orientation via clicking and dragging.
-
-* The **Plot Box Tool** is used to create one of the various types of plot boxes: 
-
-    * **Displacement Time History plots** are created by clicking on the relevant layer. The top node in the layer is used as the plotting target.
-
-    * **Fast Fourier Transform (FFT) plots** of a displacement history can be created by clicking on the time history plot.
-
-    * **Stress-strain plots** can be created by control-clicking (i.e., holding down the control key while clicking) on the desired layer.
-
-
- These controls are self-explanatory in regards to their functions. Note the following, however:
+        **Fig. 4.** R2D inut data.
 
 .. note::
-    The scaling buttons will continue to scale as long as they are held down. It is not necessary to click multiple times to get this effect.
+    You will notice that all the inputs are autopopulated. Make sure to follow the next steps to verify they are in the correct units and using the right file references.
 
+
+#. In the **GI** panel, set the **Analysis Name**, **Units**, **Asset Layers**, and **Output Settings.
+
+    .. figure:: ./images/case7_DA5_E2.png
+        :width: 400
+        :align: center
+        :figclass: align-center
+
+        **Fig. 5.** R2D **GI** input and output settings.
+
+#. For the **HAZ** Hazard Selection, select "Raster Defined Hazard" for an **Event Type**: "Hurricane". The **Intensity Measures of Raster** is "Peak Gust Wind Speed - PWS" in mph. 
+
+    .. figure:: ./images/case7_DA6_E3.png
+        :width: 400
+        :align: center
+        :figclass: align-center
+
+        **Fig. 6.** R2D **HAZ** hazard definition.
+
+#. In the **ASD** panel, make sure the **Regional Building Inventory** is set to "GIS File to AIM". Select the **Assets to Analyze** as intervals (e.g., 1-100) or go back to panel **VIZ** to manually select your assets by i) 'click' on the inventory layer; ii) push "Select" button (then drag selection in the map); iii) push "Add Assets" button.
+
+    .. figure:: ./images/case7_DA7_E4.png
+        :width: 400
+        :align: center
+        :figclass: align-center
+
+        **Fig. 7 (a).** R2D **ASD** Assets Selection by intervals.
+
+    .. figure:: ./images/case7_DA8_E5.png
+        :width: 400
+        :align: center
+        :figclass: align-center
+
+        **Fig. 7 (b).** R2D **VIZ** Assets Selection in the map.
+
+#. The **HTA** panel requires a "Site Specified" calculation
+
+    .. figure:: ./images/case7_DA9_E6.png
+        :width: 400
+        :align: center
+        :figclass: align-center
+
+        **Fig. 8.** R2D **HTA** Building Mapping.
+
+#. This example does not need a Building Modeling. Therefore, **MOD** set to "none".
+
+    .. figure:: ./images/case7_DA10_E7.png
+        :width: 400
+        :align: center
+        :figclass: align-center
+
+        **Fig. 9.** R2D **MOD** Building Model.
+
+#. The Building Analysis Method **ANA** will be "IMasEDP".
+
+    .. figure:: ./images/case7_DA11_E8.png
+        :width: 400
+        :align: center
+        :figclass: align-center
+
+        **Fig. 10.** R2D **ANA** Building Analysis Method.
+
+#. **Damage & Loss Apllication** is found in the **DL** panel. Here you select "Pelicun3" with **Damage and Losss Method** "HAZUS MH MU". The Auto-population script referring to the specified ruleset is "auto_HU_LA.py" file.
+
+    .. figure:: ./images/case7_DA12_E9.png
+        :width: 400
+        :align: center
+        :figclass: align-center
+
+        **Fig. 11.** R2D **DL** Damage & Loss Application.
+
+#. **RUN** the analysis. For the selection of 100 buildings, it should run in your local machine. For full inventory analysis, push **RUN at DesignSafe** button.
+    
+    .. warning:: 
+        For complete inventory: run in DesignDafe, Stampede2 - 20 min|96 Skylake (SKX) cores | 2 nodes with 48 processors per node | 280 buildings per task
+
+    .. note::
+        **SP**, **UQ**, and **RV** panels are not used in this example.
+    
+Results
+-------
+
+will be obtained from the **RUN** panel and manipulated in the visualization **VIZ** panel for mapping options.
+
+    .. figure:: ./images/case7_DA13_E10.png
+        :width: 400
+        :align: center
+        :figclass: align-center
+
+        **Fig. 12.** R2D **RES** Regional Results Summary.
+        
+The analysis gives two types of results:
+
+a) **MostLikelyCriticalDamageState**: The Damage State uses a scale from 0 to 4 that correspons to a qualitative damage description.
+
+.. list-table:: Damage State for Residential Buildings
+   :widths: 25 50
+   :header-rows: 1
+
+   * - Damage State
+     - Qualitative Damage Description
+   * - 0
+     - *No Damage or Very Minor Damage* - No visible damage from outside
+   * - 1
+     - *Minor Damage* - One broken window and moderate roof cover loss
+   * - 2
+     - *Moderate Damage* - Major roof cover damage 
+   * - 3
+     - *Sever Damage* - Major window damage and roof cover loss
+   * - 4
+     - *Destruction* - Complete roof failure and/or failure of wall figremjobpane
+
+*Ref.:* FEMA HAZUS Hurricane Technical Manual `4.2.3 <https://www.fema.gov/sites/default/files/documents/fema_hazus-hurricane-technical-manual-4.2.3_0.pdf>`_
+
+b) **mean_RepairCost_loss_ratio**: The repair cost loss ratio is computed as a ratio of an estimated repair cost and wind-induced damage. The standard deviation of this variable is also provided as *std_RepairCost_loss_ratio*. This ratio goes on a scale from 0 to 1 and correlates with the *Damage State* (DS) variable. A typical breakdown corresponds to:
+    
+    * DS0 - Loss ratio 0%
+    * DS1 - Loss ratio 2%
+    * DS2 - Loss ratio 10%
+    * DS3 - Loss ratio 50%
+    * DS4 - Loss ratio 100%
+
+The results suggest that -of the 100 buildings assessed- most would suffer `Severe Damage` to `Destruction` given the inventory information.
+
+.. note::
+    **Results Visualization**: R2D offers QGIS capabilities to visualize regional trends and produce mapping products. *Fig. 13* shows an example of a map product using the QGIS module to create *HeatMaps* of the **MostLikelyCriticalDamageState** variable and the spatial distribution of the **mean_RepairCost_loss_ratio** for different intervals. Then, using the "New Layout" option you can create maps with legends, title, and other elements.
+    See `QGIS Documentation <https://docs.qgis.org/3.34/en/docs/user_manual/>`_ to learn more.
+
+.. figure:: ./images/case7_DA14_Results.png
+    :width: 700
+    :align: center
+    :figclass: align-center
+
+    **Fig. 13.** Mapping Visualization of Results Using QGIS in R2D.
 
 Remarks
 -------
 
-* To adjust the **plotting scales**, use the small expansion/contraction triangular buttons on the plot for the horizontal scale, and the plot scale buttons on the `Scale Button Toolbar <#scaling-buttons>`_ for the vertical scale. 
+* Hurricanes are increasingly happening with more intensity and force due to climate change.
+* In locations such as Vieques, Puerto Rico, a comprehensive building inventory to assess huricane impact to infrastructure assets is limited. Assessing hazard exposure and consequences are key to increase resilience.
+* R2D possess vast capabilities to adress this challenge, allowing researches to input hazard data and construct building inventories with BRAILS tool. T
+* This example provides strategies for creating building inventories in locations where data is scarce and implementing them in a format that could be used in R2D for regional analysis.
 
-.. note::
-    You will notice that all plots scale together. This is so that plots of a given type can be compared visually without any misleading differences in scale factors.
-
-* To adjust the **horizontal offset** of a plot, click in the plot and drag horizontally to scroll back and forth.
-
-.. note::
-    In general, plots will automatically scroll as necessary as time is running. Once you have manually scrolled a plot, though, the automatic scrolling will cease until time is reset to zero.
-
-* Plot boxes can be added or removed at any time, but they only accumulate data beginning from the time they are installed, with the exception of FFT plots, which always plot the according to the data accumulated in the target time history. FFT plots can use up to the first 1024 points in a time history.
-
-
-.. warning:: 
-    Plotting FFT's will slow down the animation speed significantly, especially as the length of the time histories increase.
-
+References
+----------
 .. bibliography:: references.bib
