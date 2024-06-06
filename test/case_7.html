@@ -5,7 +5,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>R2D - Hurricane Maria Damage and Losses &mdash; CESG-599 1.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
 
@@ -105,10 +105,10 @@ This example assesses wind-induced damage for Vieques Island, Puerto Rico, using
 <section id="problem-description">
 <h2>Problem Description<a class="headerlink" href="#problem-description" title="Link to this heading"></a></h2>
 <p>Hurricanes are powerful tropical storms producing strong winds and heavy rains. The Saffir-Simpson Wind Scale, which categorizes hurricanes from 1 to 5 based on sustained wind speeds, helps estimate potential property damage <span id="id1">[<a class="reference internal" href="#id6" title="H. S. Saffir. Hurricane wind and storm surge. The Military Engineering, pages 4-5, 1973.">Saf73</a>]</span>. Hurricanes in categories 3 and above are deemed major due to their significant destructive potential.</p>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id11">
 <a class="reference internal image-reference" href="_images/case7_DA1_saffirScale.png"><img alt="_images/case7_DA1_saffirScale.png" src="_images/case7_DA1_saffirScale.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig. 1.</strong> Saffir-Simpson Hurricane Scale. Soruce: TIGHE PA.</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig. 1.</strong> Saffir-Simpson Hurricane Scale. Soruce: TIGHE PA.</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Hurricane Maria (Category 5) destroyed several homes and health facilities in Puerto Rico, including <a class="reference external" href="https://www.menendez.senate.gov/newsroom/press/sens-menendez-wicker-reintroduce-vieques-recovery-and-redevelopment-act">the only healthcare center on Vieques Island</a>, exacerbating the island’s health crisis after decades-long military use.
@@ -120,10 +120,10 @@ A recent study by Guerra-Velasquez <span id="id2">[<a class="reference internal"
 <ol class="arabic">
 <li><p><strong>Baseline Hazard:</strong> The hazard definition for this analysis is a raster file containing <a class="reference external" href="https://catalog.data.gov/dataset/hurricane-maria-wind-field-model-for-puerto-rico">Hurricane Maria Wind-Field Model for Puerto Rico</a> in miles per hour (mph).</p>
 <blockquote>
-<div><figure class="align-center" id="id11">
+<div><figure class="align-center" id="id12">
 <a class="reference internal image-reference" href="_images/case7_DA2_raster.png"><img alt="_images/case7_DA2_raster.png" src="_images/case7_DA2_raster.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig. 2.</strong> Raster visualization of Hurricane Maria Wind-Field Model.</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig. 2.</strong> Raster visualization of Hurricane Maria Wind-Field Model.</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -181,10 +181,10 @@ A recent study by Guerra-Velasquez <span id="id2">[<a class="reference internal"
 <p class="admonition-title">Note</p>
 <p>Complete Jupyter notebook can be accessed in DesignSafe - Data Depot at <code class="docutils literal notranslate"><span class="pre">PRJ-4604/Losses_Damage_R2D</span></code> under the name <cite>InventoryBRAILS-notebook.ipynb</cite>.</p>
 </div>
-<figure class="align-center" id="id12">
+<figure class="align-center" id="id13">
 <a class="reference internal image-reference" href="_images/case7_DA3_footprints.png"><img alt="_images/case7_DA3_footprints.png" src="_images/case7_DA3_footprints.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig. 3.</strong> Sample of 932 Building Footprints in Vieques, Puerto Rico, and BRAILS NumberOfFloors module generator.</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig. 3.</strong> Sample of 932 Building Footprints in Vieques, Puerto Rico, and BRAILS NumberOfFloors module generator.</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -207,10 +207,10 @@ A recent study by Guerra-Velasquez <span id="id2">[<a class="reference internal"
 </table>
 <p>Download example <strong>E17 - Hurricane Maria PR</strong> files and open R2D. In the <strong>File</strong> tab, <strong>Open</strong> the “input.json” file within the example.</p>
 <blockquote>
-<div><figure class="align-center" id="id13">
+<div><figure class="align-center" id="id14">
 <a class="reference internal image-reference" href="_images/case7_DA4_E1.png"><img alt="_images/case7_DA4_E1.png" src="_images/case7_DA4_E1.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig. 4.</strong> R2D inut data.</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig. 4.</strong> R2D inut data.</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -221,76 +221,76 @@ A recent study by Guerra-Velasquez <span id="id2">[<a class="reference internal"
 <ol class="arabic">
 <li><p>In the <strong>GI</strong> panel, set the <strong>Analysis Name</strong>, <strong>Units</strong>, <strong>Asset Layers</strong>, and <strong>Output Settings</strong>.</p>
 <blockquote>
-<div><figure class="align-center" id="id14">
+<div><figure class="align-center" id="id15">
 <a class="reference internal image-reference" href="_images/case7_DA5_E2.png"><img alt="_images/case7_DA5_E2.png" src="_images/case7_DA5_E2.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig. 5.</strong> R2D <strong>GI</strong> Input and Output Settings.</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig. 5.</strong> R2D <strong>GI</strong> Input and Output Settings.</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
 </li>
 <li><p>For the <strong>HAZ</strong> Hazard Selection, select “Raster Defined Hazard” for an <strong>Event Type</strong>: “Hurricane”. The <strong>Intensity Measures of Raster</strong> is “Peak Gust Wind Speed - PWS” in mph.</p>
 <blockquote>
-<div><figure class="align-center" id="id15">
+<div><figure class="align-center" id="id16">
 <a class="reference internal image-reference" href="_images/case7_DA6_E3.png"><img alt="_images/case7_DA6_E3.png" src="_images/case7_DA6_E3.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig. 6.</strong> R2D <strong>HAZ</strong> Hazard Definition.</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig. 6.</strong> R2D <strong>HAZ</strong> Hazard Definition.</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
 </li>
 <li><p>In the <strong>ASD</strong> panel, make sure the <strong>Regional Building Inventory</strong> is set to “GIS File to AIM”. Select the <strong>Assets to Analyze</strong> as intervals (e.g., 1-100) or go back to panel <strong>VIZ</strong> to manually select your assets by i) ‘click’ on the inventory layer; ii) push “Select” button (then drag selection in the map); iii) push “Add Assets” button.</p>
 <blockquote>
-<div><figure class="align-center" id="id16">
+<div><figure class="align-center" id="id17">
 <a class="reference internal image-reference" href="_images/case7_DA7_E4.png"><img alt="_images/case7_DA7_E4.png" src="_images/case7_DA7_E4.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig. 7 (a).</strong> R2D <strong>ASD</strong> Assets Selection by Intervals.</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig. 7 (a).</strong> R2D <strong>ASD</strong> Assets Selection by Intervals.</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id18">
 <a class="reference internal image-reference" href="_images/case7_DA8_E5.png"><img alt="_images/case7_DA8_E5.png" src="_images/case7_DA8_E5.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig. 7 (b).</strong> R2D <strong>VIZ</strong> Assets Selection in the Map.</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig. 7 (b).</strong> R2D <strong>VIZ</strong> Assets Selection in the Map.</span><a class="headerlink" href="#id18" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
 </li>
 <li><p>The <strong>HTA</strong> panel requires a “Site Specified” calculation</p>
 <blockquote>
-<div><figure class="align-center" id="id18">
+<div><figure class="align-center" id="id19">
 <a class="reference internal image-reference" href="_images/case7_DA9_E6.png"><img alt="_images/case7_DA9_E6.png" src="_images/case7_DA9_E6.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig. 8.</strong> R2D <strong>HTA</strong> Building Mapping.</span><a class="headerlink" href="#id18" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig. 8.</strong> R2D <strong>HTA</strong> Building Mapping.</span><a class="headerlink" href="#id19" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
 </li>
 <li><p>This example does not need a Building Modeling. Therefore, <strong>MOD</strong> set to “none”.</p>
 <blockquote>
-<div><figure class="align-center" id="id19">
+<div><figure class="align-center" id="id20">
 <a class="reference internal image-reference" href="_images/case7_DA10_E7.png"><img alt="_images/case7_DA10_E7.png" src="_images/case7_DA10_E7.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig. 9.</strong> R2D <strong>MOD</strong> Building Model.</span><a class="headerlink" href="#id19" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig. 9.</strong> R2D <strong>MOD</strong> Building Model.</span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
 </li>
 <li><p>The Building Analysis Method <strong>ANA</strong> will be “IMasEDP”.</p>
 <blockquote>
-<div><figure class="align-center" id="id20">
+<div><figure class="align-center" id="id21">
 <a class="reference internal image-reference" href="_images/case7_DA11_E8.png"><img alt="_images/case7_DA11_E8.png" src="_images/case7_DA11_E8.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig. 10.</strong> R2D <strong>ANA</strong> Building Analysis Method.</span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig. 10.</strong> R2D <strong>ANA</strong> Building Analysis Method.</span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
 </li>
 <li><p><strong>Damage &amp; Loss Apllication</strong> is found in the <strong>DL</strong> panel. Here you select “Pelicun3” with <strong>Damage and Losss Method</strong> “HAZUS MH MU”. The Auto-population script referring to the specified ruleset is “auto_HU_PR.py” file.</p>
 <blockquote>
-<div><figure class="align-center" id="id21">
+<div><figure class="align-center" id="id22">
 <a class="reference internal image-reference" href="_images/case7_DA12_E9.png"><img alt="_images/case7_DA12_E9.png" src="_images/case7_DA12_E9.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig. 11.</strong> R2D <strong>DL</strong> Damage &amp; Loss Application.</span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig. 11.</strong> R2D <strong>DL</strong> Damage &amp; Loss Application.</span><a class="headerlink" href="#id22" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -313,10 +313,10 @@ A recent study by Guerra-Velasquez <span id="id2">[<a class="reference internal"
 <h2>Results<a class="headerlink" href="#results" title="Link to this heading"></a></h2>
 <p>Results will be retrieved from the <strong>RUN</strong> panel and manipulated in the visualization <strong>VIZ</strong> panel for mapping options.</p>
 <blockquote>
-<div><figure class="align-center" id="id22">
+<div><figure class="align-center" id="id23">
 <a class="reference internal image-reference" href="_images/case7_DA13_E10.png"><img alt="_images/case7_DA13_E10.png" src="_images/case7_DA13_E10.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig. 12.</strong> R2D <strong>RES</strong> Regional Results Summary.</span><a class="headerlink" href="#id22" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig. 12.</strong> R2D <strong>RES</strong> Regional Results Summary.</span><a class="headerlink" href="#id23" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -324,8 +324,8 @@ A recent study by Guerra-Velasquez <span id="id2">[<a class="reference internal"
 <ol class="loweralpha simple">
 <li><p><strong>MostLikelyCriticalDamageState</strong>: The Damage State uses a scale from 0 to 4 that correspons to a qualitative damage description.</p></li>
 </ol>
-<table class="docutils align-default" id="id23">
-<caption><span class="caption-text">Damage State for Residential Buildings</span><a class="headerlink" href="#id23" title="Link to this table"></a></caption>
+<table class="docutils align-default" id="id24">
+<caption><span class="caption-text">Damage State for Residential Buildings</span><a class="headerlink" href="#id24" title="Link to this table"></a></caption>
 <colgroup>
 <col style="width: 33.3%" />
 <col style="width: 66.7%" />
@@ -373,10 +373,10 @@ A recent study by Guerra-Velasquez <span id="id2">[<a class="reference internal"
 <p><strong>Results Visualization</strong>: R2D offers QGIS capabilities to visualize regional trends and produce mapping products. <em>Fig. 13</em> shows an example of a map product using the QGIS module to create <em>HeatMaps</em> of the <strong>MostLikelyCriticalDamageState</strong> variable and the spatial distribution of the <strong>mean_RepairCost_loss_ratio</strong> for different intervals. Then, using the “New Layout” option you can create maps with legends, title, and other elements.
 See <a class="reference external" href="https://docs.qgis.org/3.34/en/docs/user_manual/">QGIS Documentation</a> for more.</p>
 </div>
-<figure class="align-center" id="id24">
+<figure class="align-center" id="id25">
 <a class="reference internal image-reference" href="_images/case7_DA14_Results.png"><img alt="_images/case7_DA14_Results.png" src="_images/case7_DA14_Results.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig. 13.</strong> Mapping Visualization of Results Using QGIS in R2D.</span><a class="headerlink" href="#id24" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig. 13.</strong> Mapping Visualization of Results Using QGIS in R2D.</span><a class="headerlink" href="#id25" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>
