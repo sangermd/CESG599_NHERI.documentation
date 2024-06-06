@@ -49,6 +49,7 @@ Learning Objectives
 #. Develop a suitable background for using HPC resources.
 #. Introduce/revise concepts related to structural and geotechnical engineering including UQ concepts, FEM, PB, etc.
 #. Provide a working knowledge for selecting, using, and interpreting tools for Structural and geotechnical design and analysis.
+#. Introduce markup language to develop easy-to-read, easy-to-write documents in the sphinx python package.
 
 
 Introduction
