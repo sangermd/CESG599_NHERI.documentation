@@ -42,18 +42,6 @@
   pages={105644},
   year={2020},
   publisher={Elsevier}
-}
-
-@article{Gey2020,
-  title={Fragility functions for liquefaction-induced ground failure},
-  author={Geyin, Mertcan and Maurer, Brett W},
-  journal={Journal of Geotechnical and Geoenvironmental Engineering},
-  volume={146},
-  number={12},
-  pages={04020142},
-  year={2020},
-  publisher={American Society of Civil Engineers}
-}
 
 @book{Kramer1996,
 author = {Kramer, S. L.},
@@ -64,4 +52,15 @@ pages = {653},
 pmid = {22154952},
 title = {Geotechnical Earthquake Engineering},
 year = {1996}
+}
+
+@article{Zhu2017,
+  title={An updated geospatial liquefaction model for global application},
+  author={Zhu, Jing and Baise, Laurie G and Thompson, Eric M},
+  journal={Bulletin of the Seismological Society of America},
+  volume={107},
+  number={3},
+  pages={1365--1385},
+  year={2017},
+  publisher={Seismological Society of America}
 }
