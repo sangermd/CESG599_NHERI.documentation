@@ -24,7 +24,7 @@ The example problems in this project will utilize the scenario, soil profile, an
 *A site adjacent to San Francisco Bay is underlain by San Francisco Bay Mud. The site is to be readied for development by placement of 5ft of fill material, and the ultimamte settlement of the fill is of interest. The site conditions, shown below, indicate the presence of a crust of desiccated Bay Mud with thickness, h1, which is not expected to consolidate noticeably. The clay is underlain by a dense gravel, which will also not consolidate.*
 
 .. figure:: ./images/case1_settlementProblem.png
-    :scale: 55 %
+    :scale: 45 %
     :align: center
     :figclass: align-center>
 
@@ -144,9 +144,7 @@ QouFEM allows the integration of finite element and hazard compuatations with un
     * **EDP tab** - The EDP tab allows one to define quantities of interest to compute (i.e., ultimate settlement).
     
     .. figure:: ./images/case1_InputResultsTabs.png
-        :scale: 100 %
-        :align: center
-        :figclass: align-center>
+  
 
 After entering parameters in the input tabs, one may choose run the project on their machine by simply clicking **Run** or to run the project in the cloud by selecting **Run at Design Safe**. When choosing to run a project in the cloud, one must login to Design Safe and specify a maximum run time. To ensure that the project does not expire while waiting in the que, select a run time of at least 10 hours.
 
@@ -235,9 +233,7 @@ Example One - Forward Propagation
 The results for Forward Propagation are outlined below:
 
 .. figure:: ./images/case1_ForwardPropagationResults.png
-    :scale: 100 %
-    :align: center
-    :figclass: align-center>
+
 
 Example Two - Parameter Calibration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -268,9 +264,7 @@ The results for Bayesian Calibration are outlined below:
 .. figure:: ./images/case1_BayesianResults.png
 
 .. figure:: ./images/case1_BayesianResults2.png
-    :scale: 50 %
-    :align: center
-    :figclass: align-center>
+
 
 Example Three - Sensitivity Analysis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
