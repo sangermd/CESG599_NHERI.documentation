@@ -8,10 +8,13 @@
     :figclass: align-center
 
 
-Course Introduction
+.. Course Introduction
 ===================
 
-CESG599 - NHERI - An introduction to NHERI Simcenter tools and DesignSafe Resources
+CESG599 - NHERI 
+===============
+
+An introduction to NHERI Simcenter tools and DesignSafe Resources
 -----------------------------------------------------------------------------------
 
 Authors:
