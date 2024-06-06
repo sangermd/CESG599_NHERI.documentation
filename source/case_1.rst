@@ -9,24 +9,21 @@ Author: Kendra Mutch
 Introduction
 ------------
 
-This page describes basic concepts of computing settlement computations in QuoFEM. The calculation methods discussed include forward propagation, deterministic and Bayesian calibration, and sensitivity analysis. For more details, the user is encounged to read :cite:`Holtz and Kovacs 2011'
+The goal of this project is to quantify settlement, parameters impacting settlement, and observe how uncertainty in input parameters impacts the ultimate settlement of a cohesive soil. These calculations will be performed through use of QuoFEM. For more details, the user is encounged to read *Holtz and Kovacs 2011*.
 
 Project Description
 -------------------
 
-The goal of this project is to quantify settlement, parameters impacting settlement, and observe how uncertainty in various input parameters impact the ultimate settlement of a cohesive soil. These copmutations make use of the program QuoFEM. The following report discusses the features of the program, theory regarding the settlement and uncertainty concepts discussed above, as well as three example problems applying different features of QuoFEM.
+Soil settlement is characterized by a change in the effective stress of soil, often driven by either a change in the ground water table, placement of fill/surchage load, or dissipation of excess pore water pressure. While a minimal amount of settlement is expected and may not prove hazardous, larger magnitudes of settlment, or differential settlement, can be detrimental to the integretity and functionality of a super-structure. Settlement of cohesive soil is especially hazardous, as the small pore space in fine grained soil restricts water from draining quickly through the voids. As a result, cohesive soil may continue to settle for a long period of time following the placement of a structure. Granular soil exhibits a significantly lower settlement hazard, as water tends to drain rapidly through the large pore space in the soil, meaning, much of the settlement of coarse grained soil is complete before construction begins. This project focuses on the hazard pertaining to the settlement of cohesive soil. 
 
-The first example makes use of the Forward Propagation feature of QuoFEM, which allows one to apply uncertainty to input parameters (such as preconsolidation pressure, compression and recommpression index, void ratio, unit weight, etc.) to determine which paramter(s) impact the ultimate settlement most. In-situ testing, lab testing, and various models used to determine soil paramters may all contain uncertainty. Thus, it is important to consider uncertainty in geotechnical calculations, such as settlement, and not accept a single predicted value without accounting for uncertainty as completely true to reality. The forward propagation analysis will help us translate uncertainty in soil parameters to uncertainty in ultimate settlement, reducing chances of highly underpredicting or overpredicting settlement.
+When computing settlement, it is important to consider uncertainty and not accept a single predicted value as completely true to reality, as in-situ testing, lab testing, and various models used to determine soil paramters all contain uncertainty. Additionally, soil may differ vastly throughout a project site, with only a few samples taken to represent the whole site. This project uses the program QuoFEM to integrate standard settlement equations with uncertainty quantifiction tools.
 
-In the second example, Bayesian and Deterministic Calibration are used to optimize the value of an input parameter to yield a desired settlement. In other words, given a specific value of ultimate settlement, we can calculate the value of an unknown input paramter.
+The example problems in this project will utilize the scenario, soil profile, and paramters depicted below:
 
-The final example applies the Sensitivity Analysis feature of QuoFEM to determine which input parameters impact the resulting ultimate settlement most. As the discussion of results will reveal, settlement shows a strong correlation with some soil parameters, and a weaker correlation with other paramters. By knowing which parameters settlement is most dependent on, one can allocate funds in site investigation or lab testing to use the most accurate methods for predicting such parameters. Or, one may simply be cautious that potential uncertainty in such parameters, especially compounded uncertainty of multiple parameters, could lead to high uncertainty in the predicted settlement, and perhaps a more conservative design should be implemented. 
+**Scenario:**
+*A site adjacent to San Francisco Bay is underlain by San Francisco Bay Mud. The site is to be readied for development by placement of 5ft of fill material, and the ultimamte settlement of the fill is of interest. The site conditions, shown below, indicate the presence of a crust of desiccated Bay Mud with thickness, h1, which is not expected to consolidate noticeably. The clay is underlain by a dense gravel, which will also not consolidate.*
 
-All examples will use a python input script, paired with the Dakota uncertainty quantification tool in QuoFEM. These aspects of the project are discussed in further detail throughout the report.
-
-The soil profile and problem scenario are the same for all three examples and are depicted in the image and table below.
-
-.. figure:: ./images/ProblemScenarioP1.png
+.. figure:: ./_images/case1_settlementProblem.png
 
 .. list-table:: Soil Profile Parameters
    :widths: 25 25 50
@@ -64,37 +61,66 @@ The soil profile and problem scenario are the same for all three examples and ar
      - 2
      
 
-Example One Solution Strategy - Forward Propagation
----------------------------------------------------
+Solution Strategy
+-----------------
+The magnitude of settlement may be predicted with the below equations:
 
-#. Open the QuoFEM. By default, the UQ method is Forward Propagation and the UQ Engine is Dakota. In this example, we will use these defaults. Specify a sample number of 200 and a seed number of 949. Ensure the **Parellel Execution** and the **Save Working dirs** boxes are checked.
+#. If soil is normally consolidated, σp' = σo':
 
-#. Select the FEM tab. From the drop down menu, select Python. Navigate to the location of the **Input Script** and the **Parameters Script**.
+    .. math::
+        H_{ult} = \frac{C_c}{1+e_o}log(\frac{σ_f'}{σ_o'})H_o
+    
+    
+#. If soil is over consolidated, σp' > σo' and σo' + Δσ' < or = σp':
 
-#. Select the RV tab. Enter the random variables (listed in the table in the problem description). Selelct a normal distribution for each random variable, and enter the mean and standard deviation. Remember, the standard deviation must be calculated for each variable from the given coefficient of variation. The below formula may be used to convert coefficient of variation to the standard deviation.
-   
-#. In the EDP tab, specify the variable of interest as **Settlement** and assign it a **Length** of **1**.
-
-#. Run the example either on your machine or in the cloud. For running in the cloud, see the **SimCenter Tool Used** section for additional details.
-
-
-Example Two Solution Strategy - Bayesian and Deterministic Calibration
-----------------------------------------------------------------------
-
-#. Open QuoFEM. Change the UQ method to Bayesain Callibration and keep the default UQ Engine as Dakota.
+    .. math::
+        H_{ult} = \frac{C_r}{1+e_o}log(\frac{σ_f'}{σ_o'})H_o
 
 
-Example Three Solution Strategy - Sensitivity Analysis
-------------------------------------------------------
-#. In the UQ tab, select **Sensitivity Analysis** as the UQ Method. From the UQ Engine drop down, select **SimCenterUQ**. In the Method drop down, select **Monte Carlo**. For the # of samples, enter 500, and for the seed number, enter 106.
+#. If soil is over consolidated, σp' > σo' and σo' + Δσ' > σp':
 
-#. Select the FEM tab. From the FEM drop down, select **Python**. Locate the file path for the Input Script and the Paramters Script.
+    .. math::
+        H_{ult} = \frac{C_r}{1+e_o}log(\frac{σ_f'}{σ_o'})H_o + \frac{C_c}{1+e_o}log(\frac{σ_f'}{σ_o'})H_o
 
-#. In the RDV tab, enter the same random variables as the Forward Propagation example.
+Where:
 
-#. In the EDP tab, use the same inputs as the Forward Propagation example.
+    .. math::
+        H_{ult} = Ultimate Settlement
+    
+    .. math::
+        C_c = Commpression Index
+    
+    .. math::        
+        e_o = Void Ratio
+    
+    .. math::
+        C_r = Recompression Index
+        
+    .. math::
+        σ_f' = Final Vertical Effective Stress
+        
+    .. math::    
+        σ_o' = Initial Vertical Effective Stress
+        
+    .. math::
+        σ_p' = Preconsolidation Pressure
+        
+    .. math::
+        Δσ' = Change in Vertical Effective Stress
+        
+    .. math::
+        H_o = Thickness of Compressible Layer
 
-#. Choose to run the example either on your machine in the cloud. For running in the cloud, see the **SimCenter Tool Used** section for additional details.
+Though these equations provide a starting point for predicting settlement, they don't capture uncertainty. To account for uncertainty, methods such as Forward Propagation, parameter calibration, and Sensitivity Analysis integrate standard equations with uncertainty quantification. 
+
+Forward Propagation allows us to determine how uncertainty in soil parameters translates to uncertainty in ultimate settlement. This analysis method enables us to understand the effect of compounding uncertainty.
+
+Parameter calibration, allows one to determine an unknown soil paramter, given a value of ultimate settlement. Two examples of parameter calibartion are discussed in the **Example Applications** section. One example utilizes Bayesian Calibration, while another example utilizes Deterministic Calibration.
+
+Finally, Sensitivity Analysis allows us to determine which input parameters impact the resulting ultimate settlement most. Sensitivity Analysis may be performed in both Python and QuoFEM. A Python script performing Sensitivity Analysis may be found here. This script produces a **tornado diagram** (as depicted below), a visual representation of the change in magnitude of settlement resulting from the application of uncertainty to a single variable at a time.
+
+.. figure:: ./_images/case1_TornadoDiagram.png
+
 
 SimCenter Tool Used
 -------------------
@@ -107,22 +133,19 @@ QouFEM allows the integration of finite element and hazard compuatations with un
     * **FEM tab** - The FEM is where a python script is input, and a finite element method (such as Openseas) may 
       be selected. 
 
-    * **RV tab** - The RV tab allows you define random variables and apply desired uncertainty and statistical 
-      models (normal distribution, uniform distribution etc.) to each variable.
+    * **RV tab** - The RV tab allows you define random variables and apply desired uncertainty and statistic distributions 
+      (normal distribution, uniform distribution etc.) to each variable.
       
-    * **EDP tab** - The EDP tab allows one to define quantities of interest. For example, the ultimate settlement.
-
-After entering the inputs for your project, you may choose run the project on your machine by simply clicking **Run** or you may run the project in the cloud by selecting **Run at Design Safe**. If you choose to run your project in the cloud, you must login to you Design Safe account and specify a maximum run time. To ensure that your project does not expire while waiting in the que,, select a run time of at least 10 hours.
-
-The results tab contains both a "Summary" page and a "Data Values" page. The "Summary" page contains a brief 
-outline of the values computed. The "Data Values" page contains a more comprehensive set of results and figures.
-
-
-Example Application
--------------------
-There are various features within the "Data Values" page of the Results tab which may aid in analysis. Below is information about navigating the "Data Values" page to extract desired information:
+    * **EDP tab** - The EDP tab allows one to define quantities of interest to compute (i.e., ultimate settlement).
     
-    * **To View a Scatterplot of a Parameter vs. Run Number** - left click once on any column.
+    .. figure:: ./_images/case1_InputResultsTabs.png
+
+After entering parameters in the input tabs, one may choose run the project on their machine by simply clicking **Run** or to run the project in the cloud by selecting **Run at Design Safe**. When choosing to run a project in the cloud, one must login to Design Safe and specify a maximum run time. To ensure that the project does not expire while waiting in the que, select a run time of at least 10 hours.
+
+The results tab contains both a **Summary** page and a **Data Values** page. The **Summary** page contains a brief 
+outline of the values computed. The **Data Values** page contains a more comprehensive set of results and figures. There are various features within the **Data Values** page of the **Results** tab which may aid in analysis. Below is information about navigating the **Data Values** page to extract desired information:
+    
+   * **To View a Scatterplot of a Parameter vs. Run Number** - left click once on any column.
     
    * **To View a Cumulative Frequency Distribution for a Variable** - First left click once on the column for the 
      variable that you want to view a cumulative frequency distribution for. Then right click once on the same 
@@ -131,7 +154,7 @@ There are various features within the "Data Values" page of the Results tab whic
    * **To View a Histogram for a Variable** - After following the steps to display a cumulative frequency 
      distribution, left click on the same column once more to display the histogram.
      
-   * **To View a Scatterplot of One Variable vs. another Variable** - Right click once on one of the variables. 
+   * **To View a Scatterplot of One Variable vs. Another Variable** - Right click once on one of the variables. 
      This defines which variable will be on the x-axis. Then, left click once on the variable which you want 
      plotted on the y-axis.
    
@@ -139,8 +162,126 @@ There are various features within the "Data Values" page of the Results tab whic
      the table as a .csv file.
 
 
+Example Applications
+--------------------
+
+Example One - Forward Propagation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#. Open QuoFEM. By default, the **UQ method** is **Forward Propagation** and the **UQ Engine** is **Dakota**. In this example, we will use these defaults. Specify a **Sample Number** of 200 and a **Seed Number** of 949. Ensure the **Parellel Execution** and the **Save Working dirs** boxes are checked.
+
+#. Select the **FEM** tab. From the drop down menu, select **Python**. Navigate to the location of the **Input Script** and the **Parameters Script**. Both Python scripts are available at the below links:
+    
+    * *settlement.py*
+    * *params.py*
+
+#. Select the **RV** tab. Enter the random variables (listed in the table in the problem description). Select **Normal Distribution** for each random variable, and enter the mean and standard deviation. The standard deviation must be calculated for each variable from the given coefficient of variation. The below table shows values which should be input for each random variable.
+
+    .. list-table:: Random Variables
+       :widths: 25 25 50 50
+       :header-rows: 1
+
+       * - Variable Name
+         - Distribution
+         - Mean Value
+         - Standard Deviation
+       * - h1
+         - Normal Distribution
+         - 3
+         - 0.15
+       * - h2
+         - Normal Distribution
+         - 25
+         - 1.25
+       * - Cc
+         - Normal Distribution
+         - 0.75
+         - 0.15
+       * - Cr
+         - Normal Distribution
+         - 0.05
+         - 0.01
+       * - eo
+         - Normal Distribution
+         - 1.54
+         - 0.1078
+       * - Δσ'
+         - Normal Distribution
+         - 200
+         - 100
+       * - k
+         - Normal Distribution
+         - 0.000001
+         - 0.000002
+       * - unit weight of fill
+         - Normal Distribution
+         - 130
+         - 9.1
+       * - height of fill
+         - Normal Distribution
+         - 5
+         - 0.1
+#. In the **EDP** tab, specify the variable of interest as **Settlement** and assign it a **Length** of **1**.
+
+#. Run the example either on your machine or in the cloud. For running in the cloud, see the **SimCenter Tool Used** section for additional details.
+
+The results for Forward Propagation are outlined below:
+
+.. figure:: ./_images/case1_ForwardPropagationResults.png
+
+Example Two - Parameter Calibration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Deterministic Calibration
+^^^^^^^^^^^^^^^^^^^^^^^^^
+For this scenario, deterministic calibration can’t find an optimal value, and Bayesian Calibration must be used.
+
+Bayesian Calibration
+^^^^^^^^^^^^^^^^^^^^
+#. Open QuoFEM. In the **UQ** tab, change the **UQ method** to **Bayesain Callibration** and change the **UQ Engine** to **UCSD-UQ**. For the model, select **Non-hierarchical**. Enter a **Sample** number of 500 and **Seed** number of 85. For the **Calibration Data File**, navigate to **data_2.txt**. This text file may be downloaded at the below link:
+
+    * *data_2.txt*
+
+#. In the **FEM** tab, navigate to the location of the **Input Script** and **Parameter Script**. The Bayesian Calibration Python scripts may be downloaded at the below links:
+
+    * *Settlement_2.py*
+    * *params.py*
+    
+#. In the **RV** tab, enter the same random variables as the Forward Propagation example.
+
+#. In the EDP tab, add two variables of interset. The first variable is **settlement** with a **Length** of **1**, and the second variable is a **dummy** variable with a **Length** of 1.
+
+#. Choose to run the example either on your machine in the cloud. For running in the cloud, see the **SimCenter Tool Used** section for additional details.
+
+The results for Bayesian Calibration are outlined below:
+
+.. figure:: ./_images/case1_BayesianResults.png
+.. figure:: ./_images/case1_BayesianResults2.png
+
+Example Three - Sensitivity Analysis
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. In the UQ tab, select **Sensitivity Analysis** as the **UQ Method**. From the **UQ Engine** drop down, select **SimCenterUQ**. In the Method drop down, select **Monte Carlo**. For the **Number of samples**, enter 500, and for the **Seed Number**, enter 106.
+
+#. Select the **FEM** tab. From the **FEM** drop down, select **Python**. Locate the file path for the **Input Script** and the **Paramters Script**. Both Python scripts are available at the below links.
+
+    * *Input Script.py*
+    * *Parameters Script.py*
+
+#. In the **RV** tab, enter the same random variables as the Forward Propagation example.
+
+#. In the **EDP** tab, use the same inputs as the Forward Propagation example.
+
+#. Choose to run the example either on your machine in the cloud. For running in the cloud, see the **SimCenter Tool Used** section for additional details.
+
+The results for the Sensitivity Analysis in QuoFEM are outlined below. Uncertainty in preconsolidation pressure and compression index translate to the greatest uncertainty in the predicted settlement.
+
+.. figure:: ./_images/case1_Sensitivity2.png
+.. figure:: ./_images/case1_Sensitivity.png
+
+
 Remarks
 -------
+By accounting for uncertainty in settlement, chances of highly underpredicting or overpredicting settlement are reduced. 
 
 
-.. bibliography:: references.bib
+    [Hol2011] R. D. Holtz and W. D. Kovacs. *An Introduction to Geotechnical Engineering*. Pearson, 2011. ISBN 978-0137011322.
