@@ -266,13 +266,9 @@ Bayesian Calibration
 The results for Bayesian Calibration are outlined below:
 
 .. figure:: ./images/case1_BayesianResults.png
-    :scale: 70 %
-    :height: 200 px    
-    :align: center
-    :figclass: align-center>
 
 .. figure:: ./images/case1_BayesianResults2.png
-    :scale: 100 %
+    :scale: 50 %
     :align: center
     :figclass: align-center>
 
