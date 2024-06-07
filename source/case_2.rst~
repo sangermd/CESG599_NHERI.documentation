@@ -9,14 +9,9 @@ Author: Erick Martinez
 Introduction
 ------------
 
-This page introduces the fundamental concept of transfer functions and their application in site response analysis. 
-The project also examines the impact of uncertainty in input variables during this process, utilizing the SimCenter tool EE-UQ. 
-Special attention is given to soil amplification factors. For more detailed information on transfer functions, users are encouraged to read :cite:`Kramer1996`.
+This page describes the basic concept of transfer functions and their use in a site response analysis. Along with this, the uncertainty in this process will be investigated using EE-UQ, a SimCenter tool. For more details, the user is encouraged to read :cite:`Kramer1996`. 
 
-
-.. This page describes the basic concept of transfer functions and their use in a site response analysis. Along with this, the uncertainty in this process will be investigated using EE-UQ, a SimCenter tool. For more details, the user is encouraged to read :cite:`Kramer1996`. 
-
-A Jupyter Notebook for this example can be found within `DesignSafe PRJ-4604 <https://www.designsafe-ci.org/data/browser/projects/3318891375077944850-242ac118-0001-012/>`_.
+The Jupyter Notebook for this example can be found within `DesignSafe PRJ-4604 <https://www.designsafe-ci.org/data/browser/projects/3318891375077944850-242ac118-0001-012/>`_.
 
 
 .. note::
