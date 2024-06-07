@@ -11,6 +11,8 @@ Introduction
 
 This page describes the basic concept of transfer functions and their use in a site response analysis. Along with this, the uncertainty in this process will be investigated using EE-UQ, a SimCenter tool. For more details, the user is encouraged to read :cite:`Kramer1996`. 
 
+The Jupyter Notebook for this example can be found within `DesignSafe PRJ-4604 <https://www.designsafe-ci.org/data/browser/projects/3318891375077944850-242ac118-0001-012/>`_.
+
 
 .. note::
    This example was prepared on a Mac system. Differences in the UI between Mac and other systems are possible, but should not affect the outcome.
@@ -633,7 +635,7 @@ Because the input variables (H, Vs, damping, motions) each have uncertainty, tha
 Due to the infinite possibilities of variability the three main variables (H, Vs, Damping) can have, we see that the normal distribution is not well suited for this analysis, specifically. EE-UQ allows for other methods of uncertainty quantification. Below is a Gaussian Mixture Model. This method is effective in measuring the probability of certain subpopulations within a larger population.
 
 
-.. figure:: ./images/icase2_Gaussian_Mixture_RatioA_histogram.png
+.. figure:: ./images/case2_Gaussian_Mixture_RatioA_histogram.png
     :scale: 89 %
     :align: center
 
@@ -670,17 +672,17 @@ By extrapolating the values from EE-UQ, the shape of the transfer function can b
 .. table:: Table 1. Natural Frequencies in the Transfer Function
     :widths: auto
 
-    +------------+---------------------+
-    | Peak       | Nat. Frequency (Hz) |
-    +============+=====================+
-    | 1          | 20.49               |
-    +------------+---------------------+
-    | 2          | 7.03                |
-    +------------+---------------------+
-    | 3          | 4.20                |
-    +------------+---------------------+
-    | 4          | 2.98                |
-    +------------+---------------------+
+    +------------+---------------------------------------------+
+    | Peak       | Amplification Factor at Natural Frequencies |
+    +============+=============================================+
+    | 1          | 20.49                                       |
+    +------------+---------------------------------------------+
+    | 2          | 7.03                                        |
+    +------------+---------------------------------------------+
+    | 3          | 4.20                                        |
+    +------------+---------------------------------------------+
+    | 4          | 2.98                                        |
+    +------------+---------------------------------------------+
 
 .. raw:: html
 
