@@ -1,7 +1,7 @@
 .. _case_2:
 
-EEUQ - Transfer Function and Uncertainty
-================================
+EEUQ - Transfer Function
+========================
 
 Author: Erick Martinez
 ----------------------

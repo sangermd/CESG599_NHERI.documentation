@@ -1,7 +1,7 @@
 .. _case_4:
 
-S3hark - Site Response 2
-=======================
+S\ :sup:`3` hark - Site Response 2
+==================================
 
 Author: Chungen Tai
 (Updated : 05/24/24)
