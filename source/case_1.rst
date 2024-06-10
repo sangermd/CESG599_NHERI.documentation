@@ -30,6 +30,8 @@ The example problems in this project will utilize the scenario, soil profile, an
      Fig. 1. Problem statement.
     
 
+
+
 .. list-table:: Soil Profile Parameters
    :widths: 25 25 50
    :header-rows: 1
@@ -330,7 +332,7 @@ The figure shows Cc and Precon pressure are the most relevant parameters.
 A more in-depth analysis using prior and posterior distributions reveals that the posterior distributions from the Bayesian calibration process result in more accurate and less uncertain settlement estimations. The figure below illustrates these distributions.
 
 .. figure:: ./images/case1_calibration_PriorPost.png
-          :scale: 80%
+          :scale: 70%
           :align: center
 
           Fig. 10. Prior and posterior distributions from Bayesian calibration.

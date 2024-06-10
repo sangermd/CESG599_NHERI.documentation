@@ -26,7 +26,6 @@ The example problems in this project will utilize the scenario, soil profile, an
 .. figure:: ./images/case1_settlementProblem.png
     :scale: 45 %
     :align: center
-    :figclass: align-center>
 
      Fig. 1. Problem statement.
     
@@ -231,6 +230,10 @@ Example One - Forward Propagation
 The results for Forward Propagation are outlined below:
 
 .. figure:: ./images/case1_ForwardPropagationResults.png
+            :align: center
+
+            Fig. 4. Forward propagation results.
+
 
 The results indicate that, given the mean parameters and standard deviation, a total settlement of 1.31 inches is expected with a standard deviation of 0.88 inches (CoV = 0.66). The corresponding histogram, based on Latin Hypercube Sampling (LHS), along with the associated normal distribution curve, is shown in the figure below:
 
@@ -238,7 +241,7 @@ The results indicate that, given the mean parameters and standard deviation, a t
    :scale: 40%
    :align: center
 
-   Fig. 1. QuoFEM propagation histogram.
+   Fig. 5. QuoFEM propagation histogram.
 
 
 Example Two - Sensitivity Analysis
@@ -262,12 +265,14 @@ The results for the Sensitivity Analysis in QuoFEM are outlined below. Uncertain
 .. figure:: ./images/case1_Sensitivity2.png
     :scale: 60 %
     :align: center
-    :figclass: align-center>
+
+    Fig. 6. QuoFEM sensitivity results.
 
 .. figure:: ./images/case1_Sensitivity.png
     :scale: 100 %
     :align: center
-    :figclass: align-center>
+
+    Fig. 7. QuoFEM interface.
 
 
 Example Three - Parameter Calibration
@@ -286,6 +291,8 @@ When testing the two different deterministic calibration algorithms supported in
 .. figure:: ./images/case1_SettlementField.png
             :scale: 80%
             :align: center
+
+            Fig. 8. Settlement field as a function of Cc and Precon pressure.
 
 Bayesian Calibration
 ^^^^^^^^^^^^^^^^^^^^
@@ -314,14 +321,19 @@ The results for Bayesian Calibration are outlined below:
 .. figure:: ./images/case1_BayesianResults1.png
 
 .. figure:: ./images/case1_BayesianResults2.png
+            :align: center
+
+            Fig. 9. QuoFEM Bayesian calibration results.
 
 The figure shows Cc and Precon pressure are the most relevant parameters. 
 
 A more in-depth analysis using prior and posterior distributions reveals that the posterior distributions from the Bayesian calibration process result in more accurate and less uncertain settlement estimations. The figure below illustrates these distributions.
 
 .. figure:: ./images/case1_calibration_PriorPost.png
-          :scale: 80%
+          :scale: 70%
           :align: center
+
+          Fig. 10. Prior and posterior distributions from Bayesian calibration.
 
 
 Remarks
