@@ -87,8 +87,8 @@ The magnitude of settlement can be predicted using conventional consolidation th
 
 Where:
 
-        - :math: `H_{ult}` = Ultimate Settlement
-        - :math: `C_c` = Commpression Index
+        - :math:`H_{ult}` = Ultimate Settlement
+        - :math:`C_c` = Commpression Index
         - :math: `e_o` = Void Ratio
         - :math: `C_r` = Recompression Index
         - :math: `σ_f'` = Final Vertical Effective Stress
