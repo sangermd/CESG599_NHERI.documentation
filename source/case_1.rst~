@@ -320,7 +320,7 @@ Example Three - Sensitivity Analysis
 
 #. Choose to run the example either on your machine in the cloud. For running in the cloud, see the **SimCenter Tool Used** section for additional details.
 
-The results for the Sensitivity Analysis in QuoFEM are outlined below. Uncertainty in preconsolidation pressure and compression index translate to the greatest uncertainty in the predicted settlement.  These findings are consistent with the results shown in the tornado diagram.
+The results for the Sensitivity Analysis in QuoFEM are outlined below. Uncertainty in preconsolidation pressure and compression index translate to the greatest uncertainty in the predicted settlement.
 
 .. figure:: ./images/case1_Sensitivity2.png
     :scale: 100 %
