@@ -118,13 +118,13 @@ Where:
 
 For an accurate evaluation of ultimate settlement, it is recommended to subdivide the compressible layer into sublayers. These equations should be applied to each sublayer using corresponding estimations of initial and final effective stress, as well as material properties, particularly preconsolidation pressure. 
 
-Though these equations provide a starting point for predicting settlement, they don't capture uncertainty. To account for uncertainty, methods such as Forward Propagation, parameter calibration, and Sensitivity Analysis integrate standard equations with uncertainty quantification. 
+Though these equations provide a starting point for predicting settlement, they don't capture uncertainty. To account for uncertainty, methods such as Forward Propagation, Sensitivity Analysis, and Parameter Calibration integrate standard equations with uncertainty quantification. 
 
 Forward Propagation allows us to determine how uncertainty in soil parameters translates to uncertainty in ultimate settlement. This analysis method enables us to understand the effect of compounding uncertainty.
 
-Parameter calibration, allows one to determine an unknown soil paramter, given a value (or set of values) of ultimate settlement. Two examples of parameter calibartion are discussed in the **Example Applications** section. One example utilizes Bayesian Calibration, while another example utilizes Deterministic Calibration.
+Sensitivity Analysis allows us to determine which input parameters impact the resulting ultimate settlement most. Sensitivity Analysis may be performed in both Python and QuoFEM. A Python script performing Sensitivity Analysis may be found here. This script produces a **tornado diagram** (as depicted below), a visual representation of the change in magnitude of settlement resulting from the application of uncertainty to a single variable at a time. These results indicate that, for the given example and material properties, the compression index (Cc), unit weight of the fill (gamma_fill), and preconsolidation pressure are the most relevant parameters.
 
-Finally, Sensitivity Analysis allows us to determine which input parameters impact the resulting ultimate settlement most. Sensitivity Analysis may be performed in both Python and QuoFEM. A Python script performing Sensitivity Analysis may be found here. This script produces a **tornado diagram** (as depicted below), a visual representation of the change in magnitude of settlement resulting from the application of uncertainty to a single variable at a time. These results indicate that, for the given example and material properties, the compression index (Cc), unit weight of the fill (gamma_fill), and preconsolidation pressure are the most relevant parameters.
+Finally, Parameter Calibration, allows one to determine an unknown soil paramter, given a value (or set of values) of ultimate settlement. Two examples of parameter calibartion are discussed in the **Example Applications** section. One example utilizes Bayesian Calibration, while another example utilizes Deterministic Calibration.
 
 .. figure:: ./images/case1_TornadoDiagram.png
     :scale: 50 %
@@ -270,7 +270,7 @@ Example Two - Sensitivity Analysis
 The results for the Sensitivity Analysis in QuoFEM are outlined below. Uncertainty in preconsolidation pressure and compression index translate to the greatest uncertainty in the predicted settlement.  These findings are consistent with the results shown in the tornado diagram.
 
 .. figure:: ./images/case1_Sensitivity2.png
-    :scale: 100 %
+    :scale: 60 %
     :align: center
     :figclass: align-center>
 
@@ -294,6 +294,7 @@ Two deterministic calibration methods are used: i)NL2SOL and ii)OPT++GaussNewton
 When testing the two different deterministic calibration algorithms supported in QuoFEM, we found that they provided vastly different results. This indicates that there are multiple combinations of the compression index (Cc) and preconsolidation pressure that can be considered optimal. To further explore this issue, the figure below shows a settlement field for varying values of Cc and preconsolidation pressure. It is evident that the settlement field is nonlinear due to the logarithmic nature of the solution equation. Additionally, when examining points with constant settlement (e.g., 0.88 or 1.316 inches), the red lines indicate that multiple combinations of compression index (Cc) and preconsolidation pressure yield the same settlement with the black dots representing two solutions obtained using the two deterministic calibration methoods in QuoFEM.  Clearly, for this scenario, deterministic calibration cannot identify a single optimal value, making Bayesian calibration necessary.
 
 .. figure:: ./images/case1_SettlementField.png
+            :scale: 80%
             :align: center
 
 Bayesian Calibration
@@ -331,8 +332,6 @@ A more in-depth analysis using prior and posterior distributions reveals that th
 .. figure:: ./images/case1_calibration_PriorPost.png
           :scale: 80%
           :align: center
-
-
 
 
 Remarks
