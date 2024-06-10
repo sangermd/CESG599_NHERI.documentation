@@ -251,7 +251,36 @@ The results indicate that, given the mean parameters and standard deviation, a t
    Fig. 1. QuoFEM propagation histogram.
 
 
-Example Two - Parameter Calibration
+Example Two - Sensitivity Analysis
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. In the UQ tab, select **Sensitivity Analysis** as the **UQ Method**. From the **UQ Engine** drop down, select **SimCenterUQ**. In the Method drop down, select **Monte Carlo**. For the **Number of samples**, enter 500, and for the **Seed Number**, enter 106.
+
+#. Select the **FEM** tab. From the **FEM** drop down, select **Python**. Locate the file path for the **Input Script** and the **Paramters Script**. Both Python scripts are available at the below links.
+
+    * *Input Script.py*
+    * *Parameters Script.py*
+
+#. In the **RV** tab, enter the same random variables as the Forward Propagation example.
+
+#. In the **EDP** tab, use the same inputs as the Forward Propagation example.
+
+#. Choose to run the example either on your machine in the cloud. For running in the cloud, see the **SimCenter Tool Used** section for additional details.
+
+The results for the Sensitivity Analysis in QuoFEM are outlined below. Uncertainty in preconsolidation pressure and compression index translate to the greatest uncertainty in the predicted settlement.  These findings are consistent with the results shown in the tornado diagram.
+
+.. figure:: ./images/case1_Sensitivity2.png
+    :scale: 100 %
+    :align: center
+    :figclass: align-center>
+
+.. figure:: ./images/case1_Sensitivity.png
+    :scale: 100 %
+    :align: center
+    :figclass: align-center>
+
+
+Example Three - Parameter Calibration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Two parameter calibration strategies available in QuoFEM are explored: i) Deterministic calibration and ii) Bayesian calibration. In both cases, parameters are identified to match assumed field settlement data at several locations, with an average total settlement of 0.88 inches.
@@ -262,7 +291,7 @@ Deterministic Calibration
 
 Two deterministic calibration methods are used: i)NL2SOL and ii)OPT++GaussNewton). 
 
-When testing the two different deterministic calibration algorithms supported in QuoFEM, we found that they provided vastly different results. This indicates that there are multiple combinations of the compression index (Cc) and preconsolidation pressure that can be considered optimal. To further explore this issue, the figure below shows a settlement field for varying values of Cc and preconsolidation pressure. It is evident that the settlement field is nonlinear due to the logarithmic nature of the solution equation. Additionally, when examining points with constant settlement (e.g., 0.88 or 1.316 inches), the red lines indicate that multiple combinations of Cc and preconsolidation pressure yield the same settlement. Clearly, for this scenario, deterministic calibration cannot identify a single optimal value, making Bayesian calibration necessary.
+When testing the two different deterministic calibration algorithms supported in QuoFEM, we found that they provided vastly different results. This indicates that there are multiple combinations of the compression index (Cc) and preconsolidation pressure that can be considered optimal. To further explore this issue, the figure below shows a settlement field for varying values of Cc and preconsolidation pressure. It is evident that the settlement field is nonlinear due to the logarithmic nature of the solution equation. Additionally, when examining points with constant settlement (e.g., 0.88 or 1.316 inches), the red lines indicate that multiple combinations of compression index (Cc) and preconsolidation pressure yield the same settlement with the black dots representing two solutions obtained using the two deterministic calibration methoods in QuoFEM.  Clearly, for this scenario, deterministic calibration cannot identify a single optimal value, making Bayesian calibration necessary.
 
 .. figure:: ./images/case1_SettlementField.png
             :align: center
@@ -300,37 +329,11 @@ The figure shows Cc and Precon pressure are the most relevant parameters.
 A more in-depth analysis using prior and posterior distributions reveals that the posterior distributions from the Bayesian calibration process result in more accurate and less uncertain settlement estimations. The figure below illustrates these distributions.
 
 .. figure:: ./images/case1_calibration_PriorPost.png
-          :scale: 40%
+          :scale: 80%
           :align: center
 
 
-Example Three - Sensitivity Analysis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. In the UQ tab, select **Sensitivity Analysis** as the **UQ Method**. From the **UQ Engine** drop down, select **SimCenterUQ**. In the Method drop down, select **Monte Carlo**. For the **Number of samples**, enter 500, and for the **Seed Number**, enter 106.
-
-#. Select the **FEM** tab. From the **FEM** drop down, select **Python**. Locate the file path for the **Input Script** and the **Paramters Script**. Both Python scripts are available at the below links.
-
-    * *Input Script.py*
-    * *Parameters Script.py*
-
-#. In the **RV** tab, enter the same random variables as the Forward Propagation example.
-
-#. In the **EDP** tab, use the same inputs as the Forward Propagation example.
-
-#. Choose to run the example either on your machine in the cloud. For running in the cloud, see the **SimCenter Tool Used** section for additional details.
-
-The results for the Sensitivity Analysis in QuoFEM are outlined below. Uncertainty in preconsolidation pressure and compression index translate to the greatest uncertainty in the predicted settlement.  These findings are consistent with the results shown in the tornado diagram.
-
-.. figure:: ./images/case1_Sensitivity2.png
-    :scale: 100 %
-    :align: center
-    :figclass: align-center>
-
-.. figure:: ./images/case1_Sensitivity.png
-    :scale: 100 %
-    :align: center
-    :figclass: align-center>
 
 Remarks
 -------
