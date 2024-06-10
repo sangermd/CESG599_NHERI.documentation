@@ -87,6 +87,10 @@ The magnitude of settlement can be predicted using conventional consolidation th
 
 Where:
 
+        - :math:`E_{ult}` represents energy
+        - :math:`m` represents mass
+        - :math:`c` is the speed of light
+
     .. math::
         H_{ult} = Ultimate Settlement
     
