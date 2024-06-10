@@ -28,6 +28,9 @@ The example problems in this project will utilize the scenario, soil profile, an
     :align: center
     :figclass: align-center>
 
+     Fig. 1. Problem statement.
+    
+
 .. list-table:: Soil Profile Parameters
    :widths: 25 25 50
    :header-rows: 1
@@ -89,44 +92,13 @@ Where:
 
         - :math:`H_{ult}` = Ultimate Settlement
         - :math:`C_c` = Commpression Index
-        - :math: `e_o` = Void Ratio
-        - :math: `C_r` = Recompression Index
-        - :math: `σ_f'` = Final Vertical Effective Stress
-        - :math: `σ_o'` = Initial Vertical Effective Stress
-        - :math: `σ_p'` = Preconsolidation Pressure
-        - :math: `Δσ'` = Change in Vertical Effective Stress
-        - :math: `H_o` = Thickness of Compressible Layer
-
-
-
-    .. math::
-        H_{ult} = Ultimate Settlement
-    
-    .. math::
-        C_c = Commpression Index
-    
-    .. math::        
-        e_o = Void Ratio
-    
-    .. math::
-        C_r = Recompression Index
-        
-    .. math::
-        σ_f' = Final Vertical Effective Stress
-        
-    .. math::    
-        σ_o' = Initial Vertical Effective Stress
-        
-    .. math::
-        σ_p' = Preconsolidation Pressure
-        
-    .. math::
-        Δσ' = Change in Vertical Effective Stress
-        
-    .. math::
-        H_o = Thickness of Compressible Layer
-
-
+        - :math:`e_o` = Void Ratio
+        - :math:`C_r` = Recompression Index
+        - :math:`σ_f'` = Final Vertical Effective Stress
+        - :math:`σ_o'` = Initial Vertical Effective Stress
+        - :math:`σ_p'` = Preconsolidation Pressure
+        - :math:`Δσ'` = Change in Vertical Effective Stress
+        - :math:`H_o` = Thickness of Compressible Layer
 
 For an accurate evaluation of ultimate settlement, it is recommended to subdivide the compressible layer into sublayers. These equations should be applied to each sublayer using corresponding estimations of initial and final effective stress, as well as material properties, particularly preconsolidation pressure. 
 
@@ -142,6 +114,9 @@ Finally, Parameter Calibration, allows one to determine an unknown soil paramter
     :scale: 50 %
     :align: center
     :figclass: align-center>
+
+    Fig. 2. Tornado diagram.
+ 
 
 SimCenter Tool Used
 -------------------
@@ -162,6 +137,9 @@ There are five different tabs in QuoFEM; four input tabs and one results tab. Th
     * **EDP tab** - The EDP tab allows one to define quantities of interest to compute (i.e., ultimate settlement).
     
     .. figure:: ./images/case1_InputResultsTabs.png
+
+       Fig. 3. QuoFEM interface.
+ 
   
 
 After entering parameters in the input tabs, one may choose run the project on their machine by simply clicking **Run** or to run the project in the cloud by selecting **Run at Design Safe**. When choosing to run a project in the cloud, one must login to Design Safe and specify a maximum run time. To ensure that the project does not expire while waiting in the queue, select a run time of at least 10 hours.
