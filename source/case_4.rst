@@ -1,6 +1,6 @@
 .. _case_4:
 
-S\:sup:`3` hark - Site Response 2
+S\ :sup:`3` hark - Site Response 2
 ===================================
 
 Author: Chungen Tai

@@ -1,6 +1,6 @@
 .. _case_3:
 
-S\:sup:`3` hark - Site Response 1
+S\ :sup:`3` hark - Site Response 1
 ==================================
 
 Author: José Manuel Barreto Espinola
