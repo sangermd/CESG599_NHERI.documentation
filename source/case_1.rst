@@ -87,9 +87,17 @@ The magnitude of settlement can be predicted using conventional consolidation th
 
 Where:
 
-        - :math:`E_{ult}` represents energy
-        - :math:`m` represents mass
-        - :math:`c` is the speed of light
+        - :math: `H_{ult}` = Ultimate Settlement
+        - :math: `C_c` = Commpression Index
+        - :math: `e_o` = Void Ratio
+        - :math: `C_r` = Recompression Index
+        - :math: `σ_f'` = Final Vertical Effective Stress
+        - :math: `σ_o'` = Initial Vertical Effective Stress
+        - :math: `σ_p'` = Preconsolidation Pressure
+        - :math: `Δσ'` = Change in Vertical Effective Stress
+        - :math: `H_o` = Thickness of Compressible Layer
+
+
 
     .. math::
         H_{ult} = Ultimate Settlement
