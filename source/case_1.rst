@@ -113,7 +113,6 @@ Finally, Parameter Calibration, allows one to determine an unknown soil paramter
 .. figure:: ./images/case1_TornadoDiagram.png
     :scale: 50 %
     :align: center
-    :figclass: align-center>
 
     Fig. 2. Tornado diagram.
  
@@ -137,8 +136,9 @@ There are five different tabs in QuoFEM; four input tabs and one results tab. Th
     * **EDP tab** - The EDP tab allows one to define quantities of interest to compute (i.e., ultimate settlement).
     
     .. figure:: ./images/case1_InputResultsTabs.png
+            :align: center
 
-       Fig. 3. QuoFEM interface.
+            Fig. 3. QuoFEM interface.
  
   
 
