@@ -274,7 +274,7 @@ The results for the Sensitivity Analysis in QuoFEM are outlined below. Uncertain
     :scale: 100 %
     :align: center
 
-    Fig. 7. QuoFEM interface.
+    Fig. 7. QuoFEM sensitivity results - most relevant parameters.
 
 
 Example Three - Parameter Calibration

@@ -1,6 +1,6 @@
 .. _case_1:
 
-quoFEM - Settlements
+QuoFEM - Settlements
 ================================
 
 Author: Kendra Mutch
