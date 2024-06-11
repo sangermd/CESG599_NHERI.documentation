@@ -9,19 +9,57 @@ Author: Luis Angel Guerrero Hoyos
 Introduction
 ------------
 
-This page describes a preliminarly approach for landslide risk assesment using SimCenter tools (R2D).
+This page describes a preliminarly approach for landslide risk assesment which propose an initial workflow that must be developed in the future, so then it can implemented in the SimCenter tool R2D. An example, which uses Jibson (1993) model to predict Newmark sliding block displacements, is presented for a portion of the city of Seattle, WA. Resources from SimCenter M9 project are used in the example to estimate ground-motion intensity parameters. 
 
 
 Problem Description
 -------------------
 
-Studying landslide assessment using Newmark analysis and ground motions is a multidisciplinary effort that integrates engineering, geology, and environmental science. It provides a comprehensive approach to understanding and mitigating the risks associated with landslides, ultimately leading to safer communities and more resilient infrastructure. Here we would like to analyze in a regional scale, what would be the response across a study area located in Seattle, WA, US. The idea is to estimate the predicted displacement in the study area if an earthquake with certain intensity measure (Arias Intensity :math:`I_a`) were to occur. This study integrates the infinite slope approach to estimate the static factor of safety so then the Critical Acceleration :math:`a_c` can be estimated. Finally with these parameters a Newmark displacement could be estimated using Randall W. Jibson correlation :cite:`Jibson1993`.
+Studying earthquake-induced landslides is vital for reducing risks, protecting lives and property, preserving the environment, and enhancing our scientific understanding of these natural disasters. Through comprehensive research and application of findings, societies can better prepare for and mitigate the impacts of these potentially devastating events.
+
+There are several models that can be implemented in a regional-based study so that, hazard values it can be estimated. Some researchers use the theory of Newmark Sliding Block :cite:`Newmark1965` to predict how much displacement would occur if an earthquake with a certain ground motion were to occurr. These models have developed correlations that depend on different intensity measurements as: Earthquake Magnitude (:math:`M_w`), Peak Ground Acceleration (:math:`PGA`), Peak Ground Velocity (:math:`PGV`), Arias Intensity (:math:`I_a`), Critical Acceleration (:math:`a_c`), Normalized Critical Acceleration (:math:`k_c`), Spectral Acceleration (:math:`Sa`), Static Factor of Safety (:math:`FS_{static}`), and Ground Sloping (:math:`\beta`), as well as Soil Strength Parameters (:math:`\gamma,\:c,\:\phi`).
+
+This models could be built-in within R2D tool so that we can estimate Damage and Losses against earthquake-induced landslides.  
 
 
 Solution Strategy
 -----------------
 
-Jibson proposed model is used to calculate the Newmark displacement as follows:
+In this section,  we propose a preliminarly workflow that can be coded within R2D so we can estimate damage and losses as consequences of earthquake-induced landslides risk. 
+
+.. figure:: ./images/case6_fig1.png
+    :scale: 40 %
+    :align: center
+    :figclass: align-center
+    
+    Figure 1. Proposed workflow for incorporating Landslide Risk Assesment into R2D. 
+
+Here are some steps to consider: 
+
+#. Same as the BRAILS tool is embedded within R2D we would need to embed a tool that allows the user to get Digital Elevation Models (DEM) from publicaly available GIS services (e.g. `USGS portal <https://apps.nationalmap.gov/lidar-explorer/#/>`_). \newline Then, a slope raster can be generated for the selected area (geospatial packages must be installed in python dependencies: `Gdal <https://gdal.org/index.html>`_, `Rasterio <https://rasterio.readthedocs.io/en/stable/>`_). 
+
+#. Intensity measurements can be estimated from the "Earthqueake Event Generation" tool. Reminder that some of the models use mesurements extracted from the time-history record, whereas others use spectral accelerations (extracted from the reponse spectrum).
+
+#. Soil Strength Parameters can be estimated from geological mapping and reference values correlations. So, a tool that allows the user to get geological GIS units must be built-in within R2D as well. 
+
+Finally, after input parameters can be estimated for a certain model, the hazard values can be calculated as Newmark Displacement values. 
+
+.. note::
+    All of the previous estimations have uncertainty and the model itself has its own uncertainty. 
+
+SimCenter Tool Used
+-------------------
+
+The goal is to implement the following protocol into R2D. However some Simcenter tools were used in order to develop the procedure. 
+
+#. The Simcenter Jupyter HUB was used to write the notebook that would help us to compute the hazard against landslide. 
+
+#. Ground motions from SimCenter project M9 were used as a grid to which then, intensity measurements would be calculated. 
+
+Example Application
+-------------------
+
+In this section we would like to analyze in a regional scale, what would be the response across a study area located in Seattle, WA, US. The idea is to estimate the predicted displacement in the study area if an earthquake with certain intensity measure (Arias Intensity :math:`I_a`) were to occur. The model integrates the infinite slope approach to estimate the static factor of safety so then the Critical Acceleration :math:`a_c` can be estimated. Finally with these parameters a Newmark displacement could be estimated using Randall W. Jibson correlation :cite:`Jibson1993`:
 
 .. math::
     log(Dn) = 1.460\:log(I_a)-6.642\:a_c+1.546\:\:\:\:\:\:\:\:\:\:\:\:\:(1)
@@ -56,97 +94,57 @@ Where:
 
 :math:`I_a` = Intensity measure time-history motion specific. 
 
-In order to estimate the imput parameters of equation 1 the following steps could be done:
+A Jupyter Notebook has been developed to code the implementation of the previous model in the area of interest:
 
-#. Create a slope raster for a selected area: this can be created using a DTM model for the area of interest which can be downloaded from the `USGS portal. <https://apps.nationalmap.gov/lidar-explorer/#/>`_ 
+* | Get the Digital Elevation Model for the area of interest and perform the slope calculations: The `USGS portal <https://apps.nationalmap.gov/lidar-explorer/#/>`_ is used to download the LiDAR data in the area of interest. See Figure 2 to check the area of interest.
 
-#. Use QGIS built-in functions to perform the slope calculations. See QGIS `slope documentation. <https://docs.qgis.org/3.34/en/docs/training_manual/rasters/terrain_analysis.html#follow-along-calculating-the-slope>`_ 
+    .. figure:: ./images/case6_fig2.png
+        :align: center
+        :figclass: align-center
+        
+        Figure 2. Raster DTM - downloaded from the USGS GIS Service.
 
-To be continued...
--------------------
-Dr. Layer's operation is controlled via menu commands (with associated keyboard accelerators), manipulation tools, scaling buttons, the load tool bar, and time control buttons. The program displays the results of its calculations visually in the form of animated displacements, and also in the form of dynamically generated time history plots. There are also mechanisms for getting numerical values.
+  | Subsequently the Slope map is calculated using the `Gdal <https://gdal.org/index.html>`_ library. See Figure 3 to check the slope map in the area of interest, Seattle WA.
 
-.. figure:: ./images/case1.png
-    :scale: 30 %
+    .. figure:: ./images/case6_fig3.png
+        :align: center
+        :figclass: align-center
+        
+        Figure 3. Raster Slope - computed with GDAL.
+
+* | Get the Intensity Measurements: The intensity values (Areas Intensity in this example) are computed using motions from the M9 project which is a suite of synthetic ground motions for a range of possible magnitude 9 earthquake rupture scenarios on the Cascadia megathrust.
+
+    .. figure:: ./images/case6_fig4.png
+        :align: center
+        :figclass: align-center
+        
+        Figure 4. Motions Grid - Legend indicates values of Arias Intensity [m/s].
+
+  | The value of areas intensity will be given by the nearest neighbor motion in the grid. A raster with intensity measures is created from the grids. Figure 5 is an example of how the Arias intensity would look like after applying the nearest neighbor method. Most of this work is done using the package `Rasterio <https://rasterio.readthedocs.io/en/stable/>`_.
+
+    .. figure:: ./images/case6_fig5.png
+        :align: center
+        :figclass: align-center
+        
+        Figure 5. Interpolation using Nearest Neighbor for Arias Intensity [m/s] values.
+
+.. warning:: 
+    Either Rasters and Motions should be self-consistent with a single spatial reference.
+
+* | Get the Soil Stregth Parameters: as it is for now, this measurement can be heuristically set by the user while the code is built.
+
+Finally, when all the inputs variables are estimated, we can implement the Randall W. Jibson model in the study area. Figure 4 displays the calculated Newmark Displacement for our area of interest Seattle. 
+
+.. figure:: ./images/case6_fig6.png
     :align: center
     :figclass: align-center
-
-
-SimCenter Tool Used
--------------------
-
-blablabla
-
-.. list-table:: Title
-   :widths: 25 25 50
-   :header-rows: 1
-
-   * - Heading row 1, column 1
-     - Heading row 1, column 2
-     - Heading row 1, column 3
-   * - Row 1, column 1
-     -
-     - Row 1, column 3
-   * - Row 2, column 1
-     - Row 2, column 2
-     - Row 2, column 3
-
-Time can be controlled using either the keyboard or the time control buttons:
-
-* To run time **forward**: Press and hold the 'g' key or click and hold the time forward button: <insert icon>.
-
-* To reset time to **zero**: Type the '0' key or click on the time reset button: <insert icon>.
-
-* The current analysis time is **displayed** in the feedback pane at the bottom of the screen.
-
-* The analysis time step size can be controlled via the Time Step menu (there are combinations of material properties and time steps that intentionally lead to unstable results, so beware).
-
-* The display time step can be controlled via the Animation Speed menu. Internally, this command controls how many analysis time steps are computed between screen updates.
-
-
-Example Application
--------------------
-
-Dr. Layer's tool palette is illustrated below (Windows version: the Mac version is similar but grouped a bit differently):
-
-<insert tool palette image>
-
-* The **Arrow Tool** is used to select and manipulate objects.
-
-* The **Panner** and **Camera Orbit Tools** are used to change the viewing point and camera orientation via clicking and dragging.
-
-* The **Plot Box Tool** is used to create one of the various types of plot boxes: 
-
-    * **Displacement Time History plots** are created by clicking on the relevant layer. The top node in the layer is used as the plotting target.
-
-    * **Fast Fourier Transform (FFT) plots** of a displacement history can be created by clicking on the time history plot.
-
-    * **Stress-strain plots** can be created by control-clicking (i.e., holding down the control key while clicking) on the desired layer.
-
-
- These controls are self-explanatory in regards to their functions. Note the following, however:
-
-.. note::
-    The scaling buttons will continue to scale as long as they are held down. It is not necessary to click multiple times to get this effect.
-
+    
+    Figure 6. Randall W. Jibson calculated Newmark Displacement.
 
 Remarks
 -------
 
-* To adjust the **plotting scales**, use the small expansion/contraction triangular buttons on the plot for the horizontal scale, and the plot scale buttons on the `Scale Button Toolbar <#scaling-buttons>`_ for the vertical scale. 
-
-.. note::
-    You will notice that all plots scale together. This is so that plots of a given type can be compared visually without any misleading differences in scale factors.
-
-* To adjust the **horizontal offset** of a plot, click in the plot and drag horizontally to scroll back and forth.
-
-.. note::
-    In general, plots will automatically scroll as necessary as time is running. Once you have manually scrolled a plot, though, the automatic scrolling will cease until time is reset to zero.
-
-* Plot boxes can be added or removed at any time, but they only accumulate data beginning from the time they are installed, with the exception of FFT plots, which always plot the according to the data accumulated in the target time history. FFT plots can use up to the first 1024 points in a time history.
-
-
-.. warning:: 
-    Plotting FFT's will slow down the animation speed significantly, especially as the length of the time histories increase.
+* A `Jupyter Notebook <https://github.com/parduino/CESG599_NHERI.documentation/tree/main/source/landslides-M9motions/>`_ ('hazardNewmark.ipynb') was coded to simulate the process that could be implemented to R2D for earthquake-induced landslides hazard so the user could then estimate damage and losses. Please if refering to this notebook, careful read the instructions in the readme first. Find this work in the CESG599 repository. When trying to run this notebook, you must have access to the M9 project in DesignSafe machines. 
+* Earthquake induced landslides prediction may be a difficult task to adress, but there are models out there that can be implemented to predict the hazard and subsequently, this hazard can be used to predict damage amd losses. The idea is in this section is to provide a procedure that could ve developed within the SiimCenter R2D tool to predict the hazard and subsequently, to predict damage amd losses. 
 
 .. bibliography:: references.bib

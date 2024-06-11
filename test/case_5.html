@@ -1,30 +1,26 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>R2D - Liquefaction &mdash; CESG-599 1.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=8d563738"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="R2D - Landslides" href="case_6.html" />
-    <link rel="prev" title="S3hark - Site Response 2" href="case_4.html" /> 
+    <link rel="prev" title="S3 hark - Site Response 2" href="case_4.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,11 +45,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="case_0.html">Course Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="case_1.html">quoFEM - Settlements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="case_2.html">EEUQ - Transfer Function and Uncertainty</a></li>
-<li class="toctree-l1"><a class="reference internal" href="case_3.html">S3hark - Site Response 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="case_4.html">S3hark - Site Response 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="case_0.html">CESG599 - NHERI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="case_1.html">QuoFEM - Settlements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="case_2.html">EEUQ - Transfer Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="case_3.html">S<sup>3</sup> hark - Site Response 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="case_4.html">S<sup>3</sup> hark - Site Response 2</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">R2D - Liquefaction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#author-morgan-sanger">Author: Morgan Sanger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
@@ -70,7 +66,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="case_6.html">R2D - Landslides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="case_7.html">R2D - Hurricane Maria Damage and Losses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="case_7.html">R2D - Hurricane Damage</a></li>
 </ul>
 
         </div>
@@ -98,23 +94,23 @@
            <div itemprop="articleBody">
              
   <section id="r2d-liquefaction">
-<span id="case-5"></span><h1>R2D - Liquefaction<a class="headerlink" href="#r2d-liquefaction" title="Link to this heading"></a></h1>
+<span id="case-5"></span><h1>R2D - Liquefaction<a class="headerlink" href="#r2d-liquefaction" title="Permalink to this heading"></a></h1>
 <section id="author-morgan-sanger">
-<h2>Author: Morgan Sanger<a class="headerlink" href="#author-morgan-sanger" title="Link to this heading"></a></h2>
+<h2>Author: Morgan Sanger<a class="headerlink" href="#author-morgan-sanger" title="Permalink to this heading"></a></h2>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
-<p>This page describes basic concepts of geospatial liquefaction hazard modeling.</p>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<p>This page describes basic concepts of geospatial liquefaction hazard modeling withing the umbrella of SimCenter tools.</p>
 </section>
 <section id="problem-description">
-<h2>Problem Description<a class="headerlink" href="#problem-description" title="Link to this heading"></a></h2>
+<h2>Problem Description<a class="headerlink" href="#problem-description" title="Permalink to this heading"></a></h2>
 <p>Coseismic soil liquefaction is a phenomenon in which the strength and stiffness of a soil is reduced by earthquake shaking. Resilient communities and infrastructure networks, like lifelines or transportation systems, must be built to withstand and respond to hazards posed by coseismic soil liquefaction. Ideally, these predictions could be made:</p>
 <ul class="simple">
 <li><p>quickly, in near-real-time after an event;</p></li>
 <li><p>at high resolution, consistent with the scale of individual assets; and</p></li>
 <li><p>at map-scale, across the regional extent affected by large earthquakes.</p></li>
 </ul>
-<p>Common liquefaction models in practice require in-situ testing which cannot be continuously performed across large areas, thus presenting the need for “geospatial” liquefaction models. Prior tests of such models (e.g., <span id="id1">[<a class="reference internal" href="#id31" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span>) have shown both promising potential and severe shortcomings in predicting subsurface conditions with few geospatial predictors. There is a need to advance geospatial liquefaction modeling by integrating geotechnical data, liquefaction mechanics, artificial intelligence (AI), and many geospatial predictor variables to provide reliable regional liquefaction predictions for any earthquake event. When integrated with regional hazard assessment capabilities, geospatial liquefcation models will provide value throughout the life of infrastructure projects - from initial desk studies to refined project-specific hazard analyses - and will unlock insights beyond conventional practice, with opportunity to:</p>
+<p>Common liquefaction models in practice require in-situ testing which cannot be continuously performed across large areas, thus presenting the need for “geospatial” liquefaction models. Prior tests of such models (e.g., <span id="id1">[<a class="reference internal" href="case_7.html#id7" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span>) have shown both promising potential and severe shortcomings in predicting subsurface conditions with few geospatial predictors. There is a need to advance geospatial liquefaction modeling by integrating geotechnical data, liquefaction mechanics, artificial intelligence (AI), and many geospatial predictor variables to provide reliable regional liquefaction predictions for any earthquake event. When integrated with regional hazard assessment capabilities, geospatial liquefcation models will provide value throughout the life of infrastructure projects - from initial desk studies to refined project-specific hazard analyses - and will unlock insights beyond conventional practice, with opportunity to:</p>
 <ul class="simple">
 <li><p>prescribe event-specific emergency response and evacuation routes immediately after an earthquake,</p></li>
 <li><p>evaluate network reliability and infrastructure network resiliency using structural databases or other asset inventories, and</p></li>
@@ -122,45 +118,45 @@
 </ul>
 </section>
 <section id="solution-strategy">
-<h2>Solution Strategy<a class="headerlink" href="#solution-strategy" title="Link to this heading"></a></h2>
-<p>The state-of-practice geospatial liquefaction model is the <span id="id2">[<a class="reference internal" href="#id33" title="V. Rashidian and L. G. Baise. Regional efficacy of a global geospatial liquefaction model. Engineering geology, 272:105644, 2020.">RB20</a>]</span> model (updated version of the <span id="id3">[<a class="reference internal" href="#id31" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> model), which uses logistic regression to predict probability of liquefaction based on five (5) geospatial variables and trained on a database of liquefaction case histories.</p>
-<p>In this problem, another modeling solution strategy is proposed, according to <span id="id4">[<a class="reference internal" href="#id32" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span>. The <span id="id5">[<a class="reference internal" href="#id32" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> approach parses the problem into that which is empirical and best predicted by AI (the relationship between geospatial variables and subsurface traits) and that which is best predicted by mechanics (liquefaction response, conditioned on those traits). In this approach, the subsurface traits are characterized at point locations using available cone penetration testing (CPT) data. The liquefaction response at each CPT location is computed across a range of magnitude-scale peak ground accelerations (PGAM7.5) using state-of-practice liquefaction manifestation models (e.g., liquefaction potential index, LPI), thereby retaining the knowledge of liquefaction mechanics developed over the last 50+ years. The relationship between manifestation index and PGAM7.5 is represented as a functional form (Eqn 1) with two curve-fitting parameters: A and B (Fig 1). Therefore, the liquefaction response (i.e., A and B) at each CPT location becomes target variables of supervised learning AI models.</p>
+<h2>Solution Strategy<a class="headerlink" href="#solution-strategy" title="Permalink to this heading"></a></h2>
+<p>The state-of-practice geospatial liquefaction model is the <span id="id2">[<a class="reference internal" href="case_7.html#id9" title="V. Rashidian and L. G. Baise. Regional efficacy of a global geospatial liquefaction model. Engineering geology, 272:105644, 2020.">RB20</a>]</span> model (updated version of the <span id="id3">[<a class="reference internal" href="case_7.html#id7" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> model), which uses logistic regression to predict probability of liquefaction based on five (5) geospatial variables and trained on a database of liquefaction case histories.</p>
+<p>In this problem, another modeling solution strategy is proposed, according to <span id="id4">[<a class="reference internal" href="case_7.html#id8" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span>. The <span id="id5">[<a class="reference internal" href="case_7.html#id8" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> approach parses the problem into that which is empirical and best predicted by AI (the relationship between geospatial variables and subsurface traits) and that which is best predicted by mechanics (liquefaction response, conditioned on those traits). In this approach, the subsurface traits are characterized at point locations using available cone penetration testing (CPT) data. The liquefaction response at each CPT location is computed across a range of magnitude-scale peak ground accelerations (PGAM7.5) using state-of-practice liquefaction manifestation models (e.g., liquefaction potential index, LPI), thereby retaining the knowledge of liquefaction mechanics developed over the last 50+ years. The relationship between manifestation index and PGAM7.5 is represented as a functional form (Eqn 1) with two curve-fitting parameters: A and B (Fig 1). Therefore, the liquefaction response (i.e., A and B) at each CPT location becomes target variables of supervised learning AI models.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}MI = \left\{ \begin{array}{ll}
 0, &amp; \text{PGA}_{M7.5} &lt; 0.1g \\
 \arctan(B \cdot (\text{PGA}_{M7.5} - \frac{A}{B})^2) \cdot 100, &amp; \text{PGA}_{M7.5} \geq 0.1g
 \end{array} \right.\end{split}\]</div>
 <p><strong>Eqn 1.</strong> Manifestation index as a function of A, B, and PGAM7.5.</p>
-<figure class="align-center" id="id35">
+<figure class="align-center" id="id38">
 <a class="reference internal image-reference" href="_images/case5_manifestationcurve.png"><img alt="_images/case5_manifestationcurve.png" src="_images/case5_manifestationcurve.png" style="width: 390.0px; height: 195.65px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig 1.</strong> Example manifestation curve of LPI vs. PGAM7.5 for a single CPT.</span><a class="headerlink" href="#id35" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig 1.</strong> Example manifestation curve of LPI vs. PGAM7.5 for a single CPT.</span><a class="headerlink" href="#id38" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>The AI model is trained to predict liquefaction response using a set of 37 geospatial predictor variables that serve as proxies for liquefaction. These predictor variables include metrics of surface topography and roughness, distance to and elevation above water bodies, and information about geology, geomorphology, and hydrology. By applying the trained AI model to these predictor datasets, the A and B parameters are predicted geospatially at 100-meter resolution. A crucial step in this approach is geostatistically updating the AI predictions via regression kriging near field measurements. The effect is that predictions near known subsurface conditions have lower model uncertainty, while predictions farther away rely on the AI model and have higher uncertainty. This method effectively pre-computes liquefaction response for all possible ground motions based on AI-predicted subsurface conditions. These predictions are stored as mapped parameters, ready for use with specific earthquake data, such as a PGAM7.5 raster in R2D.</p>
-<p>Model predictions were then tested against the leading geospatial model <span id="id6">[<a class="reference internal" href="#id33" title="V. Rashidian and L. G. Baise. Regional efficacy of a global geospatial liquefaction model. Engineering geology, 272:105644, 2020.">RB20</a>]</span> in three case-history events using receiver operating characteristic and area under the curve analyses (Fig 2). The <span id="id7">[<a class="reference internal" href="#id32" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> AI model (before kriging) performed significantly better than <span id="id8">[<a class="reference internal" href="#id33" title="V. Rashidian and L. G. Baise. Regional efficacy of a global geospatial liquefaction model. Engineering geology, 272:105644, 2020.">RB20</a>]</span> and was further improved by kriging (Fig 3).</p>
-<figure class="align-center" id="id36">
+<p>Model predictions were then tested against the leading geospatial model <span id="id6">[<a class="reference internal" href="case_7.html#id9" title="V. Rashidian and L. G. Baise. Regional efficacy of a global geospatial liquefaction model. Engineering geology, 272:105644, 2020.">RB20</a>]</span> in three case-history events using receiver operating characteristic and area under the curve analyses (Fig 2). The <span id="id7">[<a class="reference internal" href="case_7.html#id8" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> AI model (before kriging) performed significantly better than <span id="id8">[<a class="reference internal" href="case_7.html#id9" title="V. Rashidian and L. G. Baise. Regional efficacy of a global geospatial liquefaction model. Engineering geology, 272:105644, 2020.">RB20</a>]</span> and was further improved by kriging (Fig 3).</p>
+<figure class="align-center" id="id39">
 <a class="reference internal image-reference" href="_images/case5_sanger2024-roc.png"><img alt="_images/case5_sanger2024-roc.png" src="_images/case5_sanger2024-roc.png" style="width: 392.0px; height: 384.0px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig 2.</strong> Receiver operator characteristic curves and area under the curve (AUC) analyses comparing <span id="id9">[<a class="reference internal" href="#id33" title="V. Rashidian and L. G. Baise. Regional efficacy of a global geospatial liquefaction model. Engineering geology, 272:105644, 2020.">RB20</a>]</span> (“R&amp;B”), and the <span id="id10">[<a class="reference internal" href="#id32" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> <em>before</em> regression kriging (“LPI”).</span><a class="headerlink" href="#id36" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig 2.</strong> Receiver operator characteristic curves and area under the curve (AUC) analyses comparing <span id="id9">[<a class="reference internal" href="case_7.html#id9" title="V. Rashidian and L. G. Baise. Regional efficacy of a global geospatial liquefaction model. Engineering geology, 272:105644, 2020.">RB20</a>]</span> (“R&amp;B”), and the <span id="id10">[<a class="reference internal" href="case_7.html#id8" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> <em>before</em> regression kriging (“LPI”).</span><a class="headerlink" href="#id39" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id37">
+<figure class="align-center" id="id40">
 <a class="reference internal image-reference" href="_images/case5_zhu2017.png"><img alt="_images/case5_zhu2017.png" src="_images/case5_zhu2017.png" style="width: 320.0px; height: 240.0px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>(a)</strong></span><a class="headerlink" href="#id37" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>(a)</strong></span><a class="headerlink" href="#id40" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id38">
+<figure class="align-center" id="id41">
 <a class="reference internal image-reference" href="_images/case5_sanger2024-ai.png"><img alt="_images/case5_sanger2024-ai.png" src="_images/case5_sanger2024-ai.png" style="width: 324.0px; height: 240.0px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>(b)</strong></span><a class="headerlink" href="#id38" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>(b)</strong></span><a class="headerlink" href="#id41" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id39">
+<figure class="align-center" id="id42">
 <a class="reference internal image-reference" href="_images/case5_sanger2024-krig.png"><img alt="_images/case5_sanger2024-krig.png" src="_images/case5_sanger2024-krig.png" style="width: 323.0px; height: 240.0px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>(c)</strong></span><a class="headerlink" href="#id39" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>(c)</strong></span><a class="headerlink" href="#id42" title="Permalink to this image"></a></p>
 <div class="legend">
 <p><strong>Fig 3.</strong> Comparison between <strong>(a)</strong> Rashidian &amp; Baise (2020), and this model <strong>(b)</strong> before and <strong>(c)</strong> after regression kriging for the Feb. 2011 M6.1 Christchurch event.</p>
 </div>
@@ -168,22 +164,22 @@
 </figure>
 </section>
 <section id="simcenter-tool-used">
-<h2>SimCenter Tool Used<a class="headerlink" href="#simcenter-tool-used" title="Link to this heading"></a></h2>
+<h2>SimCenter Tool Used<a class="headerlink" href="#simcenter-tool-used" title="Permalink to this heading"></a></h2>
 <p>The presented problem can be solved using SimCenter’s Regional Resilience Determination <a class="reference external" href="https://simcenter.designsafe-ci.org/research-tools/r2dtool/">R2D</a> Tool. A substantially complete description of the tool is provided in the <a class="reference external" href="https://nheri-simcenter.github.io/R2D-Documentation/common/user_manual/about/R2D/about.html">R2D Documentation</a>.</p>
-<p>The updated <span id="id11">[<a class="reference internal" href="#id31" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> model (<span id="id12">[<a class="reference internal" href="#id33" title="V. Rashidian and L. G. Baise. Regional efficacy of a global geospatial liquefaction model. Engineering geology, 272:105644, 2020.">RB20</a>]</span>) is implemented in the R2D tool (version 4.2.0), whereas the <span id="id13">[<a class="reference internal" href="#id32" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> model is not yet implemented in the R2D tool. In this project, the <span id="id14">[<a class="reference internal" href="#id32" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> model was implemented in the R2D tool using the <cite>applications.py</cite> file.</p>
+<p>The updated <span id="id11">[<a class="reference internal" href="case_7.html#id7" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> model (<span id="id12">[<a class="reference internal" href="case_7.html#id9" title="V. Rashidian and L. G. Baise. Regional efficacy of a global geospatial liquefaction model. Engineering geology, 272:105644, 2020.">RB20</a>]</span>) is implemented in the R2D tool (version 4.2.0), whereas the <span id="id13">[<a class="reference internal" href="case_7.html#id8" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> model is not yet implemented in the R2D tool. In this project, the <span id="id14">[<a class="reference internal" href="case_7.html#id8" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> model was implemented in the R2D tool using the <cite>applications.py</cite> file.</p>
 </section>
 <section id="example-application">
-<h2>Example Application<a class="headerlink" href="#example-application" title="Link to this heading"></a></h2>
-<p>This example demonstrates the application of the <span id="id15">[<a class="reference internal" href="#id31" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> liquefaction-induced ground failure model (really the <span id="id16">[<a class="reference internal" href="#id33" title="V. Rashidian and L. G. Baise. Regional efficacy of a global geospatial liquefaction model. Engineering geology, 272:105644, 2020.">RB20</a>]</span> model) currently implemented in R2D, and the implementation of the next-generation <span id="id17">[<a class="reference internal" href="#id32" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> model described in the <strong>Solution Strategy</strong>.</p>
+<h2>Example Application<a class="headerlink" href="#example-application" title="Permalink to this heading"></a></h2>
+<p>This example demonstrates the application of the <span id="id15">[<a class="reference internal" href="case_7.html#id7" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> liquefaction-induced ground failure model (really the <span id="id16">[<a class="reference internal" href="case_7.html#id9" title="V. Rashidian and L. G. Baise. Regional efficacy of a global geospatial liquefaction model. Engineering geology, 272:105644, 2020.">RB20</a>]</span> model) currently implemented in R2D, and the implementation of the next-generation <span id="id17">[<a class="reference internal" href="case_7.html#id8" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> model described in the <strong>Solution Strategy</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In R2D, ground failure models are considered intermediate results that are accessible only through the Earthquake Event Generator tool, and they cannot be executed within the damage and loss assessment tools. Future development in R2D should consider (1) implementing ground failure models with other earthquake hazard source options (e.g., Shakemap Earthquake Scenario), (2) extending the implementation of the ground failure modeling beyond California, and (3) incorporating ground failure models into the damage and loss assessment tools.</p>
 </div>
 <section id="zhu-et-al-2017">
-<h3>Zhu et al. (2017)<a class="headerlink" href="#zhu-et-al-2017" title="Link to this heading"></a></h3>
+<h3>Zhu et al. (2017)<a class="headerlink" href="#zhu-et-al-2017" title="Permalink to this heading"></a></h3>
 <p><strong>WORKFLOW</strong></p>
-<p>The workflow for the <span id="id18">[<a class="reference internal" href="#id31" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> model in the Earthquake Event Generator tool in R2D is as follows:</p>
-<p><strong>1. Define Analysis Grid</strong>: Define the analysis grid for the study area. Here, an area of downtown San Francisco is selected for the analysis. The grid is defined with a resolution of approximately 100 meters, the true model resolution of the <span id="id19">[<a class="reference internal" href="#id32" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> model.</p>
+<p>The workflow for the <span id="id18">[<a class="reference internal" href="case_7.html#id7" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> model in the Earthquake Event Generator tool in R2D is as follows:</p>
+<p><strong>1. Define Analysis Grid</strong>: Define the analysis grid for the study area. Here, an area of downtown San Francisco is selected for the analysis. The grid is defined with a resolution of approximately 100 meters, the true model resolution of the <span id="id19">[<a class="reference internal" href="case_7.html#id8" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> model.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="_images/case5_EQGen1.png"><img alt="_images/case5_EQGen1.png" src="_images/case5_EQGen1.png" style="width: 800px;" /></a>
 </figure>
@@ -195,11 +191,11 @@
 <figure class="align-center">
 <a class="reference internal image-reference" href="_images/case5_EQGen3.png"><img alt="_images/case5_EQGen3.png" src="_images/case5_EQGen3.png" style="width: 800px;" /></a>
 </figure>
-<br><p><strong>4. Select Intensity Measures</strong>: PGA and PGV are selected as the intensity measures for the analysis, both required for the <span id="id20">[<a class="reference internal" href="#id31" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> model.</p>
+<br><p><strong>4. Select Intensity Measures</strong>: PGA and PGV are selected as the intensity measures for the analysis, both required for the <span id="id20">[<a class="reference internal" href="case_7.html#id7" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> model.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="_images/case5_EQGen4.png"><img alt="_images/case5_EQGen4.png" src="_images/case5_EQGen4.png" style="width: 800px;" /></a>
 </figure>
-<br><p><strong>5. Select Ground Failure Model</strong>: Select the ground failure model. Here, the <span id="id21">[<a class="reference internal" href="#id31" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> model is selected.</p>
+<br><p><strong>5. Select Ground Failure Model</strong>: Select the ground failure model. Here, the <span id="id21">[<a class="reference internal" href="case_7.html#id7" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> model is selected.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="_images/case5_EQGen5.png"><img alt="_images/case5_EQGen5.png" src="_images/case5_EQGen5.png" style="width: 800px;" /></a>
 </figure>
@@ -207,9 +203,9 @@
 <figure class="align-center">
 <a class="reference internal image-reference" href="_images/case5_EQGen6.png"><img alt="_images/case5_EQGen6.png" src="_images/case5_EQGen6.png" style="width: 800px;" /></a>
 </figure>
-<br><p><strong>7. View Results</strong>: The results of the <span id="id22">[<a class="reference internal" href="#id31" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> model for the probability of liquefaction are shown in Fig 4.</p>
+<br><p><strong>7. View Results</strong>: The results of the <span id="id22">[<a class="reference internal" href="case_7.html#id7" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> model for the probability of liquefaction are shown in Fig 4.</p>
 <p><strong>CODE</strong></p>
-<p>The following code snippet shows the implementation of the <span id="id23">[<a class="reference internal" href="#id31" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> model in the R2D tool using the <cite>applications.py</cite> file.</p>
+<p>The following code snippet shows the implementation of the <span id="id23">[<a class="reference internal" href="case_7.html#id7" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> model in the R2D tool using the <cite>applications.py</cite> file.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="c1"># Zhu et al. (2017) code</span>
 <span class="linenos">  2</span><span class="o">-----------------------------------------------------------</span>
 <span class="linenos">  3</span><span class="k">class</span> <span class="nc">ZhuEtal2017</span><span class="p">(</span><span class="n">Liquefaction</span><span class="p">):</span>
@@ -425,22 +421,22 @@
 </pre></div>
 </div>
 <p><strong>RESULTS</strong></p>
-<figure class="align-center" id="id40">
+<figure class="align-center" id="id43">
 <a class="reference internal image-reference" href="_images/case5_zhu_pliq.png"><img alt="_images/case5_zhu_pliq.png" src="_images/case5_zhu_pliq.png" style="width: 485.25px; height: 495.75px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig 4.</strong> Results of the Zhu et al. (2017) model for probability of liquefaction given the selected M8 N. San Andreas rupture event scenario.</span><a class="headerlink" href="#id40" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig 4.</strong> Results of the Zhu et al. (2017) model for probability of liquefaction given the selected M8 N. San Andreas rupture event scenario.</span><a class="headerlink" href="#id43" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
 <section id="sanger-et-al-2024">
-<h3>Sanger et al. (2024)<a class="headerlink" href="#sanger-et-al-2024" title="Link to this heading"></a></h3>
+<h3>Sanger et al. (2024)<a class="headerlink" href="#sanger-et-al-2024" title="Permalink to this heading"></a></h3>
 <p><strong>WORKFLOW</strong></p>
-<p>The workflow for the <span id="id24">[<a class="reference internal" href="#id32" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> model follows the same steps as the <span id="id25">[<a class="reference internal" href="#id31" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> model, with the exception of the referenced geospatial parameters. The <span id="id26">[<a class="reference internal" href="#id32" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> model needs only the LPI A and LPI B parameters, implemented here within the DistWater and DistCoast parameters in the R2D tool because the author did not have access to the user-interface code for the R2D tool.</p>
+<p>The workflow for the <span id="id24">[<a class="reference internal" href="case_7.html#id8" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> model follows the same steps as the <span id="id25">[<a class="reference internal" href="case_7.html#id7" title="J. Zhu, L. G. Baise, and E. M. Thompson. An updated geospatial liquefaction model for global application. Bulletin of the Seismological Society of America, 107(3):1365–1385, 2017.">ZBT17</a>]</span> model, with the exception of the referenced geospatial parameters. The <span id="id26">[<a class="reference internal" href="case_7.html#id8" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> model needs only the LPI A and LPI B parameters, implemented here within the DistWater and DistCoast parameters in the R2D tool because the author did not have access to the user-interface code for the R2D tool.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="_images/case5_EQGen10.png"><img alt="_images/case5_EQGen10.png" src="_images/case5_EQGen10.png" style="width: 800px;" /></a>
 </figure>
 <p><strong>CODE</strong></p>
-<p>In this example, the <span id="id27">[<a class="reference internal" href="#id32" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> model is implemented in the R2D tool using the <cite>applications.py</cite> file, overwriting the <cite>ZhuEtal2017</cite> class for quick integration with the R2D user-interface.</p>
+<p>In this example, the <span id="id27">[<a class="reference internal" href="case_7.html#id8" title="M. D. Sanger, M. Geyin, and B. W. Maurer. A global liquefaction model for rapid response and scenario modeling. Manuscript in preparation, 2024.">SGM24</a>]</span> model is implemented in the R2D tool using the <cite>applications.py</cite> file, overwriting the <cite>ZhuEtal2017</cite> class for quick integration with the R2D user-interface.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="c1"># Sanger et al. (2024) code</span>
 <span class="linenos">  2</span><span class="o">-----------------------------------------------------------</span>
 <span class="linenos">  3</span><span class="k">class</span> <span class="nc">ZhuEtal2017</span><span class="p">(</span><span class="n">Liquefaction</span><span class="p">):</span>
@@ -545,22 +541,22 @@
 </pre></div>
 </div>
 <p><strong>RESULTS</strong></p>
-<figure class="align-center" id="id41">
+<figure class="align-center" id="id44">
 <a class="reference internal image-reference" href="_images/case5_sanger_lpi.png"><img alt="_images/case5_sanger_lpi.png" src="_images/case5_sanger_lpi.png" style="width: 484.5px; height: 494.25px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig 5.</strong>  Results of the Sanger et al. (2024) model for liquefaction potential index given the selected M8 N. San Andreas rupture event scenario.</span><a class="headerlink" href="#id41" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig 5.</strong>  Results of the Sanger et al. (2024) model for liquefaction potential index given the selected M8 N. San Andreas rupture event scenario.</span><a class="headerlink" href="#id44" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id42">
+<figure class="align-center" id="id45">
 <a class="reference internal image-reference" href="_images/case5_sanger_pliq.png"><img alt="_images/case5_sanger_pliq.png" src="_images/case5_sanger_pliq.png" style="width: 483.75px; height: 492.75px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Fig 6.</strong>  Results of the Sanger et al. (2024) model for probability of liquefaction given the selected M8 N. San Andreas rupture event scenario, using the Geyin and Maurer (2020) fragility function to map LPI to probability of surface manifestation (minor/all).</span><a class="headerlink" href="#id42" title="Link to this image"></a></p>
+<p><span class="caption-text"><strong>Fig 6.</strong>  Results of the Sanger et al. (2024) model for probability of liquefaction given the selected M8 N. San Andreas rupture event scenario, using the Geyin and Maurer (2020) fragility function to map LPI to probability of surface manifestation (minor/all).</span><a class="headerlink" href="#id45" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="remarks">
-<h2>Remarks<a class="headerlink" href="#remarks" title="Link to this heading"></a></h2>
+<h2>Remarks<a class="headerlink" href="#remarks" title="Permalink to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <dl>
@@ -579,12 +575,23 @@
 </div>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
 <div class="docutils container" id="id28">
-<div role="list" class="citation-list">
 <div class="citation" id="id29" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>GV22<span class="fn-bracket">]</span></span>
 <p>G. R. Guerra Velázquez. Hurricane maría and public health in puerto rico: lessons learned to increase resiliency and prepare for future disasters. <em>Annals of Global Health</em>, 2022.</p>
+</div>
+<div class="citation" id="id36" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Jib93<span class="fn-bracket">]</span></span>
+<p>Randall W. Jibson. Predicting earthquake-induced landslide dsiplacements using newmark'ssliding block analysis. <em>Transportation Research Board</em>, 1411:17 p, 1993.</p>
+</div>
+<div class="citation" id="id35" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Kra96<span class="fn-bracket">]</span></span>
+<p>S. L. Kramer. <em>Geotechnical Earthquake Engineering</em>. Pearson, 1996. ISBN 9783642196294.</p>
+</div>
+<div class="citation" id="id37" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>New65<span class="fn-bracket">]</span></span>
+<p>N. M. Newmark. Effects of earthquakes on dams and embankments. <em>Geotechnique</em>, 15(2):139–160, 1965.</p>
 </div>
 <div class="citation" id="id33" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>RB20<span class="fn-bracket">]</span></span>
@@ -614,7 +621,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="case_4.html" class="btn btn-neutral float-left" title="S3hark - Site Response 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="case_4.html" class="btn btn-neutral float-left" title="S3 hark - Site Response 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="case_6.html" class="btn btn-neutral float-right" title="R2D - Landslides" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

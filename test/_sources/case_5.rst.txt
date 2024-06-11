@@ -9,7 +9,7 @@ Author: Morgan Sanger
 Introduction
 ------------
 
-This page describes basic concepts of geospatial liquefaction hazard modeling. 
+This page describes basic concepts of geospatial liquefaction hazard modeling withing the umbrella of SimCenter tools. 
 
 
 Problem Description
