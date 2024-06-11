@@ -19,7 +19,8 @@ The course is intended for graduate students and researchers in the field of civ
    case_4
    case_5
    case_6
-   case_7 
+   case_7
+   case_r 
 .. Acknowledgements
 
 Acknowledgements

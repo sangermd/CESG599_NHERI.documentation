@@ -146,5 +146,3 @@ Remarks
 
 * A `Jupyter Notebook <https://github.com/parduino/CESG599_NHERI.documentation/tree/main/source/landslides-M9motions/>`_ ('hazardNewmark.ipynb') was coded to simulate the process that could be implemented to R2D for earthquake-induced landslides hazard so the user could then estimate damage and losses. Please if refering to this notebook, careful read the instructions in the readme first. Find this work in the CESG599 repository. When trying to run this notebook, you must have access to the M9 project in DesignSafe machines. 
 * Earthquake induced landslides prediction may be a difficult task to adress, but there are models out there that can be implemented to predict the hazard and subsequently, this hazard can be used to predict damage amd losses. The idea is in this section is to provide a procedure that could ve developed within the SiimCenter R2D tool to predict the hazard and subsequently, to predict damage amd losses. 
-
-.. bibliography:: references.bib

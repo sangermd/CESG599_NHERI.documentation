@@ -606,9 +606,3 @@ Remarks
         :width: 600px
         :align: center
         :figclass: align-center
-
-
-
-References
-----------
-.. bibliography:: references.bib

@@ -410,6 +410,17 @@ The following code snippet shows the implementation of the :cite:`Zhu2017` model
             return {"liq_prob":prob_liq, "liq_susc":liq_susc}
 
 
+.. raw:: html
+
+    </code></pre>
+    </details>
+
+
+.. raw:: html
+
+    <br><br>
+
+
 
 **RESULTS**
 
@@ -549,6 +560,15 @@ In this example, the :cite:`Sanger2024` model is implemented in the R2D tool usi
         
         return {"liq_prob":prob_liq, "liq_susc":LPI}
 
+.. raw:: html
+
+    </code></pre>
+    </details>
+
+
+.. raw:: html
+
+    <br><br>
 
 
 **RESULTS**
@@ -587,8 +607,5 @@ Remarks
         :align: center
         :figclass: align-center
 
-
-
-References
-----------
-.. bibliography:: references.bib
+.. bibliography::
+   :filter: cited

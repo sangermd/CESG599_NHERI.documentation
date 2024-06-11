@@ -721,5 +721,3 @@ I'd like to thank everyone at SimCenter, specifically Sang-ri Yi, Frank McKenna,
 Transfer function is one of my favorite topics in geotechnical engineering. I'd really like to continue working with site response and performance based design so being able to create this example along with my class was great.
 
 Finally, I'd like to thank Prof. Arduino who made all of this possible. His determination and motivation was contagious throughout the academic quarter. There are many great professors but there is only one Pedro Arduino. 
-
-.. bibliography:: references.bib

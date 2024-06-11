@@ -267,7 +267,3 @@ Remarks
 * In locations such as Vieques, Puerto Rico, a comprehensive building inventory to assess huricane impact to infrastructure assets is limited. Assessing hazard exposure and consequences are key to increase resilience.
 * R2D possess vast capabilities to adress this challenge, allowing researches to input hazard data and construct building inventories with BRAILS tools.
 * This example provides strategies for creating building inventories in locations where data is scarce and implementing them in a format that could be used in R2D for regional analysis.
-
-References
-----------
-.. bibliography:: references.bib
