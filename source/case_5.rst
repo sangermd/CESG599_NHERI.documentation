@@ -187,6 +187,12 @@ The workflow for the :cite:`Zhu2017` model in the Earthquake Event Generator too
 
 The following code snippet shows the implementation of the :cite:`Zhu2017` model in the R2D tool using the `applications.py` file.
 
+.. raw:: html
+
+    <details>
+    <summary><u><b>Click to expand the full ZhuEtal2017 code</u></b></summary>
+    <pre><code>
+
 .. code-block:: python
     :linenos:
 
@@ -404,6 +410,17 @@ The following code snippet shows the implementation of the :cite:`Zhu2017` model
             return {"liq_prob":prob_liq, "liq_susc":liq_susc}
 
 
+.. raw:: html
+
+    </code></pre>
+    </details>
+
+
+.. raw:: html
+
+    <br><br>
+
+
 
 **RESULTS**
 
@@ -430,7 +447,13 @@ The workflow for the :cite:`Sanger2024` model follows the same steps as the :cit
 
 **CODE**
 
-In this example, the :cite:`Sanger2024` model is implemented in the R2D tool using the `applications.py` file, overwriting the `ZhuEtal2017` class for quick integration with the R2D user-interface. 
+In this example, the :cite:`Sanger2024` model is implemented in the R2D tool using the `applications.py` file, overwriting the `ZhuEtal2017` class for quick integration with the R2D user-interface.
+
+.. raw:: html
+
+    <details>
+    <summary><u><b>Click to expand the full Sanger2024 code</u></b></summary>
+    <pre><code>
 
 .. code-block:: python
     :linenos:
@@ -537,6 +560,15 @@ In this example, the :cite:`Sanger2024` model is implemented in the R2D tool usi
         
         return {"liq_prob":prob_liq, "liq_susc":LPI}
 
+.. raw:: html
+
+    </code></pre>
+    </details>
+
+
+.. raw:: html
+
+    <br><br>
 
 
 **RESULTS**
