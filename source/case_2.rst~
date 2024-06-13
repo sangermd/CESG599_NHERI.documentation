@@ -128,7 +128,7 @@ The following normal distribution figures represent the uncertainty within each 
 
 
 .. figure:: ./images/case2_Combined_RV_1.png
-    :scale: 40 %
+    :scale: 50 %
     :align: center
 
     Fig. 5. Uncertainty in Each Variable (H, Vs, Damping).
@@ -625,13 +625,13 @@ Because the input variables (H, Vs, damping, motions) each have uncertainty, tha
 
 
 .. figure:: ./images/case2_Normalized_RatioA_histogram.png
-    :scale: 60 %
+    :scale: 70 %
     :align: center
 
     Fig. 12. Normalized Acceleration Amplification Factor Histogram
 
 .. figure:: ./images/case2_Normalized_RatioV_histogram.png
-    :scale: 60 %
+    :scale: 70 %
     :align: center
 
     Fig. 13. Normalized Velocity Amplification Factor Histogram
@@ -641,14 +641,14 @@ Due to the infinite possibilities of variability the three main variables (H, Vs
 
 
 .. figure:: ./images/case2_Gaussian_Mixture_RatioA_histogram.png
-    :scale: 60 %
+    :scale: 70 %
     :align: center
 
     Fig. 14. Gaussian Mixture Model - Acceleration Amplification Ratio.
 
 
 .. figure:: ./images/case2_Gaussian_Mixture_RatioV_histogram.png
-    :scale: 60 %
+    :scale: 70 %
     :align: center
 
     Fig. 15. Gaussian Mixture Model - Velocity Amplification Ratio.
@@ -708,7 +708,7 @@ The spectral acceleration spectra can be also determined for each of the motions
 
 
 .. figure:: ./images/case2_SpectralAcc_Results_TF.png
-    :scale: 40 %
+    :scale: 50 %
     :align: center
 
     Fig. 18. Amplification in Spectral Acceleration.
