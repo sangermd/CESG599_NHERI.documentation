@@ -29,10 +29,10 @@ The example problems in this project will utilize the scenario, soil profile, an
 
      Fig. 1. Problem statement.
     
+The table below presents the thickness of the compressible layer and the properties of the soil, including their mean values and corresponding coefficients of variation.  
 
 
-
-.. list-table:: Soil Profile Parameters
+.. list-table:: Table 1 - Soil Profile Parameters
    :widths: 25 25 50
    :header-rows: 1
 

@@ -341,6 +341,3 @@ A more in-depth analysis using prior and posterior distributions reveals that th
 Remarks
 -------
 By accounting for uncertainty in settlement, chances of highly underpredicting or overpredicting settlement are reduced.
-
-.. bibliography::
-   :filter: cited
